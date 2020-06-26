@@ -1,0 +1,25 @@
+{
+  "name": "frsource.github.io",
+  "version": "0.1.0",
+  "description": "Source for FRSource website",
+  "main": "app.js",
+  "module": "app.module.js",
+  "esmodule": "app.modern.js",
+  "unpkg": "app.umd.js",
+  "style": "app.css",
+  "source": "src/index.ts",
+  "repository": "https://github.com/FRSource/frsource.github.io.git",
+  "author": "Jakub Freisler",
+  "license": "Apache 2.0",
+  "scripts": {
+    "build": "parcel build src/index.html --experimental-scope-hoisting -d public",
+    "prestart": "rimraf 'dist/*.?(css|js|map|html)'",
+    "start": "parcel src/index.html"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "rimraf": "^3.0.2",
+    "sass": "^1.26.8",
+    "typescript": "^3.9.5"
+  }
+}
