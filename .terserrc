@@ -1,6 +1,0 @@
-{
-    "mangle": {
-        "toplevel": true,
-        "safari10": true
-    }
-}
