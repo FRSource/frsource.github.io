@@ -4,6 +4,8 @@ $colorPrimaryInverted: #fff;
 $lineHeight1: 1;
 $lineHeight3: 1.2;
 
+$breakpoint3: 920px;
+
 body, html {
     height: 100%;
     width: 100%;
@@ -40,6 +42,10 @@ main {
     padding: 15px 20px 30px;
     height: 100%;
     background-color: #efefef;
+
+    @media (min-width: #{$breakpoint3}) {
+        padding-left: 90px;
+    }
 }
 
 footer {
@@ -57,6 +63,10 @@ h1, h2 {
     letter-spacing: .08em;
     font-weight: 400;
     text-transform: uppercase;
+
+    @media (min-width: #{$breakpoint3}) {
+        font-size: 6vh;
+    }
 }
 
 a {
@@ -90,6 +100,29 @@ ul, ol {
 .content {
     position: relative;
     z-index: 1;
+
+    @media (min-width: #{$breakpoint3}) {
+        display: flex;
+        height: 100%;
+        flex-flow: row-reverse;
+    }
+}
+
+.logo-wrapper {
+    position: relative;
+    @media (min-width: #{$breakpoint3}) {
+        margin-top: calc(27.5vh - 15px);
+        width: 60%;
+    }
+}
+
+.contact-col {
+    @media (min-width: #{$breakpoint3}) {
+        flex-grow: 1;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-evenly;
+    }
 }
 
 .gradient-text {
@@ -119,12 +152,16 @@ ul, ol {
         display: block;
         height: 72px;
         width: 100%;
+
+        @media (min-width: #{$breakpoint3}) {
+            height: 45vh;
+        }
     }
 }
 
 .icon-logotype {
     box-sizing: border-box;
-    border: 20px solid;
+    border: 7.05vh solid;
     display: block;
     border-radius: 50%;
 
@@ -135,18 +172,27 @@ ul, ol {
 
     &--logo {
         margin: -52px auto 0;
+        border-width: 4px;
         padding: 4px;
         width: 52px;
         height: 52px;
-        border-width: 4px;
         transform: translate(-37px, 0);
+
+        @media (min-width: #{$breakpoint3}) {
+            margin-top: -32.2vh;
+            border-width: 2.2482vh;
+            padding: 2.35062vh;
+            width: 32.49999vh;
+            height: 32.49999vh;
+            transform: translate(-24.4865vh, 0);
+        }
     }
 
     &--bg {
         position: absolute;
         top: 50%;
         left: 50%;
-        padding: 35px;
+        padding: 11vh;
         max-height: 112.5vh;
         max-width: 112.5vh;
         width: 112.5vw;
@@ -158,6 +204,10 @@ ul, ol {
 
 .subtitle {
     max-width: 250px;
+
+    @media (min-width: #{$breakpoint3}) {
+        max-width: 25vw;
+    }
 }
 
 .topline {
@@ -208,6 +258,12 @@ ul, ol {
 
 .w-100p {
     width: 100%;
+}
+
+@media (min-width: #{$breakpoint3}) {
+    .w-md-60p {
+        width: 60%;
+    }
 }
 
 .jc-sa {
