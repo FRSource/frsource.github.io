@@ -110,9 +110,14 @@ ul, ol {
 
 .logo-wrapper {
     position: relative;
+    
     @media (min-width: #{$breakpoint3}) {
         margin-top: calc(27.5vh - 15px);
         width: 60%;
+    }
+
+    .js & {
+        display: none;
     }
 }
 
@@ -280,6 +285,12 @@ ul, ol {
 
     &.in {
         animation-play-state: running;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fadeInUp {
+        animation-duration: .000001s !important;
     }
 }
 

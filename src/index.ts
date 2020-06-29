@@ -1,6 +1,17 @@
 import './index.scss';
 
 if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const loadEls = document.body.querySelectorAll('.load-fadeinup');
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => 
+            loadEls.forEach((el, i) => {
+                setTimeout(() => el.classList.add('in'), 300 * i);
+            }),
+            5500
+        );
+    });
+    
     import('./logo.ctrl').then((module) => {
         const logo = document.querySelector<SVGElement>('.icon-logomark');
         const logoType = document.querySelector<HTMLDivElement>('.icon-logotype--logo');
@@ -20,6 +31,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
         paths.push(logoType, logoTypeText);
         paths.forEach(path => path.style.display = 'none');
+        document.querySelector<HTMLDivElement>('.logo-wrapper').style.display = 'block';
         new module.LogoCtrl(
             logo,
             canvas,

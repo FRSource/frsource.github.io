@@ -23,6 +23,7 @@
 </head>
 
 <body>
+    <script>document.body.classList.add('js')</script>
     <main>
 
       <div class="icon-logotype icon-logotype--bg">
@@ -40,32 +41,32 @@
           </div>
         </div>
         <div class="contact-col">
-          <div class="load-fadeinup gradient-text mb-5">
+          <div class="load-fadeinup fadeInUp gradient-text mb-5">
             <h1>FRSOURCE</h1>
             <h2 class="subtitle">Let's shape your web</h2>
           </div>
 
           <div>
             <div class="mb-2 topline">
-              <small class="load-fadeinup topline__item tt-u">write to us</small> <a href="mailto:hello@frs.com" title="TODO: title" class="load-fadeinup topline__item">hello@frs.com</a>
+              <small class="load-fadeinup fadeInUp topline__item tt-u">write to us</small> <a href="mailto:hello@frs.com" title="TODO: title" class="load-fadeinup fadeInUp topline__item">hello@frs.com</a>
             </div>
             <div class="mb-4 topline">
-              <small class="load-fadeinup topline__item tt-u">call us</small> <a href="tel:+48837" title="TODO: title" class="load-fadeinup topline__item">+48 837 123 234</a>
+              <small class="load-fadeinup fadeInUp topline__item tt-u">call us</small> <a href="tel:+48837" title="TODO: title" class="load-fadeinup fadeInUp topline__item">+48 837 123 234</a>
             </div>
           </div>
 
-          <button type="button" class="mb-6 d-b load-fadeinup w-100p w-md-60p">
+          <button type="button" class="mb-6 d-b load-fadeinup fadeInUp w-100p w-md-60p">
             <div class="d-ib topline">
               <small class="topline__item">just </small><span class="topline__item">Contact us</span>
             </div>
           </button>
 
           <ul class="d-f jc-sa lh-1 w-md-60p">
-            <li><a href="https://instagram.com"><svg xmlns:xlink="http://www.w3.org/1999/xlink" class="icon load-fadeinup"><use xlink:href="#insta" href="#insta"></use></svg></a></li>
-            <li><a href="https://facebook.com"><svg xmlns:xlink="http://www.w3.org/1999/xlink" class="icon load-fadeinup"><use xlink:href="#fb" href="#fb"></use></svg></a></li>
-            <li><a href="https://github.com"><svg xmlns:xlink="http://www.w3.org/1999/xlink" class="icon load-fadeinup"><use xlink:href="#github" href="#github"></use></svg></a></li>
-            <li><a href="https://linkedin.com"><svg xmlns:xlink="http://www.w3.org/1999/xlink" class="icon load-fadeinup"><use xlink:href="#linkedin" href="#linkedin"></use></svg></a></li>
-            <li><a href="https://twitter.com"><svg xmlns:xlink="http://www.w3.org/1999/xlink" class="icon load-fadeinup"><use xlink:href="#twitter" href="#twitter"></use></svg></a></li>
+            <li><a href="https://instagram.com"><svg xmlns:xlink="http://www.w3.org/1999/xlink" class="icon load-fadeinup fadeInUp"><use xlink:href="#insta" href="#insta"></use></svg></a></li>
+            <li><a href="https://facebook.com"><svg xmlns:xlink="http://www.w3.org/1999/xlink" class="icon load-fadeinup fadeInUp"><use xlink:href="#fb" href="#fb"></use></svg></a></li>
+            <li><a href="https://github.com"><svg xmlns:xlink="http://www.w3.org/1999/xlink" class="icon load-fadeinup fadeInUp"><use xlink:href="#github" href="#github"></use></svg></a></li>
+            <li><a href="https://linkedin.com"><svg xmlns:xlink="http://www.w3.org/1999/xlink" class="icon load-fadeinup fadeInUp"><use xlink:href="#linkedin" href="#linkedin"></use></svg></a></li>
+            <li><a href="https://twitter.com"><svg xmlns:xlink="http://www.w3.org/1999/xlink" class="icon load-fadeinup fadeInUp"><use xlink:href="#twitter" href="#twitter"></use></svg></a></li>
           </ul>
 
         </div>
@@ -73,25 +74,7 @@
 
     </main>
 
-    <footer class="load-fadeinup">© all rights reserved</footer>
-
-    <script>
-      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          const loadEls = document.body.querySelectorAll('.load-fadeinup');
-          loadEls.forEach((el, i) => {
-              el.classList.add('fadeInUp');
-          });
-
-          document.addEventListener('DOMContentLoaded', () => {
-              setTimeout(() => 
-                  loadEls.forEach((el, i) => {
-                      setTimeout(() => el.classList.add('in'), 300 * i);
-                  }),
-                  5500
-              );
-          });
-      }
-    </script>
+    <footer class="load-fadeinup fadeInUp">© all rights reserved</footer>
 
     <svg style="position:absolute;left:-100%;top:-100%" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
         <symbol id="arrow" viewBox="0 0 131 131" fill="currentColor"><path d="M92.98 65.53L81.11 82.45h-8.83l9.28-12.98h-50.8V61.6h50.83l-9.31-12.99h8.83l11.87 16.92z"/></symbol>
