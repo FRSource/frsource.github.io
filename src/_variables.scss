@@ -1,0 +1,32 @@
+$colorPrimary: #071633;
+$colorPrimaryInverted: #fff;
+$colorSecondary: #053db3;
+$colorTertiary: #ff5f49;
+
+$lineHeight1: 1;
+$lineHeight3: 1.2;
+
+$breakpoint1: 480px;
+$breakpoint2: 600px;
+$breakpoint3: 920px;
+$breakpoint5: 1920px;
+
+$fontSizes: (
+    1: 8/16 * 1rem,
+    2: 10/16 * 1rem,
+    3: 1rem,
+    4: 20/16 * 1rem,
+    5: 24/16 * 1rem,
+    6: 30/16 * 1rem,
+    7: 40/16 * 1rem
+);
+
+$spacings: (
+    1: 5px,
+    2: 10px,
+    3: 15px,
+    4: 20px,
+    5: 25px,
+    6: 30px,
+    7: 45px
+);

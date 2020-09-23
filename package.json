@@ -17,9 +17,14 @@
     "start": "parcel src/index.html"
   },
   "devDependencies": {
+    "@types/domready": "^1.0.0",
     "parcel-bundler": "^1.12.4",
     "rimraf": "^3.0.2",
     "sass": "^1.26.8",
     "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "domready": "^1.0.8",
+    "resize-observer-polyfill": "^1.5.1"
   }
 }

@@ -1,21 +1,16 @@
-
 export class LogoCtrl {
-    static maxGlitchTime = 900;
-    static dpi = window.devicePixelRatio;
-    static max = 0;
-    static min = 0;
+    private static maxGlitchTime = 600;
+    private static dpi = window.devicePixelRatio;
 
-    static randInt (a: number = 0, b: number = 1) { return Math.random() * (b - a) + a; }
-    static randIntNormalDistrubuted (a: number = 0, b: number = 1) {
+    private static randInt (a: number = 0, b: number = 1) { return Math.random() * (b - a) + a; }
+    private static randIntNormalDistributed (a: number = 0, b: number = 1) {
         let u = 0, v = 0;
         while(u === 0) u = Math.random(); //Converting [0,1) to (0,1)
         while(v === 0) v = Math.random();
-        const num = Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
-        if (num < LogoCtrl.min) LogoCtrl.min = num;
-        if (num > LogoCtrl.max) LogoCtrl.max = num;
-        return (num > 1 ? 1 : (num < 0 ? 0 : num)) * (b - a) + a;
+        const num = Math.abs(Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v )) + .1;
+        return (num > 3.8 ? 1 : (num > 1 ? num % 1 : (num > .1 && num < .4 ? num + Math.random() * .5 : (num < 0 ? 0 : num)))) * (b - a) + a;
     }
-    static asyncTimeout (timeout: number) {
+    private static asyncTimeout (timeout: number) {
         return new Promise(resolve =>
             setTimeout(resolve, timeout)
         );
@@ -23,101 +18,104 @@ export class LogoCtrl {
 
     private lastVisibleItem = -1;
 
-    glitchInterval: ReturnType<typeof window.setInterval>;
-    img: HTMLImageElement;
-    imgOffset = {w: 0, h: 0};
-    imgScaleRatio = 1;
-    ctx: CanvasRenderingContext2D;
+    private resizeObserver = new window.ResizeObserver(this.onResize.bind(this));
+
+    private img: HTMLImageElement;
+    private ctx: CanvasRenderingContext2D;
+    private imgSize: {width: number; height: number};
+    private canvasSize: {width: number; height: number};
 
     constructor (
         public logo: SVGElement,
         public canvas: HTMLCanvasElement,
         public itemsToReveal: (HTMLElement | SVGElement)[],
-        public canvasSize: {w: number; h: number},
-        public imgSize: {w: number; h: number},
         public onFinish?: () => void
     ) {
         this.ctx = this.canvas.getContext('2d');
+        this.resizeObserver.observe(logo);
+        this.resizeObserver.observe(canvas);
+    }
+
+    private async onResize () {
+        await this.refreshSvgImage();
+        this.imgSize = this.logo.querySelector('g').getBoundingClientRect();
+        this.canvasSize = {width: this.canvas.offsetWidth, height: this.canvas.offsetHeight};
+        this.canvas.width = this.canvasSize.width * LogoCtrl.dpi;
+        this.canvas.height = this.canvasSize.height * LogoCtrl.dpi;
+        this.ctx.scale(LogoCtrl.dpi, LogoCtrl.dpi);
     }
 
     async init () {
-        this.img = await this.refreshSvgImage();
-        this.imgInit();
-    }
-
-    imgInit () {
-        clearInterval(this.glitchInterval);
-        this.prepareCanvas(); 
-
-        this.glitchInterval = setInterval(this.prepareImgAndGlitch.bind(this), 500);
-        setTimeout(this.progressReveal.bind(this), 1500); // starting timeout
-    }
-
-    prepareCanvas () {
-        this.imgScaleRatio = Math.min(this.img.width / this.imgSize.w, this.img.height / this.imgSize.h);
-        this.canvas.width = this.canvasSize.w * LogoCtrl.dpi;
-        this.canvas.height = this.canvasSize.h * LogoCtrl.dpi;
-        this.imgOffset.w = (this.canvasSize.w - this.imgSize.w) / 2;
-        this.imgOffset.h = (this.canvasSize.h - this.imgSize.h) / 2;
-        this.canvas.style.width = this.canvasSize.w + 'px';
-        this.canvas.style.height = this.canvasSize.h + 'px';
-        this.ctx.scale(LogoCtrl.dpi, LogoCtrl.dpi);
-        this.canvas.style['margin-top'] = -this.imgOffset.h + 'px';
-        // this.canvas.style['margin-left'] = -offsetSizes.width + 'px';
-    }
-
-    prepareImgAndGlitch () {
-        this.reinitImg();
-        setTimeout(this.glitchImg.bind(this), LogoCtrl.randInt(250, LogoCtrl.maxGlitchTime));
-    }
-
-    reinitImg () {
-        this.ctx.clearRect(0, 0, this.canvasSize.w, this.canvasSize.h);
+        await this.onResize();
+        
+        this.glitchTimeouted();
+        setTimeout(this.progressReveal.bind(this), 2500); // starting timeout
     }
 
     glitchImg () {
-        for (let i = 0; i < LogoCtrl.randInt(1, 13); ++i) {
-            const x = Math.random();
-            const y = Math.random();
-            const spliceWidth = Math.random() * (1 - x);
-            const spliceHeight = Math.random() * (1 - y);
-            const imgWidth = this.img.width + 27;
-            const imgHeight = this.img.height + 22;
-            this.ctx.drawImage(this.img, x * imgWidth, y * imgHeight, spliceWidth * imgWidth, spliceHeight * imgHeight, LogoCtrl.randIntNormalDistrubuted(this.imgOffset.w / 2, (this.canvas.width - this.imgOffset.w) / 2), this.imgSize.h * y + this.imgOffset.h, spliceWidth * this.imgSize.w, spliceHeight * this.imgSize.h);
+        const imgWidth = this.imgSize.width * LogoCtrl.dpi;
+        const imgHeight = this.imgSize.height * LogoCtrl.dpi;
+        const canvasScale = Math.max(this.canvas.clientHeight/this.logo.clientHeight, this.canvas.clientWidth/this.logo.clientWidth);
+        if (Math.random() < .2) {
+            this.logo.style.visibility = 'hidden';
+        } else {
+            this.logo.style.visibility = null;
+            this.logo.style.transform = Math.random() < .7
+                ? `translate(${LogoCtrl.randIntNormalDistributed(-10, 10)}%, ${LogoCtrl.randIntNormalDistributed(-10, 10)}%)`
+                : 'none';
         }
+
+        for (let i = 0; i < LogoCtrl.randInt(1, 13); ++i) {
+            const x = LogoCtrl.randIntNormalDistributed(0, 1);
+            const y = LogoCtrl.randIntNormalDistributed(0, 1);
+            const spliceWidth = LogoCtrl.randIntNormalDistributed(0, 1);
+            const spliceHeight = LogoCtrl.randIntNormalDistributed(0, 1);
+            // console.log(this.canvasSize.width, this.imgSize.width);
+
+            this.ctx.drawImage(
+                this.img,
+                x * imgWidth,
+                y * imgHeight,
+                spliceWidth * imgWidth * canvasScale,
+                spliceHeight * imgHeight * canvasScale,
+                LogoCtrl.randIntNormalDistributed(0, this.canvasSize.width - this.imgSize.width),
+                LogoCtrl.randIntNormalDistributed(0, this.canvasSize.height - this.imgSize.height),
+                // this.imgOffset.h + this.imgSize.h * y,
+                spliceWidth * this.imgSize.width,
+                spliceHeight * this.imgSize.height
+            );
+        }
+    }
+
+    async glitchTimeouted () {
+        this.logo.style.visibility = null;
+        await Promise.all(new Array(Math.round(LogoCtrl.randInt(.5, 3.4))).fill(0).map(async () => {
+            await LogoCtrl.asyncTimeout(LogoCtrl.randInt(550, 2500));
+            this.glitchImg();
+            await LogoCtrl.asyncTimeout(LogoCtrl.randInt(50, LogoCtrl.maxGlitchTime));
+        }));
+
+        this.ctx.clearRect(0, 0, this.canvasSize.width, this.canvasSize.height);
+        this.glitchTimeouted();
     }
 
     async progressReveal () {
         if (this.lastVisibleItem === this.itemsToReveal.length - 1) {
-            this.onFinish?.();
-            await LogoCtrl.asyncTimeout(2000);
-            clearInterval(this.glitchInterval);
-            await LogoCtrl.asyncTimeout(LogoCtrl.maxGlitchTime + 50);
-            this.reinitImg();
-
-            this.glitchInterval = setInterval(async () => {
-                await LogoCtrl.asyncTimeout(LogoCtrl.randInt(250, LogoCtrl.maxGlitchTime));
-                this.glitchImg();
-                const end = LogoCtrl.randInt(150, LogoCtrl.maxGlitchTime);
-                LogoCtrl.asyncTimeout(end).then(this.glitchImg.bind(this));
-                await LogoCtrl.asyncTimeout(LogoCtrl.randInt(end + 50, end + LogoCtrl.maxGlitchTime * .7));
-                return this.reinitImg();
-            }, 5000);
-
-            return;
+            return this.onFinish?.();
         }
 
-        this.itemsToReveal[++this.lastVisibleItem].style.display = null;
-        this.img = await this.refreshSvgImage();
+        this.itemsToReveal[++this.lastVisibleItem].style.visibility = null;
+        await this.refreshSvgImage();
         setTimeout(this.progressReveal.bind(this), LogoCtrl.randInt(200, 700));
     }
 
     async refreshSvgImage () {
         const image = new Image();
-        return new Promise<typeof image>(resolve => {
+        const img = await new Promise<typeof image>(resolve => {
             image.onload = resolve.bind(void 0, image);
             const svgURL = new XMLSerializer().serializeToString(this.logo);
             image.src = 'data:image/svg+xml; charset=utf8, ' + encodeURIComponent(svgURL);
         });
+        return this.img = img;
     }
 }
