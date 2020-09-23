@@ -12,7 +12,7 @@
   "author": "Jakub Freisler",
   "license": "Apache 2.0",
   "scripts": {
-    "build": "parcel build src/index.html --experimental-scope-hoisting -d public",
+    "build": "parcel build src/index.html -d public",
     "prestart": "rimraf 'dist/*.?(css|js|map|html)'",
     "start": "parcel src/index.html"
   },
