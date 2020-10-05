@@ -32,12 +32,18 @@ body {
     letter-spacing: .1em;
     line-height: $lineHeight3;
 
-    @media (min-width: #{$breakpoint3}) {
-        padding: 5.55vh;
+    @media (min-height: #{$breakpoint2}) {
+        font-size: 3.7vh;
+        padding: 3vh;
     }
 
-    @media (min-width: #{$breakpoint5}) {
-        font-size: map.get($fontSizes, 7);
+    @media (min-height: #{$breakpoint4}) {
+        font-size: 3.3vh;
+    }
+
+    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
+        padding: 5.55vh;
+        font-size: 3.4vh;
     }
 }
 
@@ -60,7 +66,7 @@ dialog {
     color: inherit;
     background: none;
 
-    @media (min-width: #{$breakpoint3}) {
+    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
         top: 7vh;
         right: auto;
         bottom: 7vh;
@@ -101,11 +107,11 @@ dialog {
         flex-grow: 1;
         padding: (map.get($spacings, 1) + map.get($spacings, 6)) map.get($spacings, 4) map.get($spacings, 4);
         
-        @media (min-width: #{$breakpoint3}) {
+        @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
             padding-bottom: map.get($spacings, 6);
         }
 
-        @media (min-width: #{$breakpoint5}) {
+        @media (orientation:landscape) and (min-width: #{$breakpoint5}) {
             padding: (map.get($spacings, 7) + map.get($spacings, 3)) map.get($spacings, 7)  (map.get($spacings, 7) + map.get($spacings, 1));
         }
     }
@@ -126,7 +132,7 @@ main {
     height: 100%;
     background-color: #efefef;
 
-    @media (min-width: #{$breakpoint3}) {
+    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
         padding-left: map.get($spacings, 7) * 2;
     }
 }
@@ -143,8 +149,12 @@ footer {
         font-size: map.get($fontSizes, 2);
     }
 
-    @media (min-width: #{$breakpoint5}) {
-        font-size: map.get($fontSizes, 3);
+    @media (orientation:portrait) and (min-height: #{$breakpoint2}) {
+        font-size: 1vh;
+    }
+
+    @media (orientation:landscape) and (min-width: #{$breakpoint5}) {
+        font-size: 1.5vh;
     }
 }
 
@@ -156,7 +166,11 @@ h1, h2 {
     font-weight: 400;
     text-transform: uppercase;
 
-    @media (min-width: #{$breakpoint3}) {
+    @media (min-height: #{$breakpoint2}) {
+        font-size: 5vh;
+    }
+
+    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
         font-size: 6vh;
     }
 }
@@ -199,7 +213,7 @@ button {
         font-size: map.get($fontSizes, 6);
 
         .icon {
-            @media (min-width: #{$breakpoint3}) {
+            @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
                 font-size: map.get($fontSizes, 7);
             }
         }
@@ -227,7 +241,7 @@ label {
     text-transform: uppercase;
 
     small {
-        @media (min-width: #{$breakpoint5}) {
+        @media (orientation:landscape) and (min-width: #{$breakpoint5}) {
             font-size: map.get($fontSizes, 3);
         }
     }
@@ -245,11 +259,11 @@ input, textarea {
     background: transparent;
     transition: background .15s ease-in-out;
 
-    @media (min-width: #{$breakpoint3}) {
+    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
         border-bottom-width: 3px;
     }
 
-    @media (min-width: #{$breakpoint5}) {
+    @media (orientation:landscape) and (min-width: #{$breakpoint5}) {
         margin-bottom: map.get($spacings, 7);
         border-bottom-width: 5px;
     }
@@ -269,7 +283,7 @@ input, textarea {
 }
 
 label, input, textarea {
-    @media (min-width: #{$breakpoint5}) {
+    @media (orientation:landscape) and (min-width: #{$breakpoint5}) {
         font-size: map.get($fontSizes, 6);
     }
 }
@@ -279,12 +293,8 @@ textarea {
 }
 
 small {
-    font-size: map.get($fontSizes, 2);
+    font-size: .5em;
     letter-spacing: .1em;
-
-    @media (min-width: #{$breakpoint5}) {
-        font-size: map.get($fontSizes, 3);
-    }
 }
 
 ul, ol {
@@ -299,7 +309,7 @@ ul, ol {
     display: flex;
     flex-flow: column;
 
-    @media (min-width: #{$breakpoint3}) {
+    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
         z-index: 1;
         display: flex;
         flex-flow: row-reverse;
@@ -314,7 +324,7 @@ ul, ol {
     flex-flow: column;
     height: 72px;
     
-    @media (min-width: #{$breakpoint3}) {
+    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
         margin-top: calc(24.5vh - #{map.get($spacings, 6)});
         padding: map.get($spacings, 3) 0;
         width: 60%;
@@ -325,10 +335,15 @@ ul, ol {
         margin-top: calc(14.5vh - #{map.get($spacings, 3)});
         padding: 10vh 0;
     }
+
+
+    @media (prefers-reduced-motion: reduce) {
+        display: flex;
+    }
 }
 
 .contact-col {
-    @media (min-width: #{$breakpoint3}) {
+    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
         flex-grow: 1;
         display: flex;
         flex-flow: column;
@@ -410,10 +425,14 @@ ul, ol {
 }
 
 .subtitle {
-    max-width: 250px;
+    max-width: 25rem;
 
-    @media (min-width: #{$breakpoint3}) {
-        max-width: 25vw;
+    @media (min-height: #{$breakpoint2}) {
+        max-width: 45vh;
+    }
+
+    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
+        max-width: 50vh;
     }
 }
 
