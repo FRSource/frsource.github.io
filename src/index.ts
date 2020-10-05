@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 import type ResizeObserverType from 'resize-observer-polyfill';
 import './index.scss';
 import type { ContactDialogCtrl } from './contactDialog.ctrl';

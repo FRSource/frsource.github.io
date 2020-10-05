@@ -1,18 +1,13 @@
 {
   "name": "frsource.github.io",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Source for FRSource website",
-  "main": "app.js",
-  "module": "app.module.js",
-  "esmodule": "app.modern.js",
-  "unpkg": "app.umd.js",
-  "style": "app.css",
-  "source": "src/index.ts",
+  "main": "public/index.html",
   "repository": "https://github.com/FRSource/frsource.github.io.git",
   "author": "Jakub Freisler",
   "license": "Apache 2.0",
   "scripts": {
-    "build": "parcel build src/index.html --dist-dir public",
+    "build": "parcel build src/index.html --dist-dir public --no-scope-hoist",
     "prestart": "rimraf 'dist/*.?(css|js|map|html)'",
     "start": "parcel serve --https src/index.html"
   },
