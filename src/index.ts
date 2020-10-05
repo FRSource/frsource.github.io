@@ -1,7 +1,6 @@
 import type ResizeObserverType from 'resize-observer-polyfill';
 import './index.scss';
 import type { ContactDialogCtrl } from './contactDialog.ctrl';
-import type domready from 'domready';
 
 declare global {
     interface Window {
@@ -11,21 +10,21 @@ declare global {
 
 (async () => {
     if (!window.ResizeObserver) {
-        const {default: ResizeObserver} = await import('resize-observer-polyfill')
-        window.ResizeObserver = ResizeObserver as unknown as typeof ResizeObserverType
+        const {default: ResizeObserver} = await import('resize-observer-polyfill');
+        window.ResizeObserver = ResizeObserver;
     }
 
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         const loadEls = document.body.querySelectorAll('.load-fadeinup');
 
-        ((await import('domready')).default as typeof domready)(() => {
+        import('domready').then((domready) => (domready as unknown as typeof domready['default'])(() => {
             setTimeout(() => 
                 loadEls.forEach((el, i) => {
                     setTimeout(() =>  el.classList.add('in'), 300 * i);
                 }),
                 5500
             );
-        });
+        }));
 
         import('./logo.ctrl').then(({LogoCtrl}) => {
             const logo = document.querySelector<SVGSVGElement>('.icon-logomark');

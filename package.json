@@ -12,13 +12,13 @@
   "author": "Jakub Freisler",
   "license": "Apache 2.0",
   "scripts": {
-    "build": "parcel build src/index.html -d public",
+    "build": "parcel build src/index.html --dist-dir public",
     "prestart": "rimraf 'dist/*.?(css|js|map|html)'",
-    "start": "parcel src/index.html"
+    "start": "parcel serve --https src/index.html"
   },
   "devDependencies": {
     "@types/domready": "^1.0.0",
-    "parcel-bundler": "^1.12.4",
+    "parcel": "2.0.0-nightly.416",
     "rimraf": "^3.0.2",
     "sass": "^1.26.8",
     "typescript": "^3.9.5"

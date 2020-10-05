@@ -1,4 +1,4 @@
-import tpl from './contactDialog.tpl.html';
+import tpl from 'bundle-text:./contactDialog.tpl.html';
 
 export class ContactDialogCtrl {
     static grecaptchaScriptLoader: Promise<HTMLElement>;
@@ -49,6 +49,26 @@ export class ContactDialogCtrl {
         return token;
     }
 
+    private async sendContactData (data: string, attempt = 0) {
+        return new Promise(async (resolve, reject) => {
+            const url = 'https://script.google.com/macros/s/AKfycbzrISB5QwRuuwGTgkxgKp7DGENDHPcxZTcka2_LRQ0zULSf5Ec/exec?' + data;
+
+            const token = await this.executeGrecaptcha();
+            const req = new XMLHttpRequest();
+            req.open('POST', url + '&token=' + encodeURIComponent(token));
+            req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            req.onreadystatechange = () => {
+                if(req.readyState === 4 && req.status === 200) {
+                    const res = JSON.parse(req.responseText);
+                    if (res.result === 'success') return resolve();
+                    else if (++attempt < 3) resolve(this.sendContactData(data, attempt))
+                    else reject();
+                }
+            }
+            req.send();
+        });
+    }
+
     isShown () {
         return this.element.getAttribute('open') === 'open';
     }
@@ -65,24 +85,23 @@ export class ContactDialogCtrl {
         await ContactDialogCtrl.grecaptchaScriptLoader;
 
         const form = e.currentTarget as HTMLFormElement;
-        form.querySelector('button').disabled = true;
+        const button = form.querySelector('button');
+        button.disabled = true;
         e.preventDefault();
 
-        const url = 'https://script.google.com/macros/s/AKfycbzrISB5QwRuuwGTgkxgKp7DGENDHPcxZTcka2_LRQ0zULSf5Ec/exec?'
-            + Array.prototype.slice.apply(form.querySelectorAll('input,textarea'))
-                .map(el => encodeURIComponent(el.name) + '=' + encodeURIComponent(el.value))
+        const url = Array.prototype.slice.apply(form.querySelectorAll('input,textarea'))
+                .map(
+                    (el: HTMLInputElement | HTMLTextAreaElement) =>
+                    encodeURIComponent(el.name) + '=' + encodeURIComponent(el.value)
+                )
                 .join('&');
 
-        const token = await this.executeGrecaptcha();
-        const req = new XMLHttpRequest();
-        req.open('POST', url + '&token=' + encodeURIComponent(token));
-        req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        req.onreadystatechange = () => {
-
-        if(req.readyState === 4 && req.status === 200) {
-                form.querySelector('button').disabled = false;
-            }
-        }
-        req.send();
+        await this.sendContactData(url).then(
+            () => {
+                button.textContent = 'THX!';
+            },
+            () => {}
+        );
+        button.querySelector('button').disabled = false;
     }
 }
