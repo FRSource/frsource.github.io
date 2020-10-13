@@ -266,7 +266,6 @@ ul, ol {
         padding: 10vh 0;
     }
 
-
     @media (prefers-reduced-motion: reduce) {
         display: flex;
     }
@@ -351,6 +350,10 @@ ul, ol {
     &__circle {
         transform-origin: center bottom;
         animation: ease-out 2.5s rippleLogoInner .6s forwards;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none;
+        }
     }
 }
 
