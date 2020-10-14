@@ -143,3 +143,12 @@
         filter: saturate(.2) brightness(5);
     }
 }
+
+@keyframes bgGradFadeIn {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}

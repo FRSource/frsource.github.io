@@ -43,7 +43,7 @@ dialog {
         left: 4vh;
         z-index: -1;
         display: block;
-        
+        @include gradBg;
         filter: blur(2vh);
 
         @media (orientation: landscape) {
@@ -68,6 +68,11 @@ dialog {
 
         @media (orientation:landscape) and (min-width: #{$breakpoint5}) {
             padding: (map.get($spacings, 7) + map.get($spacings, 3)) map.get($spacings, 7)  (map.get($spacings, 7) + map.get($spacings, 1));
+        }
+
+
+        @media (prefers-color-scheme: dark) {
+            background: $darkModeBg;
         }
     }
 

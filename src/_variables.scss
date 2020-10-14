@@ -3,6 +3,11 @@ $colorPrimaryInverted: #fff;
 $colorSecondary: #053db3;
 $colorTertiary: #ff5f49;
 
+$darkModeBg: #030b19;
+$darkModeGradPrimary: #02bfb5;
+$darkModeGradSecondary: #021c87;
+$darkModePrimaryInverted: #063eb4;
+
 $lineHeight1: 1;
 $lineHeight3: 1.2;
 
@@ -31,3 +36,16 @@ $spacings: (
     6: 30px,
     7: 45px
 );
+
+@mixin gradBg () {
+    background-color: $colorSecondary;
+    background-image: linear-gradient(140deg, #{$colorTertiary} 25%, #{$colorSecondary} 90%);
+}
+
+@mixin gradColor () {
+    @include gradBg;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+	-webkit-text-fill-color: transparent;
+}

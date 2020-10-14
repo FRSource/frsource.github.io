@@ -105,7 +105,7 @@ a {
     text-decoration: none;
 
     &:active, &:hover {
-        @extend .c-grad;
+        @include gradColor;
 
         .icon {
             fill: url(#grad);
@@ -127,7 +127,7 @@ button {
     transition: opacity .25s ease-in-out;
 
     &:active, &:hover {
-        @extend .bgc-grad;
+        background-image: linear-gradient(140deg, #{$colorTertiary} 25%, #{$colorSecondary} 90%);
     }
 
     &.outline {
@@ -143,7 +143,7 @@ button {
         }
 
         &:active, &:hover {
-            @extend .c-grad;
+            @include gradColor;
 
             .icon {
                 fill: url(#grad);
@@ -389,5 +389,73 @@ ul, ol {
         & > div:first-child {
             position: absolute!important;
         }
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    main {
+        color: $colorPrimaryInverted;
+        background-color: $darkModeBg;
+        background-image: linear-gradient(168deg, transparent 84%, #{$darkModeGradSecondary} 89%, #{$darkModeGradSecondary} 92%, #{$darkModeGradPrimary} 100%);
+        background-size: 120% 120%;
+        background-position: 100% 0;
+        animation: ease-out 3s bgGradFadeIn forwards;
+
+        @media (prefers-reduced-motion: reduced) {
+            background-position: 100% 100%;
+        }
+    }
+
+    button {
+        color: $colorPrimary;
+        background: $colorPrimaryInverted;
+
+        &:active, &:hover {
+            color: $colorPrimaryInverted;
+            background: $darkModePrimaryInverted;
+
+            .icon {
+                fill: currentColor;
+                stroke: currentColor;
+            }
+        }
+
+        &.outline {            
+            &:active, &:hover {
+                color: $darkModePrimaryInverted;
+                background: none;
+
+                .icon {
+                    fill: currentColor;
+                    stroke: currentColor;
+                }
+            }
+        }
+    }
+
+    a {
+        color: $colorPrimaryInverted;
+
+        &:active, &:hover {
+            color: $darkModePrimaryInverted;
+            background: none;
+            -webkit-text-fill-color: currentColor;
+
+            .icon {
+                fill: currentColor;
+                stroke: currentColor;
+            }
+        }
+    }
+
+    input, textarea {
+        &:focus {
+            border-color: $darkModePrimaryInverted;
+            border-image: none;
+        }
+    }
+
+    .icon-logotype {
+        display: none;
     }
 }
