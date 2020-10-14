@@ -8,10 +8,12 @@
   "license": "Apache 2.0",
   "scripts": {
     "build": "parcel build src/index.html --dist-dir public --no-scope-hoist",
+    "postbuild": "frs-replace '<main>' '../../../../scriptReplacer.js' -r -i ./public/index.html -o ./public/index.html",
     "prestart": "rimraf 'dist/*.?(css|js|map|html)'",
     "start": "parcel serve --https src/index.html"
   },
   "devDependencies": {
+    "@frsource/frs-replace": "^2.1.2",
     "@types/domready": "^1.0.0",
     "parcel": "2.0.0-nightly.416",
     "rimraf": "^3.0.2",

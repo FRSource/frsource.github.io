@@ -2,6 +2,10 @@
 
 @import "./variables";
 
+.mt-1 {
+    margin-top: map.get($spacings, 1);
+}
+
 .mb-2 {
     margin-bottom: map.get($spacings, 2);
 }

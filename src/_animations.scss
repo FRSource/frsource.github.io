@@ -144,11 +144,17 @@
     }
 }
 
-@keyframes bgGradFadeIn {
-    0% {
-        background-position: 100% 0;
-    }
+@keyframes bgPosFadeIn {
     100% {
+        background-position: 96% 96%;
+    }
+}
+
+@keyframes bgGradPulse {
+    45% {
+        background-position: 80% 80%;
+    }
+    92% {
         background-position: 100% 100%;
     }
 }

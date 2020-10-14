@@ -72,6 +72,12 @@ dialog {
 
 
         @media (prefers-color-scheme: dark) {
+            body:not(.t-light) & {
+                background: $darkModeBg;
+            }
+        }
+
+        body.t-dark & {
             background: $darkModeBg;
         }
     }

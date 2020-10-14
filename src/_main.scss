@@ -82,6 +82,19 @@ footer {
     }
 }
 
+details {
+    display: inline-block;
+}
+
+summary {
+    display: inline-block;
+    list-style: none;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
 h1, h2 {
     margin: 0;
     font-size: 26/16 * 1rem;
@@ -114,7 +127,7 @@ a {
     }
 }
 
-button {
+button, .btn {
     border: 0;
     padding: .5em;
     -webkit-appearance: none;
@@ -126,7 +139,10 @@ button {
     cursor: pointer;
     transition: opacity .25s ease-in-out;
 
-    &:active, &:hover {
+    &.active, &:active, &:hover,
+    body.t-dark &[data-theme=dark],
+    body.t-light &[data-theme=light],
+    body:not(.t-dark):not(.t-light) &[data-theme=auto] {
         background-image: linear-gradient(140deg, #{$colorTertiary} 25%, #{$colorSecondary} 90%);
     }
 
@@ -142,7 +158,10 @@ button {
             }
         }
 
-        &:active, &:hover {
+        &.active, &:active, &:hover,
+        body.t-dark &[data-theme=dark],
+        body.t-light &[data-theme=light],
+        body:not(.t-dark):not(.t-light) &[data-theme=auto] {
             @include gradColor;
 
             .icon {
@@ -244,6 +263,12 @@ ul, ol {
         display: flex;
         flex-flow: row-reverse;
     }
+}
+
+.theme-selector {
+    z-index: 2;
+    position: absolute;
+    right: -5px;
 }
 
 .logo-wrapper {
@@ -393,26 +418,73 @@ ul, ol {
 }
 
 @media (prefers-color-scheme: dark) {
-    main {
-        color: $colorPrimaryInverted;
-        background-color: $darkModeBg;
-        background-image: linear-gradient(168deg, transparent 84%, #{$darkModeGradSecondary} 89%, #{$darkModeGradSecondary} 92%, #{$darkModeGradPrimary} 100%);
-        background-size: 120% 120%;
-        background-position: 100% 0;
-        animation: ease-out 3s bgGradFadeIn forwards;
+    body:not(.t-light) {
+        main {
+            color: $colorPrimaryInverted;
+            background-color: $darkModeBg;
+            background-image: linear-gradient(168deg, transparent 80%, #{$darkModeGradSecondary} 85%, #{$darkModeGradSecondary} 88%, #{$darkModeGradPrimary} 96%);
+            background-size: 130% 130%;
+            background-position: 96% 0;
+            animation: cubic-bezier(.65, .43, .78, 1.22) 8s bgPosFadeIn forwards,
+                        linear 14s bgGradPulse 8s infinite;
 
-        @media (prefers-reduced-motion: reduced) {
-            background-position: 100% 100%;
+            @media (prefers-reduced-motion: reduced) {
+                background-position: 100% 100%;
+            }
+
+            @media (min-width: #{$breakpoint3}) {
+                background-image: linear-gradient(168deg, transparent 70%, #{$darkModeGradSecondary} 75%, #{$darkModeGradSecondary} 78%, #{$darkModeGradPrimary} 96%);
+            }
+        }
+
+        a {
+            color: $colorPrimaryInverted;
+            transition: ease-in-out .2s color;
+
+            &:active, &:hover {
+                color: $darkModePrimaryInverted;
+                background: none;
+                -webkit-text-fill-color: currentColor;
+
+                .icon {
+                    fill: currentColor;
+                    stroke: currentColor;
+                }
+            }
+        }
+
+        input, textarea {
+            transition: ease-in-out .2s border-color;
+            &:focus {
+                border-color: $darkModePrimaryInverted;
+                border-image: none;
+            }
+
+            &:not(:placeholder-shown) {
+                background: $darkModeBg;
+            }
+        }
+
+        .icon-logotype {
+            display: none;
         }
     }
 
-    button {
-        color: $colorPrimary;
-        background: $colorPrimaryInverted;
+    .btn, button {
+        body:not(.t-light) & {
+            color: $colorPrimary;
+            background: $colorPrimaryInverted;
+            transition-property: color, background-color;
+        }
 
-        &:active, &:hover {
+        body:not(.t-light) &.active,
+        body:not(.t-light) &:active,
+        body:not(.t-light) &:hover,
+        body.t-dark &[data-theme=dark],
+        body:not(.t-dark):not(.t-light) &[data-theme=auto] {
             color: $colorPrimaryInverted;
             background: $darkModePrimaryInverted;
+            transition: ease-in-out .2s;
 
             .icon {
                 fill: currentColor;
@@ -421,7 +493,17 @@ ul, ol {
         }
 
         &.outline {            
-            &:active, &:hover {
+            body:not(.t-light) & {
+                background: transparent;
+                color: inherit;
+                transition: ease-in-out .2s color;
+            }
+            
+            body:not(.t-light) &.active,
+            body:not(.t-light) &:active,
+            body:not(.t-light) &:hover,
+            body.t-dark &[data-theme=dark],
+            body:not(.t-dark):not(.t-light) &[data-theme=auto] {
                 color: $darkModePrimaryInverted;
                 background: none;
 
@@ -432,9 +514,30 @@ ul, ol {
             }
         }
     }
+}
+
+body.t-dark {
+    main {
+        color: $colorPrimaryInverted;
+        background-color: $darkModeBg;
+        background-image: linear-gradient(168deg, transparent 80%, #{$darkModeGradSecondary} 85%, #{$darkModeGradSecondary} 88%, #{$darkModeGradPrimary} 96%);
+        background-size: 130% 130%;
+        background-position: 96% 0;
+        animation: cubic-bezier(.65, .43, .78, 1.22) 8s bgPosFadeIn forwards,
+                    linear 14s bgGradPulse 8s infinite;
+
+        @media (prefers-reduced-motion: reduced) {
+            background-position: 100% 100%;
+        }
+
+        @media (min-width: #{$breakpoint3}) {
+            background-image: linear-gradient(168deg, transparent 70%, #{$darkModeGradSecondary} 75%, #{$darkModeGradSecondary} 78%, #{$darkModeGradPrimary} 96%);
+        }
+    }
 
     a {
         color: $colorPrimaryInverted;
+        transition: ease-in-out .2s color;
 
         &:active, &:hover {
             color: $darkModePrimaryInverted;
@@ -449,13 +552,57 @@ ul, ol {
     }
 
     input, textarea {
+        transition: ease-in-out .2s border-color;
         &:focus {
             border-color: $darkModePrimaryInverted;
             border-image: none;
+        }
+
+        &:not(:placeholder-shown) {
+            background: $darkModeBg;
         }
     }
 
     .icon-logotype {
         display: none;
+    }
+
+    .btn, button {
+        color: $colorPrimary;
+        background: $colorPrimaryInverted;
+        transition-property: color, background-color;
+
+        &.active,
+        &:active,
+        &:hover,
+        &[data-theme=dark] {
+            color: $colorPrimaryInverted;
+            background: $darkModePrimaryInverted;
+            transition: ease-in-out .2s;
+
+            .icon {
+                fill: currentColor;
+                stroke: currentColor;
+            }
+        }
+
+        &.outline {            
+            background: transparent;
+            color: inherit;
+            transition: ease-in-out .2s color;
+            
+            &.active,
+            &:active,
+            &:hover,
+            &[data-theme=dark] {
+                color: $darkModePrimaryInverted;
+                background: none;
+
+                .icon {
+                    fill: currentColor;
+                    stroke: currentColor;
+                }
+            }
+        }
     }
 }

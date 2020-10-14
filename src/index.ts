@@ -50,7 +50,7 @@ declare global {
 
     let contactDialogCtrl: ContactDialogCtrl; 
 
-    document.body.querySelector('button').addEventListener('click', async () => {
+    document.body.querySelector('.btn--contact').addEventListener('click', async () => {
         if (!contactDialogCtrl) {
             const {ContactDialogCtrl} = await import('./contactDialog.ctrl');
             contactDialogCtrl = new ContactDialogCtrl();
@@ -60,5 +60,16 @@ declare global {
         contactDialogCtrl.isShown
             ? contactDialogCtrl.show()
             : contactDialogCtrl.hide();
+    });
+
+    const themes = [];
+    document.body.querySelectorAll('.theme-selector button').forEach(btn => {
+        const theme = btn.getAttribute('data-theme');
+        themes.push(theme);
+        btn.addEventListener('click', () => {
+            localStorage.setItem('FRS:theme', theme);
+            themes.forEach(theme => document.body.classList.remove('t-' + theme));
+            document.body.classList.add('t-' + theme);
+        });
     });
 })();
