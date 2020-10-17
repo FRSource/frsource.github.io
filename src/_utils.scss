@@ -114,6 +114,14 @@
     white-space: nowrap;
 }
 
+.cur-d {
+    cursor: default;
+}
+
+.pe-n {
+    pointer-events: none;
+}
+
 .wrap-ellipsis {
     white-space: nowrap;
     overflow: hidden;

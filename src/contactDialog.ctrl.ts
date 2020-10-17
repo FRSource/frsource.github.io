@@ -100,9 +100,11 @@ export class ContactDialogCtrl {
         await this.sendContactData(url).then(
             () => {
                 button.textContent = 'THX!';
+                button.classList.remove('fill');
+                button.classList.add('pe-n');
             },
             () => {}
         );
-        button.querySelector('button').disabled = false;
+        button.disabled = false;
     }
 }

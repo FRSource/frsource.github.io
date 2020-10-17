@@ -27,7 +27,7 @@ body {
     position: relative;
     box-sizing: border-box;
     padding: map.get($spacings, 3);
-    font-family: 'Share Tech Mono', monospace;
+    font-family: $fontRegular;
     font-size: map.get($fontSizes, 4);
     letter-spacing: .1em;
     line-height: $lineHeight3;
@@ -154,13 +154,6 @@ a {
 
     &.outline {
         padding: 0;
-        font-size: map.get($fontSizes, 6);
-
-        .icon {
-            @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
-                font-size: map.get($fontSizes, 7);
-            }
-        }
 
         &.active, &:active, &:hover,
         body.t-dark &[data-theme=dark],
@@ -186,6 +179,16 @@ a {
         body:not(.t-dark):not(.t-light) &[data-theme=auto] {
             background: transparent;
             text-decoration: underline;
+        }
+    }
+
+    .btn--big {
+        font-size: map.get($fontSizes, 6);
+
+        .icon {
+            @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
+                font-size: map.get($fontSizes, 7);
+            }
         }
     }
 
