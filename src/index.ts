@@ -63,7 +63,7 @@ declare global {
     });
 
     const themes = [];
-    document.body.querySelectorAll('.theme-selector button').forEach(btn => {
+    document.body.querySelectorAll('.btn[data-theme]').forEach(btn => {
         const theme = btn.getAttribute('data-theme');
         themes.push(theme);
         btn.addEventListener('click', () => {

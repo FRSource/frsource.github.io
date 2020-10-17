@@ -70,7 +70,6 @@ dialog {
             padding: (map.get($spacings, 7) + map.get($spacings, 3)) map.get($spacings, 7)  (map.get($spacings, 7) + map.get($spacings, 1));
         }
 
-
         @media (prefers-color-scheme: dark) {
             body:not(.t-light) & {
                 background: $darkModeBg;

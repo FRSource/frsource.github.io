@@ -63,10 +63,12 @@ main {
 
 footer {
     position: relative;
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: space-between;
     font-size: map.get($fontSizes, 1);
     letter-spacing: .1em;
     line-height: 18 / 8 * 1em;
-    text-align: right;
     text-transform: uppercase;
 
     @media (min-width: #{$breakpoint1}) {
@@ -127,28 +129,30 @@ a {
     }
 }
 
-button, .btn {
+.btn {
     border: 0;
     padding: .5em;
     -webkit-appearance: none;
-    background-color: $colorPrimary;
-    color: $colorPrimaryInverted;
+    background: transparent;
+    color: inherit;
     font: inherit;
     letter-spacing: inherit;
     text-transform: uppercase;
     cursor: pointer;
-    transition: opacity .25s ease-in-out;
 
-    &.active, &:active, &:hover,
-    body.t-dark &[data-theme=dark],
-    body.t-light &[data-theme=light],
-    body:not(.t-dark):not(.t-light) &[data-theme=auto] {
-        background-image: linear-gradient(140deg, #{$colorTertiary} 25%, #{$colorSecondary} 90%);
+    &.fill {
+        background-color: $colorPrimary;
+        color: $colorPrimaryInverted;
+
+        &.active, &:active, &:hover,
+        body.t-dark &[data-theme=dark],
+        body.t-light &[data-theme=light],
+        body:not(.t-dark):not(.t-light) &[data-theme=auto] {
+            background-image: linear-gradient(140deg, #{$colorTertiary} 25%, #{$colorSecondary} 90%);
+        }
     }
 
     &.outline {
-        background: transparent;
-        color: inherit;
         padding: 0;
         font-size: map.get($fontSizes, 6);
 
@@ -168,6 +172,20 @@ button, .btn {
                 fill: url(#grad);
                 stroke: url(#grad);
             }
+        }
+    }
+
+    &.text {
+        padding: 0 .5em;
+        background: transparent;
+        color: inherit;
+       
+       &.active, &:active, &:hover,
+        body.t-dark &[data-theme=dark],
+        body.t-light &[data-theme=light],
+        body:not(.t-dark):not(.t-light) &[data-theme=auto] {
+            background: transparent;
+            text-decoration: underline;
         }
     }
 
@@ -439,27 +457,9 @@ ul, ol {
 
         a {
             color: $colorPrimaryInverted;
-            transition: ease-in-out .2s color;
-
-            &:active, &:hover {
-                color: $darkModePrimaryInverted;
-                background: none;
-                -webkit-text-fill-color: currentColor;
-
-                .icon {
-                    fill: currentColor;
-                    stroke: currentColor;
-                }
-            }
         }
 
         input, textarea {
-            transition: ease-in-out .2s border-color;
-            &:focus {
-                border-color: $darkModePrimaryInverted;
-                border-image: none;
-            }
-
             &:not(:placeholder-shown) {
                 background: $darkModeBg;
             }
@@ -470,25 +470,22 @@ ul, ol {
         }
     }
 
-    .btn, button {
-        body:not(.t-light) & {
+    .btn {
+        body:not(.t-light) &.fill {
             color: $colorPrimary;
             background: $colorPrimaryInverted;
             transition-property: color, background-color;
-        }
 
-        body:not(.t-light) &.active,
-        body:not(.t-light) &:active,
-        body:not(.t-light) &:hover,
-        body.t-dark &[data-theme=dark],
-        body:not(.t-dark):not(.t-light) &[data-theme=auto] {
-            color: $colorPrimaryInverted;
-            background: $darkModePrimaryInverted;
-            transition: ease-in-out .2s;
-
-            .icon {
-                fill: currentColor;
-                stroke: currentColor;
+            &.active,
+            &:active,
+            &:hover {
+                color: $colorPrimaryInverted;
+                background: $darkModePrimaryInverted;
+    
+                .icon {
+                    fill: currentColor;
+                    stroke: currentColor;
+                }
             }
         }
 
@@ -497,19 +494,11 @@ ul, ol {
                 background: transparent;
                 color: inherit;
                 transition: ease-in-out .2s color;
-            }
-            
-            body:not(.t-light) &.active,
-            body:not(.t-light) &:active,
-            body:not(.t-light) &:hover,
-            body.t-dark &[data-theme=dark],
-            body:not(.t-dark):not(.t-light) &[data-theme=auto] {
-                color: $darkModePrimaryInverted;
-                background: none;
 
-                .icon {
-                    fill: currentColor;
-                    stroke: currentColor;
+                &.active,
+                &:active,
+                &:hover {
+                    @include gradColor;
                 }
             }
         }
@@ -523,7 +512,7 @@ body.t-dark {
         background-image: linear-gradient(168deg, transparent 80%, #{$darkModeGradSecondary} 85%, #{$darkModeGradSecondary} 88%, #{$darkModeGradPrimary} 96%);
         background-size: 130% 130%;
         background-position: 96% 0;
-        animation: cubic-bezier(.65, .43, .78, 1.22) 8s bgPosFadeIn forwards,
+        animation: cubic-bezier(.35, 1.13, .78, 1.22) 8s bgPosFadeIn forwards,
                     linear 14s bgGradPulse 8s infinite;
 
         @media (prefers-reduced-motion: reduced) {
@@ -537,27 +526,9 @@ body.t-dark {
 
     a {
         color: $colorPrimaryInverted;
-        transition: ease-in-out .2s color;
-
-        &:active, &:hover {
-            color: $darkModePrimaryInverted;
-            background: none;
-            -webkit-text-fill-color: currentColor;
-
-            .icon {
-                fill: currentColor;
-                stroke: currentColor;
-            }
-        }
     }
 
     input, textarea {
-        transition: ease-in-out .2s border-color;
-        &:focus {
-            border-color: $darkModePrimaryInverted;
-            border-image: none;
-        }
-
         &:not(:placeholder-shown) {
             background: $darkModeBg;
         }
@@ -567,22 +538,22 @@ body.t-dark {
         display: none;
     }
 
-    .btn, button {
-        color: $colorPrimary;
-        background: $colorPrimaryInverted;
-        transition-property: color, background-color;
+    .btn {
+        &.fill {
+            color: $colorPrimary;
+            background: $colorPrimaryInverted;
+            transition-property: color, background-color;
 
-        &.active,
-        &:active,
-        &:hover,
-        &[data-theme=dark] {
-            color: $colorPrimaryInverted;
-            background: $darkModePrimaryInverted;
-            transition: ease-in-out .2s;
-
-            .icon {
-                fill: currentColor;
-                stroke: currentColor;
+            &.active,
+            &:active,
+            &:hover {
+                color: $colorPrimaryInverted;
+                background: $darkModePrimaryInverted;
+    
+                .icon {
+                    fill: currentColor;
+                    stroke: currentColor;
+                }
             }
         }
 
@@ -590,18 +561,11 @@ body.t-dark {
             background: transparent;
             color: inherit;
             transition: ease-in-out .2s color;
-            
+
             &.active,
             &:active,
-            &:hover,
-            &[data-theme=dark] {
-                color: $darkModePrimaryInverted;
-                background: none;
-
-                .icon {
-                    fill: currentColor;
-                    stroke: currentColor;
-                }
+            &:hover {
+                @include gradColor;
             }
         }
     }

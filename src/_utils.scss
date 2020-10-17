@@ -46,6 +46,10 @@
     .d-md-b {
         display: block;
     }
+
+    .d-md-n {
+        display: none;
+    }
 }
 
 .tt-u {
@@ -90,12 +94,6 @@
 
 .t-c {
     text-align: center;
-}
-
-@media (min-width: #{$breakpoint3}) {
-    .t-md-l {
-        text-align: left;
-    }
 }
 
 .bgc-grad, .c-grad {
