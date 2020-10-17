@@ -5,6 +5,5 @@ dist
 public/*
 !public/humans.txt
 !public/robots.txt
-!public/site.webmanifest
-!public/browserconfig.xml
 yarn-error.log
+*.tmp

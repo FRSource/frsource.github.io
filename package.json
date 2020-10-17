@@ -8,13 +8,18 @@
   "license": "Apache 2.0",
   "scripts": {
     "build": "parcel build src/index.html --dist-dir public --no-scope-hoist",
-    "postbuild": "frs-replace '<main>' '../../../../scriptReplacer.js' -r -i ./public/index.html -o ./public/index.html",
-    "prestart": "rimraf 'dist/*.?(css|js|map|html)'",
-    "start": "parcel serve --https src/index.html"
+    "postbuild": "yarn injectBodyScript && yarn generateFavicons && yarn injectFavicons && yarn removeFaviconHtmlCodeTmp",
+    "prestart": "rimraf '?(dist|public)/*.?(css|js|map|html|svg|png|ico|xml|webmanifest)'",
+    "start": "parcel serve --https src/index.html",
+    "injectBodyScript": "frs-replace '<main>' '../../../../build/bodyScriptInjector.js' -r -i ./public/index.html -o ./public/index.html",
+    "generateFavicons": "real-favicon generate ./build/faviconCfg.json faviconData.json.tmp public",
+    "injectFavicons": "frs-replace '</head>' '../../../../build/faviconsInjector.js' -r -i ./public/index.html -o ./public/index.html",
+    "removeFaviconHtmlCodeTmp": "rimraf 'public/html_code.html'"
   },
   "devDependencies": {
     "@frsource/frs-replace": "^2.1.2",
     "@types/domready": "^1.0.0",
+    "cli-real-favicon": "^0.0.8",
     "parcel": "2.0.0-nightly.416",
     "rimraf": "^3.0.2",
     "sass": "^1.26.8",
