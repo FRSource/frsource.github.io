@@ -96,18 +96,8 @@
     text-align: center;
 }
 
-.bgc-grad, .c-grad {
-    @include gradBg;
-    // background-position: 55% 55%;
-    // background-size: 1000% 1000%;
-    // background-image: linear-gradient(140deg, #ff5f49 52%, transparent 59%);
-}
-
 .c-grad {
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-	-webkit-text-fill-color: transparent;
+    @include gradColor;
 }
 
 .us-none {

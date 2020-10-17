@@ -50,11 +50,15 @@ declare global {
 
     let contactDialogCtrl: ContactDialogCtrl; 
 
-    document.body.querySelector('.btn--contact').addEventListener('click', async () => {
+    document.body.querySelector<HTMLButtonElement>('.btn--contact').addEventListener('click', async function () {
         if (!contactDialogCtrl) {
-            const {ContactDialogCtrl} = await import('./contactDialog.ctrl');
-            contactDialogCtrl = new ContactDialogCtrl();
+            this.disabled = true;
+            const contactDialogModule = await import('./contactDialog.ctrl')
+                .catch(() => this.disabled = false as false);
+            if (!contactDialogModule) return;
+            contactDialogCtrl = new contactDialogModule.ContactDialogCtrl();
             document.body.querySelector('.content').insertAdjacentElement('afterbegin', contactDialogCtrl.element);
+            this.disabled = false;
         }
 
         contactDialogCtrl.isShown

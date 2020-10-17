@@ -400,15 +400,15 @@ ul, ol {
     }
 }
 
-.subtitle {
-    max-width: 25rem;
+.title-box {
+    max-width: 12rem;
 
     @media (min-height: #{$breakpoint2}) {
-        max-width: 45vh;
+        max-width: 36vh;
     }
 
     @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
-        max-width: 50vh;
+        max-width: 43vh;
     }
 }
 
