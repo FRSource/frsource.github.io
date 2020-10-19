@@ -1,0 +1,76 @@
+@use "sass:map";
+
+@import "./variables";
+
+.btn {
+    border: 0;
+    margin: 0;
+    padding: .5em;
+    -webkit-appearance: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &.fill {
+        background-color: $colorPrimary;
+        color: $colorPrimaryInverted;
+
+        &.active, &:active, &:hover,
+        body.t-dark &[data-theme=dark],
+        body.t-light &[data-theme=light],
+        body:not(.t-dark):not(.t-light) &[data-theme=auto] {
+            background-image: linear-gradient(140deg, #{$colorTertiary} 25%, #{$colorSecondary} 90%);
+        }
+    }
+
+    &.outline {
+        padding: 0;
+
+        &.active, &:active, &:hover,
+        body.t-dark &[data-theme=dark],
+        body.t-light &[data-theme=light],
+        body:not(.t-dark):not(.t-light) &[data-theme=auto] {
+            @include gradColor;
+
+            .icon {
+                fill: url(#grad);
+                stroke: url(#grad);
+            }
+        }
+    }
+
+    &.text {
+        padding: 0 .5em;
+        background: transparent;
+        color: inherit;
+       
+       &.active, &:active, &:hover,
+        body.t-dark &[data-theme=dark],
+        body.t-light &[data-theme=light],
+        body:not(.t-dark):not(.t-light) &[data-theme=auto] {
+            background: transparent;
+            text-decoration: underline;
+        }
+    }
+
+    &--big {
+        font-size: map.get($fontSizes, 6);
+
+        .icon {
+            @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
+                font-size: map.get($fontSizes, 7);
+            }
+        }
+    }
+
+    &:disabled {
+        opacity: .4;
+        filter: saturate(.2);
+        animation: ease-in-out 3s loadingPulse infinite;
+        pointer-events: none;
+    }
+}
+

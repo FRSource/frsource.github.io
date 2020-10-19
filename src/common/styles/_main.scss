@@ -1,0 +1,149 @@
+@use "sass:map";
+
+@import "./variables";
+
+.content {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-flow: column;
+
+    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
+        z-index: 1;
+        display: flex;
+        flex-flow: row-reverse;
+    }
+}
+
+.theme-selector {
+    z-index: 2;
+    position: absolute;
+    right: -5px;
+}
+
+.logo-wrapper {
+    overflow: hidden;
+    flex-grow: 1;
+    position: relative;
+    display: none;
+    flex-flow: column;
+    height: 72px;
+    
+    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
+        margin-top: calc(24.5vh - #{map.get($spacings, 6)});
+        padding: map.get($spacings, 3) 0;
+        width: 60%;
+        height: 45vh;
+    }
+    
+    @media (orientation: landscape) and (min-height: #{$breakpoint1}) {
+        margin-top: calc(14.5vh - #{map.get($spacings, 3)});
+        padding: 10vh 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        display: flex;
+    }
+}
+
+.contact-col {
+    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
+        flex-grow: 1;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-evenly;
+    }
+
+    &__cta {
+        display: none;
+        margin-top: -.2em;
+        margin-left: map.get($spacings, 4);
+        max-width: 20ch;
+
+        @media (min-width: #{$breakpoint1}) {
+            display: block;
+        }
+    }
+}
+
+.icon-logomark {
+    display: block;
+    width: 100%;
+    stroke: none;
+
+    &--canvas {
+        position: absolute;
+        top: -30%;
+        left: 0;
+        height: 160%;
+        animation: 10s canvasSteppedShake infinite;
+        animation-timing-function: steps(1);
+    }
+
+    &--svg {
+        flex-grow: 1;
+        height: 100%;
+    }
+}
+
+.icon-logotype {
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 1em;
+    height: 1em;
+    font-size: 112.5vw;
+    line-height: .2;
+    color: $colorPrimaryInverted;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+
+    @media (orientation: landscape) {
+        font-size: 112.5vh;
+    }
+
+    .icon {
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        animation: .8s rippleLogo .6s forwards, .4s fadeIn .6s forwards;
+        animation-timing-function: cubic-bezier(.65, .43, .67, 1.53);
+        stroke: none;
+    }
+
+    &__circle {
+        transform-origin: center bottom;
+        animation: ease-out 2.5s rippleLogoInner .6s forwards;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none;
+        }
+    }
+}
+
+.title-box {
+    max-width: 12rem;
+
+    @media (min-height: #{$breakpoint2}) {
+        max-width: 36vh;
+    }
+
+    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
+        max-width: 43vh;
+    }
+}
+
+.grecaptcha-wrapper {
+    display: none;
+
+    & + div {
+        bottom: 0!important;
+        overflow: auto!important;
+
+        & > div:first-child {
+            position: absolute!important;
+        }
+    }
+}

@@ -1,0 +1,197 @@
+@use "sass:map";
+
+@import "./variables";
+
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+html {
+    overflow: hidden;
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    font-variant-ligatures: none;
+    -webkit-font-variant-ligatures: none;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+    color: $colorPrimary;
+}
+
+body {
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    padding: map.get($spacings, 3);
+    font-family: $fontRegular;
+    font-size: map.get($fontSizes, 4);
+    letter-spacing: .1em;
+    line-height: $lineHeight3;
+
+    @media (min-height: #{$breakpoint2}) {
+        font-size: 3.7vh;
+        padding: 3vh;
+    }
+
+    @media (min-height: #{$breakpoint4}) {
+        font-size: 3.3vh;
+    }
+
+    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
+        padding: 5.55vh;
+        font-size: 3.4vh;
+    }
+}
+
+main {
+    display: flex;
+    flex-flow: column;
+    overflow: auto;
+    box-sizing: border-box;
+    padding: map.get($spacings, 3) map.get($spacings, 4) map.get($spacings, 6);
+    height: 100%;
+    background-color: #efefef;
+
+    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
+        padding-left: map.get($spacings, 7) * 2;
+    }
+}
+
+footer {
+    position: relative;
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: space-between;
+    font-size: map.get($fontSizes, 1);
+    letter-spacing: .1em;
+    line-height: 18 / 8 * 1em;
+    text-transform: uppercase;
+
+    @media (min-width: #{$breakpoint1}) {
+        font-size: map.get($fontSizes, 2);
+    }
+
+    @media (orientation:portrait) and (min-height: #{$breakpoint2}) {
+        font-size: 1vh;
+    }
+
+    @media (orientation:landscape) and (min-width: #{$breakpoint5}) {
+        font-size: 1.5vh;
+    }
+}
+
+details {
+    display: inline-block;
+}
+
+summary {
+    display: inline-block;
+    list-style: none;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+h1, h2 {
+    margin: 0;
+    font-size: 26/16 * 1rem;
+    line-height: 1.31;
+    letter-spacing: .08em;
+    font-weight: 400;
+    text-transform: uppercase;
+
+    @media (min-height: #{$breakpoint2}) {
+        font-size: 5vh;
+    }
+
+    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
+        font-size: 6vh;
+    }
+}
+
+a {
+    color: $colorPrimary;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:active, &:hover {
+        @include gradColor;
+
+        .icon {
+            fill: url(#grad);
+            stroke: url(#grad);
+        }
+    }
+}
+
+label {
+    margin-bottom: $lineHeight3 * -1em;
+    text-transform: uppercase;
+
+    small {
+        @media (orientation:landscape) and (min-width: #{$breakpoint5}) {
+            font-size: map.get($fontSizes, 3);
+        }
+    }
+}
+
+input, textarea {
+    position: relative;
+    margin-bottom: map.get($spacings, 5);
+    border: solid;
+    border-width: 0 0 2px;
+    padding: 0;
+    width: 100%;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    transition: background .15s ease-in-out;
+
+    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
+        border-bottom-width: 3px;
+    }
+
+    @media (orientation:landscape) and (min-width: #{$breakpoint5}) {
+        margin-bottom: map.get($spacings, 7);
+        border-bottom-width: 5px;
+    }
+
+    &:focus {
+        outline: none;
+        border-image: linear-gradient(to right, #{$colorTertiary} 25%,#{$colorSecondary} 75%) 1;
+    }
+
+    &:not(:placeholder-shown) {
+        background: $colorPrimaryInverted;
+    }
+
+    &:-webkit-autofill {
+        background: $colorPrimaryInverted;
+    }
+}
+
+label, input, textarea {
+    @media (orientation:landscape) and (min-width: #{$breakpoint5}) {
+        font-size: map.get($fontSizes, 6);
+    }
+}
+
+textarea {
+    resize: none;
+}
+
+small {
+    font-size: .5em;
+    letter-spacing: .1em;
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}

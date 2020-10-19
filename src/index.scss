@@ -1,3 +1,7 @@
-@import './main';
-@import './utils';
-@import './animations';
+@import './common/styles/globals';
+@import './common/styles/btns';
+@import './common/styles/icons';
+@import './common/styles/main';
+@import './common/styles/dark-theme';
+@import './common/styles/utils';
+@import './common/styles/animations';

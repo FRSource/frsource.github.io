@@ -1,7 +1,7 @@
 import 'regenerator-runtime/runtime';
 import type ResizeObserverType from 'resize-observer-polyfill';
 import './index.scss';
-import type { ContactDialogCtrl } from './contactDialog.ctrl';
+import type { ContactDialogCtrl } from './contactDialog';
 
 declare global {
     interface Window {
@@ -53,7 +53,7 @@ declare global {
     document.body.querySelector<HTMLButtonElement>('.btn--contact').addEventListener('click', async function () {
         if (!contactDialogCtrl) {
             this.disabled = true;
-            const contactDialogModule = await import('./contactDialog.ctrl')
+            const contactDialogModule = await import('./contactDialog')
                 .catch(() => this.disabled = false as false);
             if (!contactDialogModule) return;
             contactDialogCtrl = new contactDialogModule.ContactDialogCtrl();

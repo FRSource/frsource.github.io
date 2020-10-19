@@ -127,3 +127,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.topline {
+    transform: translateY(#{($lineHeight3 - 1%) * 100});
+
+    &__item {
+        position: relative;
+        top: (1em - $lineHeight3);
+        vertical-align: top;
+    }
+}

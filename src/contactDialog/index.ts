@@ -1,5 +1,5 @@
-import tpl from 'bundle-text:./contactDialog.tpl.html';
-import './_contactDialog.scss';
+import tpl from 'bundle-text:./tpl.html';
+import './_styles.scss';
 
 export class ContactDialogCtrl {
     static grecaptchaScriptLoader: Promise<HTMLElement>;
