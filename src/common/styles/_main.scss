@@ -36,7 +36,7 @@
         height: 45vh;
     }
     
-    @media (orientation: landscape) and (min-height: #{$breakpoint1}) {
+    @media (orientation: landscape) and (min-width: #{$breakpoint3}) and (min-height: #{$breakpoint1}) {
         margin-top: calc(14.5vh - #{map.get($spacings, 3)});
         padding: 10vh 0;
     }

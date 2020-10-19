@@ -70,7 +70,6 @@ export class LogoCtrl {
             const y = LogoCtrl.randIntNormalDistributed(0, 1);
             const spliceWidth = LogoCtrl.randIntNormalDistributed(0, 1);
             const spliceHeight = LogoCtrl.randIntNormalDistributed(0, 1);
-            // console.log(this.canvasSize.width, this.imgSize.width);
 
             this.ctx.drawImage(
                 this.img,
@@ -80,7 +79,6 @@ export class LogoCtrl {
                 spliceHeight * imgHeight * canvasScale,
                 LogoCtrl.randIntNormalDistributed(0, this.canvasSize.width - this.imgSize.width),
                 LogoCtrl.randIntNormalDistributed(0, this.canvasSize.height - this.imgSize.height),
-                // this.imgOffset.h + this.imgSize.h * y,
                 spliceWidth * this.imgSize.width,
                 spliceHeight * this.imgSize.height
             );
@@ -113,6 +111,10 @@ export class LogoCtrl {
         const image = new Image();
         const img = await new Promise<typeof image>(resolve => {
             image.onload = resolve.bind(void 0, image);
+            if (this.canvasSize) {
+                this.logo.setAttribute('width', (this.canvasSize.width * LogoCtrl.dpi).toString());
+                this.logo.setAttribute('height', (this.canvasSize.height * LogoCtrl.dpi).toString());
+            }
             const svgURL = new XMLSerializer().serializeToString(this.logo);
             image.src = 'data:image/svg+xml; charset=utf8, ' + encodeURIComponent(svgURL);
         });
