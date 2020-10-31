@@ -37,8 +37,6 @@ declare global {
             logoWrapper.appendChild(canvas);
 
             paths.push(logoText);
-            paths.forEach(path => path.style.visibility = 'hidden');
-            logoWrapper.style.display = 'flex';
             
             new LogoCtrl(
                 logo,

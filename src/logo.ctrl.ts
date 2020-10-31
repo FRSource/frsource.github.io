@@ -102,7 +102,7 @@ export class LogoCtrl {
             return this.onFinish?.();
         }
 
-        this.itemsToReveal[++this.lastVisibleItem].style.visibility = null;
+        this.itemsToReveal[++this.lastVisibleItem].style.visibility = 'visible';
         await this.refreshSvgImage();
         setTimeout(this.progressReveal.bind(this), LogoCtrl.randInt(200, 700));
     }

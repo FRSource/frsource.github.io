@@ -25,7 +25,7 @@
     overflow: hidden;
     flex-grow: 1;
     position: relative;
-    display: none;
+    display: flex;
     flex-flow: column;
     height: 72px;
     
@@ -83,6 +83,10 @@
     &--svg {
         flex-grow: 1;
         height: 100%;
+    }
+
+    path, use {
+        visibility: hidden;
     }
 }
 
