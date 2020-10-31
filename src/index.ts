@@ -2,6 +2,8 @@ import 'regenerator-runtime/runtime';
 import type ResizeObserverType from 'resize-observer-polyfill';
 import './index.scss';
 import type { ContactDialogCtrl } from './contactDialog';
+import domready from 'domready';
+import { LogoCtrl } from './logo.ctrl';
 
 declare global {
     interface Window {
@@ -18,32 +20,30 @@ declare global {
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         const loadEls = document.body.querySelectorAll('.load-fadeinup');
 
-        import('domready').then((domready) => (domready as unknown as typeof domready['default'])(() => {
+        domready(() => {
             setTimeout(() => 
                 loadEls.forEach((el, i) => {
                     setTimeout(() =>  el.classList.add('in'), 300 * i);
                 }),
                 5500
             );
-        }));
-
-        import('./logo.ctrl').then(({LogoCtrl}) => {
-            const logo = document.querySelector<SVGSVGElement>('.icon-logomark');
-            const logoWrapper = logo.parentElement;
-            const logoText = logo.querySelector<SVGSVGElement>('use');
-            const paths = Array.from(logo.querySelectorAll<HTMLElement | SVGElement>('path'));
-            const canvas = document.createElement('canvas');
-            canvas.className = 'icon-logomark icon-logomark--canvas';
-            logoWrapper.appendChild(canvas);
-
-            paths.push(logoText);
-            
-            new LogoCtrl(
-                logo,
-                canvas,
-                paths
-            ).init();
         });
+
+        const logo = document.querySelector<SVGSVGElement>('.icon-logomark');
+        const logoWrapper = logo.parentElement;
+        const logoText = logo.querySelector<SVGSVGElement>('use');
+        const paths = Array.from(logo.querySelectorAll<HTMLElement | SVGElement>('path'));
+        const canvas = document.createElement('canvas');
+        canvas.className = 'icon-logomark icon-logomark--canvas';
+        logoWrapper.appendChild(canvas);
+
+        paths.push(logoText);
+        
+        new LogoCtrl(
+            logo,
+            canvas,
+            paths
+        ).init();
     }
 
     let contactDialogCtrl: ContactDialogCtrl; 
