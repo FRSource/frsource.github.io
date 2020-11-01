@@ -40,10 +40,6 @@
         margin-top: calc(14.5vh - #{map.get($spacings, 3)});
         padding: 10vh 0;
     }
-
-    @media (prefers-reduced-motion: reduce) {
-        display: flex;
-    }
 }
 
 .contact-col {
@@ -87,6 +83,10 @@
 
     path, use {
         visibility: hidden;
+
+        @media (prefers-reduced-motion: reduce) {
+            visibility: visible;
+        }
     }
 }
 
