@@ -20,14 +20,10 @@ declare global {
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         const loadEls = document.body.querySelectorAll('.load-fadeinup');
 
-        domready(() => {
-            setTimeout(() => 
-                loadEls.forEach((el, i) => {
-                    setTimeout(() =>  el.classList.add('in'), 300 * i);
-                }),
-                5500
-            );
-        });
+        domready(() => setTimeout(() => 
+            loadEls.forEach((el, i) =>  setTimeout(() =>  el.classList.add('in'), 300 * i)),
+            5500
+        ));
 
         const logo = document.querySelector<SVGSVGElement>('.icon-logomark');
         const logoWrapper = logo.parentElement;
@@ -74,4 +70,10 @@ declare global {
             document.body.classList.add('t-' + theme);
         });
     });
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register('./serviceWorker.ts')
+          .catch(err => console.log('Service worker registration failed: ' + err));
+    }
 })();
