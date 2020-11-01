@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "FRSOURCE - Let's shape your web",
+    "short_name": "FRSOURCE - Let's shape your web",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -9,5 +9,6 @@
         }
     ],
     "theme_color": "#071633",
-    "background_color": "#071633"
+    "background_color": "#071633",
+    "display": "standalone"
 }
