@@ -3,10 +3,8 @@ const urlsToCache = (self as any).__precacheManifest.map(p => p.url)
 ;
 urlsToCache.unshift(
   'https://www.frsource.org/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js',
-  'https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap',
-  'https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap&text=%C4%99%C4%85%C5%9B%C5%82%C5%BC%C5%BA%C4%87%C5%84',
-  'https://fonts.gstatic.com/s/sharetechmono/v10/J7aHnp1uDWRBEqV98dVQztYldFcLowEFA87Heg.woff2',
-  'https://fonts.gstatic.com/l/font?kit=KFOjCneDtsqEr0keqCMhbBc4AMP6lbphGhjRbyploJUb8yKJ6s5XI8tJUsXjXaqyFuCyVwJ8jVcmwuy8_GNlbhL8K6FntdY&skey=8c1feb82f3a61020&v=v10',
+  'https://fonts.googleapis.com/css2?family=Inconsolata&display=swap',
+  'https://fonts.gstatic.com/s/inconsolata/v20/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmAwLYxYWI2qfdm7Lpp4U8WR32kXWdycuJDA.woff',
   '/site.webmanifest',
   '/browserconfig.xml',
   '/favicon.ico',
