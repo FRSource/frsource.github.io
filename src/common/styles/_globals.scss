@@ -72,15 +72,7 @@ footer {
     line-height: 18 / 8 * 1em;
     text-transform: uppercase;
 
-    @media (min-width: #{$breakpoint1}) {
-        font-size: map.get($fontSizes, 2);
-    }
-
-    @media (orientation:portrait) and (min-height: #{$breakpoint2}) {
-        font-size: 1vh;
-    }
-
-    @media (orientation:landscape) and (min-width: #{$breakpoint5}) {
+    @media (min-height: #{$breakpoint2}) {
         font-size: 1.5vh;
     }
 }
