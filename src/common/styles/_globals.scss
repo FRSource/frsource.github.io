@@ -29,7 +29,7 @@ body {
     padding: map.get($spacings, 3);
     font-family: $fontRegular;
     font-size: map.get($fontSizes, 4);
-    letter-spacing: .1em;
+    letter-spacing: $letterSpacing1;
     line-height: $lineHeight3;
 
     @media (min-height: #{$breakpoint2}) {
@@ -44,6 +44,7 @@ body {
     @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
         padding: 5.55vh;
         font-size: 3.4vh;
+        letter-spacing: $letterSpacing3;
     }
 }
 
@@ -67,7 +68,7 @@ footer {
     flex-flow: row-reverse;
     justify-content: space-between;
     font-size: map.get($fontSizes, 1);
-    letter-spacing: .1em;
+    letter-spacing: $letterSpacing3;
     line-height: 18 / 8 * 1em;
     text-transform: uppercase;
 
@@ -100,8 +101,7 @@ summary::-webkit-details-marker {
 h1, h2 {
     margin: 0;
     font-size: 26/16 * 1rem;
-    line-height: 1.31;
-    letter-spacing: .08em;
+    letter-spacing: $letterSpacing2;
     font-weight: 400;
     text-transform: uppercase;
 
@@ -187,7 +187,11 @@ textarea {
 
 small {
     font-size: .5em;
-    letter-spacing: .1em;
+    letter-spacing: $letterSpacing1;
+
+    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
+        letter-spacing: $letterSpacing3;
+    }
 }
 
 ul, ol {

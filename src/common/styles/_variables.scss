@@ -8,10 +8,14 @@ $darkModeGradPrimary: #02bfb5;
 $darkModeGradSecondary: #021c87;
 $darkModePrimaryInverted: #063eb4;
 
-$fontRegular: 'Share Tech Mono', 'Ubuntu Mono', 'Trebuchet MS', Monaco, monospace;
+$fontRegular: 'Inconsolata', 'Ubuntu Mono', 'Trebuchet MS', 'Tahoma', monospace;
 
 $lineHeight1: 1;
 $lineHeight3: 1.2;
+
+$letterSpacing1: .04em;
+$letterSpacing2: .08em;
+$letterSpacing3: .1em;
 
 $breakpoint1: 480px;
 $breakpoint2: 600px;
