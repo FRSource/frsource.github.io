@@ -5,13 +5,18 @@
 Web Developer: Jakub Freisler
 Contact: jakub.freisler@gmail.com
 GitHub: @frsgit
-From:Kraków, Poland
+From: Kraków, Poland
+
+UI Designer: Karolina Źrebiec
+Website: https://karokaro.myportfolio.com
+Contact: karolina.zrebiec@gmail.com
+From: Poland
 
 /* THANKS */
 
 
 /* SITE */
-Last update: 2020/10/17
+Last update: 2020/12/03
 Language: English
 Doctype: HTML5
 Standards: HTML5, CSS3, ES2015
