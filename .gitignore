@@ -5,5 +5,6 @@ dist
 public/*
 !public/humans.txt
 !public/robots.txt
+!public/logo.jpg
 yarn-error.log
 *.tmp
