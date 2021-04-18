@@ -73,7 +73,7 @@ declare global {
 
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker
-          .register('./serviceWorker.ts')
-          .catch(err => console.log('Service worker registration failed: ' + err));
+            .register(new URL('./serviceWorker.ts', import.meta.url))
+            .catch(err => console.log('Service worker registration failed: ' + err));
     }
 })();
