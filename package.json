@@ -20,7 +20,7 @@
     "@types/domready": "^1.0.0",
     "@types/node": "^14.14.6",
     "cli-real-favicon": "^0.0.8",
-    "parcel": "2.0.0-nightly.438",
+    "parcel": "2.0.0-nightly.642",
     "parcel-config-precache-manifest": "^0.0.3",
     "rimraf": "^3.0.2",
     "sass": "^1.26.8",
