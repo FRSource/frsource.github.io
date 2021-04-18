@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: skipcheck
         if: ${{ github.actor == 'dependabot[bot]' }}
-        run: echo skipping github pages deploy (dependabot)
+        run: echo "skipping github pages deploy [dependabot]"
       - name: Checkout 🛎️
         uses: actions/checkout@v2
         with:
