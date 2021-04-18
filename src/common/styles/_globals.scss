@@ -141,6 +141,7 @@ input, textarea {
     width: 100%;
     font: inherit;
     color: inherit;
+    caret-color: $colorTertiary;
     background: transparent;
     transition: background .15s ease-in-out;
 
