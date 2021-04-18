@@ -86,7 +86,14 @@ summary {
     list-style: none;
 }
 
+// TODO: after 2026 remove next 2 selectors
+// in favor of list-style: none written above
+// more details: https://chromestatus.com/feature/6730096436051968
 summary::-webkit-details-marker {
+    display: none;
+}
+
+summary::marker {
     display: none;
 }
 
