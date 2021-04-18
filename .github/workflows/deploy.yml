@@ -11,13 +11,16 @@ jobs:
         if: ${{ github.actor == 'dependabot[bot]' }}
         run: echo skipping github pages deploy (dependabot)
       - name: Checkout 🛎️
+        if: ${{ github.actor != 'dependabot[bot]' }}
         uses: actions/checkout@v2
         with:
           persist-credentials: false
-      - name: Install and Build 🔧
-        run: |
-          yarn
-          yarn build
+      - name: Install
+        if: ${{ github.actor != 'dependabot[bot]' }}
+        run: yarn
+      - name: Build 🔧
+        if: ${{ github.actor != 'dependabot[bot]' }}
+        run: yarn build
       - name: Deploy 🚀
         if: ${{ github.actor != 'dependabot[bot]' }}
         uses: JamesIves/github-pages-deploy-action@releases/v3

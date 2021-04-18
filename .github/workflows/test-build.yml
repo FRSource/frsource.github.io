@@ -1,0 +1,17 @@
+name: Test build
+on: [push]
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: skipcheck
+        if: ${{ github.actor == 'dependabot[bot]' }}
+        run: echo skipping github pages deploy (dependabot)
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Install
+        run: yarn
+      - name: Build 🔧
+        run: yarn build
