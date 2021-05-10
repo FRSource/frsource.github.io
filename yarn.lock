@@ -1277,6 +1277,13 @@
   dependencies:
     "@parcel/types" "2.0.0-beta.2"
 
+"@parcel/plugin@2.0.0-nightly.657+ba57b650":
+  version "2.0.0-nightly.657"
+  resolved "https://registry.yarnpkg.com/@parcel/plugin/-/plugin-2.0.0-nightly.657.tgz#3555965e6499f3c53c75450d3634f3ea119df6be"
+  integrity sha512-nA3LafkEPDvHJ4ipSxxJzg7P+ILh9zejPYj9ebrkoieX9Tb7KB3zGu2VSCGiWrw6wY+S8rsYXFPnpZeW4LFp3A==
+  dependencies:
+    "@parcel/types" "2.0.0-nightly.657+ba57b650"
+
 "@parcel/reporter-cli@2.0.0-beta.2":
   version "2.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/@parcel/reporter-cli/-/reporter-cli-2.0.0-beta.2.tgz#367faf7dacf40141d56cc26fd02e59c40dbaf9f6"
@@ -1510,12 +1517,12 @@
     react-refresh "^0.9.0"
     semver "^5.4.1"
 
-"@parcel/transformer-sass@2.0.0-beta.2":
-  version "2.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@parcel/transformer-sass/-/transformer-sass-2.0.0-beta.2.tgz#94a0afc37a2b2fe76e2be54cc331c2756918b25b"
-  integrity sha512-xJ21lbkSqq8p0+o6BMwE7BcyTmxq54QUW92KybdE5oP2Cc8DhP7vS/AdWsbl9L+6Gzf41SYIze8JCO+i5Ls6Rg==
+"@parcel/transformer-sass@2.0.0-nightly.657":
+  version "2.0.0-nightly.657"
+  resolved "https://registry.yarnpkg.com/@parcel/transformer-sass/-/transformer-sass-2.0.0-nightly.657.tgz#b1c491c6e5f7f72f78b8956bca7ac1a8d25f0f72"
+  integrity sha512-Xb599H4nzPBzfagGSZb75Yzj+zizpfL435rvTM5AqVnJvRfpQieX5iWzz3Srot2Nv548MCOh9qW/4sWDy2zj+w==
   dependencies:
-    "@parcel/plugin" "2.0.0-beta.2"
+    "@parcel/plugin" "2.0.0-nightly.657+ba57b650"
     "@parcel/source-map" "2.0.0-alpha.4.21"
     sass "^1.32.4"
 
@@ -1523,6 +1530,11 @@
   version "2.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/@parcel/types/-/types-2.0.0-beta.2.tgz#39530f885a546ccc8759ba8b970440bb7aadc146"
   integrity sha512-ri2BPGAFDntQbA5p3m/4QgnEqWYToUMkAtLelXSPbwnTM0KARavTAwSRqz1xwTdXa8gQyv4SSV7xURwaPaZ3GA==
+
+"@parcel/types@2.0.0-nightly.657+ba57b650":
+  version "2.0.0-nightly.657"
+  resolved "https://registry.yarnpkg.com/@parcel/types/-/types-2.0.0-nightly.657.tgz#3599164bad7aba24ea1f0ff0e24d1e26b4b7f9bb"
+  integrity sha512-LUTOHf2Dm08M91VW/e5PgoJRme/frtbqL2c8ZNXdbnhj7P5Bp/FBSVoXfpSivu4hevYsEXzQ7QKzsCxSGOX/sQ==
 
 "@parcel/utils@2.0.0-beta.2":
   version "2.0.0-beta.2"
