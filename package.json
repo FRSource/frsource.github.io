@@ -28,7 +28,7 @@
     "parcel-config-precache-manifest": "^0.0.3",
     "rimraf": "^3.0.2",
     "sass": "^1.34.0",
-    "typescript": "^4.2.4"
+    "typescript": "^4.3.2"
   },
   "dependencies": {
     "domready": "^1.0.8",
