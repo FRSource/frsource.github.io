@@ -27,7 +27,7 @@
     "parcel": "2.0.0-beta.2",
     "parcel-config-precache-manifest": "^0.0.3",
     "rimraf": "^3.0.2",
-    "sass": "^1.34.0",
+    "sass": "^1.34.1",
     "typescript": "^4.3.2"
   },
   "dependencies": {
