@@ -4662,17 +4662,17 @@ pako@~1.0.5:
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.11.tgz#6c9599d340d54dfd3946380252a35705a6b992bf"
   integrity sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==
 
-parcel-config-precache-manifest@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/parcel-config-precache-manifest/-/parcel-config-precache-manifest-0.0.3.tgz#972eff333aa20c651f98136cbe7a0879545f76dd"
-  integrity sha512-AODiRDI5fn+0A2jXpAtNIAdcTVm8Tq7DapMxoNP/XNgE7JwwEUxz1fCOG3sRMN+la7k4xOF2Dy/6a7qy2ScGtA==
-  dependencies:
-    parcel-runtime-precache-manifest "^0.0.4"
-
-parcel-runtime-precache-manifest@^0.0.4:
+parcel-config-precache-manifest@^0.0.4:
   version "0.0.4"
-  resolved "https://registry.yarnpkg.com/parcel-runtime-precache-manifest/-/parcel-runtime-precache-manifest-0.0.4.tgz#b7d812b1c5f20219bc8a2c92339f61b4f9cdecfb"
-  integrity sha512-0p/DTNtRUqtjNQXoxSTGlBTTWIA99uS22uCED8jzCmPR/phLYGFLeuldzmmRzkn7XZpI1cFlbIkp49RoK0a9KQ==
+  resolved "https://registry.yarnpkg.com/parcel-config-precache-manifest/-/parcel-config-precache-manifest-0.0.4.tgz#4d0992f57d2681d89117d4b987f47f23fb963236"
+  integrity sha512-lt2719umGDl+/l6zmaP+vskqMapHJ95BdcYUWvmy9+xnJCNseuaz9rQW1PBIAXaHKFQHqQ5PtSCRwfHdknWjkw==
+  dependencies:
+    parcel-runtime-precache-manifest "^0.0.5"
+
+parcel-runtime-precache-manifest@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/parcel-runtime-precache-manifest/-/parcel-runtime-precache-manifest-0.0.5.tgz#ccdaa6b9685f72e42c60f13555bc8f70b01498ff"
+  integrity sha512-SJaggUvINkN332gY6DCmqQ6iKcG5aTHE6XxJnrN935RRCIoOUH9Fxh0uft9Hg4GIkowO8xZDvcAZAIEFrMkvpg==
 
 parcel@2.0.0-beta.2:
   version "2.0.0-beta.2"
