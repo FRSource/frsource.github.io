@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 $colorPrimary: #071633;
 $colorPrimaryInverted: #fff;
 $colorSecondary: #053db3;
@@ -24,13 +26,13 @@ $breakpoint4: 1440px;
 $breakpoint5: 1920px;
 
 $fontSizes: (
-    1: 8/16 * 1rem,
-    2: 10/16 * 1rem,
+    1: math.div(8, 16) * 1rem,
+    2: math.div(10, 16) * 1rem,
     3: 1rem,
-    4: 20/16 * 1rem,
-    5: 24/16 * 1rem,
-    6: 30/16 * 1rem,
-    7: 40/16 * 1rem
+    4: math.div(20, 16) * 1rem,
+    5: math.div(24, 16) * 1rem,
+    6: math.div(30, 16) * 1rem,
+    7: math.div(40, 16) * 1rem
 );
 
 $spacings: (
