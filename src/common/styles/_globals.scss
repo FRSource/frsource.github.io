@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:math";
 
 @import "./variables";
 
@@ -69,7 +70,7 @@ footer {
     justify-content: space-between;
     font-size: map.get($fontSizes, 1);
     letter-spacing: $letterSpacing3;
-    line-height: 18 / 8 * 1em;
+    line-height: math.div(18, 8) * 1em;
     text-transform: uppercase;
 
     @media (min-height: #{$breakpoint2}) {
@@ -99,7 +100,7 @@ summary::marker {
 
 h1, h2 {
     margin: 0;
-    font-size: 26/16 * 1rem;
+    font-size: math.div(26, 16) * 1rem;
     letter-spacing: $letterSpacing2;
     font-weight: 400;
     text-transform: uppercase;
