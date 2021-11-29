@@ -1,23 +1,33 @@
-import tpl from 'bundle-text:./tpl.html';
+import tplUrl from 'url:./tpl.html';
 import './_styles.scss';
 
 export class ContactDialogCtrl {
-    static grecaptchaScriptLoader: Promise<HTMLElement>;
+    static grecaptchaScriptLoader: Promise<void>;
+    static templateLoader: Promise<Response>
 
     private grecaptchaCallbackResolver: (token: string)=> void = () => {};
     element: HTMLDialogElement;
 
     constructor () {
         if (!ContactDialogCtrl.grecaptchaScriptLoader) this.createScriptElement();
+
+        this.createDialogElement();
+    }
+
+    private async createDialogElement () {
         this.element = document.createElement('dialog');
-        this.element.innerHTML = tpl;
+        
+        if (!ContactDialogCtrl.templateLoader) ContactDialogCtrl.templateLoader = fetch(tplUrl);
+        const tplResponse = await ContactDialogCtrl.templateLoader;
+        
+        this.element.innerHTML = await tplResponse.text();
         this.element.querySelector('.dialog__btn-close').addEventListener('click', this.hide.bind(this));
 
         this.element.querySelector<HTMLFormElement>('.gform').addEventListener('submit', this.onFormSubmit.bind(this))
     }
     
     private createScriptElement () {
-        ContactDialogCtrl.grecaptchaScriptLoader = new Promise((resolve) => {
+        ContactDialogCtrl.grecaptchaScriptLoader = new Promise<void>((resolve) => {
             const script = document.createElement('script');
             script.onload = () => {
                 const container = document.createElement('div');
@@ -51,7 +61,7 @@ export class ContactDialogCtrl {
     }
 
     private async sendContactData (data: string, attempt = 0) {
-        return new Promise(async (resolve, reject) => {
+        return new Promise<void>(async (resolve, reject) => {
             const url = 'https://script.google.com/macros/s/AKfycbzrISB5QwRuuwGTgkxgKp7DGENDHPcxZTcka2_LRQ0zULSf5Ec/exec?' + data;
 
             const token = await this.executeGrecaptcha();

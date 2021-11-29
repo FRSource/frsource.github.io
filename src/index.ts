@@ -51,6 +51,8 @@ declare global {
                 .catch(() => this.disabled = false as false);
             if (!contactDialogModule) return;
             contactDialogCtrl = new contactDialogModule.ContactDialogCtrl();
+            await contactDialogModule.ContactDialogCtrl.templateLoader;
+
             document.body.querySelector('.content').insertAdjacentElement('afterbegin', contactDialogCtrl.element);
             this.disabled = false;
         }
