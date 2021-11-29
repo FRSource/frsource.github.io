@@ -21,6 +21,9 @@ export class ContactDialogCtrl {
         const tplResponse = await ContactDialogCtrl.templateLoader;
         
         this.element.innerHTML = await tplResponse.text();
+        this.element.querySelectorAll('input,textarea').forEach(inputEl => {
+            inputEl.setAttribute('placeholder', ' '); // to let 'placeholder-shown' styling to kick in
+        });
         this.element.querySelector('.dialog__btn-close').addEventListener('click', this.hide.bind(this));
 
         this.element.querySelector<HTMLFormElement>('.gform').addEventListener('submit', this.onFormSubmit.bind(this))
