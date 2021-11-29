@@ -73,7 +73,7 @@ export class LogoCtrl {
 
             this.ctx.drawImage(
                 this.img,
-                x * imgWidth,
+                (x - 0.5) * imgWidth + imgWidth,
                 y * imgHeight,
                 spliceWidth * imgWidth * canvasScale,
                 spliceHeight * imgHeight * canvasScale,
