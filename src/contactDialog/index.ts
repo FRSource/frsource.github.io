@@ -70,13 +70,15 @@ export class ContactDialogCtrl {
             const token = await this.executeGrecaptcha();
             const req = new XMLHttpRequest();
             req.open('POST', url + '&token=' + encodeURIComponent(token));
-            req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            req.setRequestHeader('Content-type', 'text/plain;charset=utf-8');
             req.onreadystatechange = () => {
-                if(req.readyState === 4 && req.status === 200) {
-                    const res = JSON.parse(req.responseText);
-                    if (res.result === 'success') return resolve();
-                    else if (++attempt < 3) resolve(this.sendContactData(data, attempt))
-                    else reject();
+                if(req.readyState === 4) {
+                    if (req.status === 200) {
+                        const res = JSON.parse(req.responseText);
+                        if (res.result === 'success') return resolve();
+                        else if (++attempt < 3) resolve(this.sendContactData(data, attempt))
+                        else reject();
+                    } else reject();
                 }
             }
             req.send();
