@@ -20,7 +20,7 @@
     "@parcel/packager-raw-url": "^2.0.0",
     "@parcel/transformer-inline-string": "^2.3.2",
     "@parcel/transformer-jsonld": "^2.0.0",
-    "@parcel/transformer-sass": "^2.0.0",
+    "@parcel/transformer-sass": "^2.3.2",
     "@types/domready": "^1.0.0",
     "@types/node": "^17.0.21",
     "cli-real-favicon": "^0.0.8",
