@@ -927,14 +927,14 @@
     "@parcel/plugin" "^2.0.1"
     json5 "^2.1.0"
 
-"@parcel/transformer-jsonld@^2.0.0":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@parcel/transformer-jsonld/-/transformer-jsonld-2.0.1.tgz#bc740e8208e4251499ac154d5e999c0993930ec5"
-  integrity sha512-A4yb9BND6HwFmAr+yLCWDb2wUSN8CiXn/jz7DEEyQ8pBDm8BcKR5R16SmsJMJhfPcJ3VxQnjySjjyC77HvnDAw==
+"@parcel/transformer-jsonld@^2.3.2":
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@parcel/transformer-jsonld/-/transformer-jsonld-2.3.2.tgz#0cf6f2af6c4b161189fbd121d9db27deead2da7b"
+  integrity sha512-j6mmYxQ0IiveVra2qz2f1vw0xuB7bZcIFWPdWAz3+Nset2ylKkNBOFugcMgaQNb+HcPwhLJ26QY0/EN5Hq9iPg==
   dependencies:
-    "@parcel/plugin" "^2.0.1"
-    "@parcel/types" "^2.0.1"
-    json5 "^2.1.2"
+    "@parcel/plugin" "2.3.2"
+    "@parcel/types" "2.3.2"
+    json5 "^2.2.0"
 
 "@parcel/transformer-postcss@^2.0.1":
   version "2.0.1"
@@ -1002,7 +1002,7 @@
     posthtml-render "^3.0.0"
     semver "^5.4.1"
 
-"@parcel/types@2.3.2":
+"@parcel/types@2.3.2", "@parcel/types@^2.0.1":
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/@parcel/types/-/types-2.3.2.tgz#7eb6925bc852a518dd75b742419e51292418769f"
   integrity sha512-C77Ct1xNM7LWjPTfe/dQ/9rq1efdsX5VJu2o8/TVi6qoFh64Wp/c5/vCHwKInOTBZUTchVO6z4PGJNIZoUVJuA==
@@ -1013,19 +1013,6 @@
     "@parcel/package-manager" "2.3.2"
     "@parcel/source-map" "^2.0.0"
     "@parcel/workers" "2.3.2"
-    utility-types "^3.10.0"
-
-"@parcel/types@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@parcel/types/-/types-2.0.1.tgz#e4f30f29e0f1ea53029a0450794a3d0aee90a9f7"
-  integrity sha512-em8/GgC7uzkUyEA2ogkzeVDmjaKYQhjf/4EIiC7jXWr22NlSXRQOawhc0CB2o97J9EV2rVXVkWTj0drHTpN2Bw==
-  dependencies:
-    "@parcel/cache" "^2.0.1"
-    "@parcel/diagnostic" "^2.0.1"
-    "@parcel/fs" "^2.0.1"
-    "@parcel/package-manager" "^2.0.1"
-    "@parcel/source-map" "^2.0.0"
-    "@parcel/workers" "^2.0.1"
     utility-types "^3.10.0"
 
 "@parcel/utils@2.3.2":
@@ -3223,7 +3210,7 @@ json5@^1.0.1:
   dependencies:
     minimist "^1.2.0"
 
-json5@^2.1.0, json5@^2.1.2:
+json5@^2.1.0, json5@^2.1.2, json5@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.0.tgz#2dfefe720c6ba525d9ebd909950f0515316c89a3"
   integrity sha512-f+8cldu7X/y7RAJurMEJmdoKXGB/X550w2Nr3tTbezL6RwEE/iMcm+tZnXeoZtKuOq6ft8+CqzEkrIgx1fPoQA==
