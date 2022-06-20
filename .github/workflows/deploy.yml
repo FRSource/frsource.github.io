@@ -12,7 +12,7 @@ jobs:
         run: echo "skipping github pages deploy [dependabot]"
       - name: Checkout 🛎️
         if: ${{ github.actor != 'dependabot[bot]' }}
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           persist-credentials: false
       - name: Install
