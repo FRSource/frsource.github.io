@@ -1899,7 +1899,7 @@ posthtml@^0.16.4, posthtml@^0.16.5:
     posthtml-parser "^0.10.0"
     posthtml-render "^3.0.0"
 
-powerglitch@^1.1.0:
+powerglitch@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/powerglitch/-/powerglitch-1.1.0.tgz#d473928299ccf70edc69e34f8e14ce912332c21b"
   integrity sha512-nf+K4x4vWqHhOMuuOKpDHMlx0KYuNs/y5FmsLaRVW4pBvXV+R9M0CZbhPztRVXcdGKEUJjoeuQLl/odQJj6WQA==
