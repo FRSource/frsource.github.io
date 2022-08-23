@@ -3,7 +3,7 @@ import type ResizeObserverType from 'resize-observer-polyfill';
 import './index.scss';
 import type { ContactDialogCtrl } from './contactDialog';
 import domready from 'domready';
-import { LogoCtrl } from './logo.ctrl';
+import { startLogoAnimation } from './logo.ctrl';
 
 declare global {
     interface Window {
@@ -20,29 +20,22 @@ declare global {
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         const loadEls = document.body.querySelectorAll('.load-fadeinup');
 
-        domready(() => setTimeout(() => 
+        domready(() => setTimeout(() =>
             loadEls.forEach((el, i) =>  setTimeout(() =>  el.classList.add('in'), 300 * i)),
-            5500
+            3500
         ));
 
-        const logo = document.querySelector<SVGSVGElement>('.icon-logomark');
-        const logoWrapper = logo.parentElement;
-        const logoText = logo.querySelector<SVGSVGElement>('use');
+        let logo = document.querySelector<SVGSVGElement>('.icon-logomark');
         const paths = Array.from(logo.querySelectorAll<HTMLElement | SVGElement>('path'));
-        const canvas = document.createElement('canvas');
-        canvas.className = 'icon-logomark icon-logomark--canvas';
-        logoWrapper.appendChild(canvas);
 
-        paths.push(logoText);
-        
-        new LogoCtrl(
-            logo,
-            canvas,
-            paths
-        ).init();
+        paths.push(logo.querySelector<SVGSVGElement>('use'));
+
+        startLogoAnimation(logo, paths);
+        // dereference element to allow garbade collect to collect it
+        logo = undefined;
     }
 
-    let contactDialogCtrl: ContactDialogCtrl; 
+    let contactDialogCtrl: ContactDialogCtrl;
 
     document.body.querySelector<HTMLButtonElement>('.btn--contact').addEventListener('click', async function () {
         if (!contactDialogCtrl) {

@@ -944,9 +944,9 @@ callsites@^3.0.0:
   integrity sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==
 
 caniuse-lite@^1.0.30001219:
-  version "1.0.30001228"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001228.tgz#bfdc5942cd3326fa51ee0b42fbef4da9d492a7fa"
-  integrity sha512-QQmLOGJ3DEgokHbMSA8cj2a+geXqmnpyOFT0lhQV6P3/YOJvGDEwoedcwxEQ30gJIwIIunHIicunJ2rzK5gB2A==
+  version "1.0.30001381"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001381.tgz"
+  integrity sha512-fEnkDOKpvp6qc+olg7+NzE1SqyfiyKf4uci7fAU38M3zxs0YOyKOxW/nMZ2l9sJbt7KZHcDIxUnbI0Iime7V4w==
 
 chainsaw@~0.1.0:
   version "0.1.0"
@@ -1898,6 +1898,11 @@ posthtml@^0.16.4, posthtml@^0.16.5:
   dependencies:
     posthtml-parser "^0.10.0"
     posthtml-render "^3.0.0"
+
+powerglitch@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/powerglitch/-/powerglitch-1.1.0.tgz#d473928299ccf70edc69e34f8e14ce912332c21b"
+  integrity sha512-nf+K4x4vWqHhOMuuOKpDHMlx0KYuNs/y5FmsLaRVW4pBvXV+R9M0CZbhPztRVXcdGKEUJjoeuQLl/odQJj6WQA==
 
 pullstream@~0.4.0:
   version "0.4.1"

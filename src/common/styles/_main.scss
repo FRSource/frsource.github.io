@@ -28,14 +28,14 @@
     display: flex;
     flex-flow: column;
     height: 72px;
-    
+
     @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
         margin-top: calc(24.5vh - #{map.get($spacings, 6)});
         padding: map.get($spacings, 3) 0;
         width: 60%;
         height: 45vh;
     }
-    
+
     @media (orientation: landscape) and (min-width: #{$breakpoint3}) and (min-height: #{$breakpoint1}) {
         margin-top: calc(14.5vh - #{map.get($spacings, 3)});
         padding: 10vh 0;
@@ -67,16 +67,7 @@
     width: 100%;
     stroke: none;
 
-    &--canvas {
-        position: absolute;
-        top: -30%;
-        left: 0;
-        height: 160%;
-        animation: 10s canvasSteppedShake infinite;
-        animation-timing-function: steps(1);
-    }
-
-    &--svg {
+    &--img {
         flex-grow: 1;
         height: 100%;
     }
