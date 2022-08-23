@@ -44,7 +44,7 @@ export const startLogoAnimation = (logo: SVGElement, itemsToReveal: (HTMLElement
         return PowerGlitch.glitch(glitchWrapper, {
             imageUrl: url,
             timing: {
-                duration: randInt(500, 2000),
+                duration: randInt(300, 2000),
                 iterations: 1,
             },
             slice,
