@@ -1899,10 +1899,10 @@ posthtml@^0.16.4, posthtml@^0.16.5:
     posthtml-parser "^0.10.0"
     posthtml-render "^3.0.0"
 
-powerglitch@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/powerglitch/-/powerglitch-1.2.0.tgz#85bd774a37137cf69f2de416586c5fa1bd8510b2"
-  integrity sha512-XS1WdkIxkX8qDhItEthmFSN/xvHZytsEw0YmmUGXG03eGQxvx/7or9LzFyDtCOnnJYAagCpu1cLrS+rcRBdLKQ==
+powerglitch@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/powerglitch/-/powerglitch-2.0.1.tgz#f67105f37d233b6c0eefd59de137c54e0222be59"
+  integrity sha512-F2vZk/6KxEgcaIkZU9EuBz1cvGC/e+plv3xHPPxLazvH46k7pK8N0w+JYoLl+2Zt56LKSMpk/YyHNJZZuTx1yA==
 
 pullstream@~0.4.0:
   version "0.4.1"
