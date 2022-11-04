@@ -6,5 +6,6 @@ public/*
 !public/humans.txt
 !public/robots.txt
 !public/logo.jpg
+!public/.well-known
 yarn-error.log
 *.tmp
