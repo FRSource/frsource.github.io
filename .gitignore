@@ -7,5 +7,6 @@ public/*
 !public/robots.txt
 !public/logo.jpg
 !public/.well-known
+!public/.nojekyll
 yarn-error.log
 *.tmp
