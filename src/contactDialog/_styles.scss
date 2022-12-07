@@ -13,13 +13,16 @@ dialog {
     margin: 0;
     border: 0;
     padding: 0;
-    display: none;
+    display: flex;
     flex-flow: column;
     width: auto;
     height: auto;
     font: inherit;
     color: inherit;
     background: none;
+    pointer-events: none;
+    opacity: 0;
+    transition: .2s opacity ease-in-out;
 
     @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
         top: 7vh;
@@ -31,7 +34,8 @@ dialog {
     }
 
     &[open] {
-        display: flex;
+        pointer-events: all;
+        opacity: 1;
     }
 
     &::before {
@@ -61,7 +65,7 @@ dialog {
         background: $colorPrimaryInverted;
         flex-grow: 1;
         padding: (map.get($spacings, 1) + map.get($spacings, 6)) map.get($spacings, 4) map.get($spacings, 4);
-        
+
         @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
             padding-bottom: map.get($spacings, 6);
         }

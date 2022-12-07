@@ -16,10 +16,10 @@ export class ContactDialogCtrl {
 
     private async createDialogElement () {
         this.element = document.createElement('dialog');
-        
+
         if (!ContactDialogCtrl.templateLoader) ContactDialogCtrl.templateLoader = fetch(tplUrl);
         const tplResponse = await ContactDialogCtrl.templateLoader;
-        
+
         this.element.innerHTML = await tplResponse.text();
         this.element.querySelectorAll('input,textarea').forEach(inputEl => {
             inputEl.setAttribute('placeholder', ' '); // to let 'placeholder-shown' styling to kick in
@@ -28,7 +28,7 @@ export class ContactDialogCtrl {
 
         this.element.querySelector<HTMLFormElement>('.gform').addEventListener('submit', this.onFormSubmit.bind(this))
     }
-    
+
     private createScriptElement () {
         ContactDialogCtrl.grecaptchaScriptLoader = new Promise<void>((resolve) => {
             const script = document.createElement('script');
@@ -90,7 +90,9 @@ export class ContactDialogCtrl {
     }
 
     show() {
-        this.element.setAttribute('open', 'open');
+        requestAnimationFrame(() => {
+            this.element.setAttribute('open', 'open');
+        });
     }
 
     hide() {

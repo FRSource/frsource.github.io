@@ -50,9 +50,9 @@ declare global {
             this.disabled = false;
         }
 
-        contactDialogCtrl.isShown
-            ? contactDialogCtrl.show()
-            : contactDialogCtrl.hide();
+        contactDialogCtrl.isShown()
+            ? contactDialogCtrl.hide()
+            : contactDialogCtrl.show();
     });
 
     const themes = [];
