@@ -68,7 +68,7 @@ declare global {
 
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker
-            .register(new URL('./serviceWorker.ts', import.meta.url))
+            .register(new URL('./serviceWorker.ts', import.meta.url), {type: 'module'})
             .catch(err => console.log('Service worker registration failed: ' + err));
     }
 })();

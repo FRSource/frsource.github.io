@@ -8,6 +8,7 @@
         "sourceMap": true,
         "module": "esnext",
         "jsx": "preserve",
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "strict": true
     }
 }

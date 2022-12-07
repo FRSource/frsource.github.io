@@ -7,22 +7,16 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: skipcheck
-        if: ${{ github.actor == 'dependabot[bot]' }}
-        run: echo "skipping github pages deploy [dependabot]"
-      - name: Checkout 🛎️
-        if: ${{ github.actor != 'dependabot[bot]' }}
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2.2.4
+      - name: Use Node.js
+        uses: actions/setup-node@v3
         with:
-          persist-credentials: false
-      - name: Install
-        if: ${{ github.actor != 'dependabot[bot]' }}
-        run: yarn
+          cache: 'pnpm'
+      - run: pnpm i
       - name: Build 🔧
-        if: ${{ github.actor != 'dependabot[bot]' }}
-        run: yarn build
+        run: pnpm build
       - name: Deploy 🚀
-        if: ${{ github.actor != 'dependabot[bot]' }}
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
