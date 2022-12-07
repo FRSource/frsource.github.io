@@ -6,6 +6,8 @@ public/*
 !public/humans.txt
 !public/robots.txt
 !public/logo.jpg
+!public/logo.svg
+!public/logo-dark.svg
 !public/.well-known
 !public/.nojekyll
 yarn-error.log
