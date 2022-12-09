@@ -1,0 +1,21 @@
+{
+  "name": "frsource.github.io-blog",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Source for FRSOURCE blog",
+  "repository": "https://github.com/FRSource/frsource.github.io.git",
+  "author": "Jakub Freisler",
+  "license": "UNLICENSED FOR ANY USE",
+  "scripts": {
+    "docs:dev": "vitepress dev .",
+    "docs:build": "vitepress build .",
+    "docs:preview": "vitepress preview ."
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@types/remove-markdown": "^0.3.1",
+    "gray-matter": "^4.0.3",
+    "vitepress": "1.0.0-alpha.30",
+    "vue": "^3.2.45"
+  }
+}
