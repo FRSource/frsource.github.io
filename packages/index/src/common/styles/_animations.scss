@@ -1,5 +1,5 @@
 .fadeInUp {
-    animation: .6s fadeInUp;
+    animation: 0.6s fadeInUp;
     animation-play-state: paused;
 
     &.in {
@@ -9,8 +9,8 @@
 
 @media (prefers-reduced-motion: reduce) {
     *:not(symbol):not(circle):not(path) {
-        animation-duration: .000001s !important;
-        transition-duration: .000001s !important;
+        animation-duration: 0.000001s !important;
+        transition-duration: 0.000001s !important;
     }
 
     .fadeInUp {
@@ -20,11 +20,11 @@
 
 @keyframes canvasSteppedShake {
     0% {
-        transform: translate3d(.5%, 0, 0);
+        transform: translate3d(0.5%, 0, 0);
     }
 
     10% {
-        transform: translate3d(-.5%, 0, 0);
+        transform: translate3d(-0.5%, 0, 0);
     }
 
     20% {
@@ -32,35 +32,35 @@
     }
 
     30% {
-        transform: translate3d(-.25%, 0, 0);
+        transform: translate3d(-0.25%, 0, 0);
     }
 
     40% {
-        transform: translate3d(1.5%, .1%, 0);
+        transform: translate3d(1.5%, 0.1%, 0);
     }
 
     50% {
-        transform: translate3d(.25%, 0, 0);
+        transform: translate3d(0.25%, 0, 0);
     }
 
     60% {
-        transform: translate3d(.5%, -.4%, 0);
+        transform: translate3d(0.5%, -0.4%, 0);
     }
 
     70% {
-        transform: translate3d(-1.5%, .5%, 0);
+        transform: translate3d(-1.5%, 0.5%, 0);
     }
 
     80% {
-        transform: translate3d(-.25%, -.25%, 0);
+        transform: translate3d(-0.25%, -0.25%, 0);
     }
 
     90% {
-        transform: translate3d(-.55%, .1%, 0);
+        transform: translate3d(-0.55%, 0.1%, 0);
     }
 
     100% {
-        transform: translate3d(.25%, -.6%, 0);
+        transform: translate3d(0.25%, -0.6%, 0);
     }
 }
 
@@ -68,7 +68,7 @@
     0% {
         opacity: 0;
     }
-  
+
     100% {
         opacity: 1;
     }
@@ -79,7 +79,7 @@
         opacity: 0;
         transform: translate3d(0, 25%, 0);
     }
-  
+
     100% {
         opacity: 1;
         transform: translate3d(0, 0, 0);
@@ -88,13 +88,13 @@
 
 @keyframes rippleLogo {
     0% {
-        transform: scale(.6);
+        transform: scale(0.6);
     }
 
     40% {
         transform: scale(1.09);
     }
-  
+
     100% {
         transform: none;
     }
@@ -102,7 +102,7 @@
 
 @keyframes rippleLogoInner {
     0% {
-        transform: scale(.4);
+        transform: scale(0.4);
     }
 
     10% {
@@ -110,7 +110,7 @@
     }
 
     34% {
-        transform: scale(.93);
+        transform: scale(0.93);
     }
 
     45% {
@@ -118,7 +118,7 @@
     }
 
     56% {
-        transform: scale(.98);
+        transform: scale(0.98);
     }
 
     67% {
@@ -126,9 +126,9 @@
     }
 
     78% {
-        transform: scale(.99);
+        transform: scale(0.99);
     }
-  
+
     100% {
         transform: none;
         opacity: 1;
@@ -137,10 +137,10 @@
 
 @keyframes loadingPulse {
     30% {
-        filter: saturate(.2) brightness(5);
+        filter: saturate(0.2) brightness(5);
     }
     85% {
-        filter: saturate(.2) brightness(5);
+        filter: saturate(0.2) brightness(5);
     }
 }
 

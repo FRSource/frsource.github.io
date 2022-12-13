@@ -1,4 +1,4 @@
-@use 'sass:math';
+@use "sass:math";
 
 $colorPrimary: #071633;
 $colorPrimaryInverted: #fff;
@@ -10,14 +10,14 @@ $darkModeGradPrimary: #02bfb5;
 $darkModeGradSecondary: #021c87;
 $darkModePrimaryInverted: #063eb4;
 
-$fontRegular: 'Inconsolata', 'Ubuntu Mono', 'Trebuchet MS', 'Tahoma', monospace;
+$fontRegular: "Inconsolata", "Ubuntu Mono", "Trebuchet MS", "Tahoma", monospace;
 
 $lineHeight1: 1;
 $lineHeight3: 1.2;
 
-$letterSpacing1: .04em;
-$letterSpacing2: .08em;
-$letterSpacing3: .1em;
+$letterSpacing1: 0.04em;
+$letterSpacing2: 0.08em;
+$letterSpacing3: 0.1em;
 
 $breakpoint1: 480px;
 $breakpoint2: 600px;
@@ -32,7 +32,7 @@ $fontSizes: (
     4: math.div(20, 16) * 1rem,
     5: math.div(24, 16) * 1rem,
     6: math.div(30, 16) * 1rem,
-    7: math.div(40, 16) * 1rem
+    7: math.div(40, 16) * 1rem,
 );
 
 $spacings: (
@@ -42,19 +42,27 @@ $spacings: (
     4: 20px,
     5: 25px,
     6: 30px,
-    7: 45px
+    7: 45px,
 );
 
-@mixin gradBg () {
+@mixin gradBg() {
     background-color: $colorSecondary;
-    background-image: linear-gradient(140deg, #{$colorTertiary} 40%, #{$colorSecondary} 99%);
+    background-image: linear-gradient(
+        140deg,
+        #{$colorTertiary} 40%,
+        #{$colorSecondary} 99%
+    );
 }
 
-@mixin gradColor () {
+@mixin gradColor() {
     background-color: $colorSecondary;
-    background-image: linear-gradient(140deg, #{$colorTertiary} 35%, #{$colorSecondary} 80%);
+    background-image: linear-gradient(
+        140deg,
+        #{$colorTertiary} 35%,
+        #{$colorSecondary} 80%
+    );
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-	-webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
 }

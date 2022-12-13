@@ -22,7 +22,7 @@ dialog {
     background: none;
     pointer-events: none;
     opacity: 0;
-    transition: .2s opacity ease-in-out;
+    transition: 0.2s opacity ease-in-out;
 
     @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
         top: 7vh;
@@ -64,14 +64,17 @@ dialog {
     &__body {
         background: $colorPrimaryInverted;
         flex-grow: 1;
-        padding: (map.get($spacings, 1) + map.get($spacings, 6)) map.get($spacings, 4) map.get($spacings, 4);
+        padding: (map.get($spacings, 1) + map.get($spacings, 6))
+            map.get($spacings, 4) map.get($spacings, 4);
 
         @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
             padding-bottom: map.get($spacings, 6);
         }
 
         @media (orientation:landscape) and (min-width: #{$breakpoint5}) {
-            padding: (map.get($spacings, 7) + map.get($spacings, 3)) map.get($spacings, 7)  (map.get($spacings, 7) + map.get($spacings, 1));
+            padding: (map.get($spacings, 7) + map.get($spacings, 3))
+                map.get($spacings, 7)
+                (map.get($spacings, 7) + map.get($spacings, 1));
         }
 
         @media (prefers-color-scheme: dark) {

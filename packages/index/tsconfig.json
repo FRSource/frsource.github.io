@@ -3,8 +3,5 @@
     "compilerOptions": {
         "lib": ["ES2015", "esnext", "DOM"]
     },
-    "include": [
-        "./tsconfig.json",
-        "./**/*.ts"
-    ]
+    "include": ["./tsconfig.json", "./**/*.ts"]
 }

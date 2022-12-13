@@ -5,7 +5,7 @@
 .btn {
     border: 0;
     margin: 0;
-    padding: .5em;
+    padding: 0.5em;
     -webkit-appearance: none;
     background: transparent;
     color: inherit;
@@ -18,21 +18,29 @@
         background-color: $colorPrimary;
         color: $colorPrimaryInverted;
 
-        &.active, &:active, &:hover,
-        body.t-dark &[data-theme=dark],
-        body.t-light &[data-theme=light],
-        body:not(.t-dark):not(.t-light) &[data-theme=auto] {
-            background-image: linear-gradient(140deg, #{$colorTertiary} 25%, #{$colorSecondary} 90%);
+        &.active,
+        &:active,
+        &:hover,
+        body.t-dark &[data-theme="dark"],
+        body.t-light &[data-theme="light"],
+        body:not(.t-dark):not(.t-light) &[data-theme="auto"] {
+            background-image: linear-gradient(
+                140deg,
+                #{$colorTertiary} 25%,
+                #{$colorSecondary} 90%
+            );
         }
     }
 
     &.outline {
         padding: 0;
 
-        &.active, &:active, &:hover,
-        body.t-dark &[data-theme=dark],
-        body.t-light &[data-theme=light],
-        body:not(.t-dark):not(.t-light) &[data-theme=auto] {
+        &.active,
+        &:active,
+        &:hover,
+        body.t-dark &[data-theme="dark"],
+        body.t-light &[data-theme="light"],
+        body:not(.t-dark):not(.t-light) &[data-theme="auto"] {
             @include gradColor;
 
             .icon {
@@ -43,14 +51,16 @@
     }
 
     &.text {
-        padding: 0 .5em;
+        padding: 0 0.5em;
         background: transparent;
         color: inherit;
-       
-       &.active, &:active, &:hover,
-        body.t-dark &[data-theme=dark],
-        body.t-light &[data-theme=light],
-        body:not(.t-dark):not(.t-light) &[data-theme=auto] {
+
+        &.active,
+        &:active,
+        &:hover,
+        body.t-dark &[data-theme="dark"],
+        body.t-light &[data-theme="light"],
+        body:not(.t-dark):not(.t-light) &[data-theme="auto"] {
             background: transparent;
             text-decoration: underline;
         }
@@ -67,10 +77,9 @@
     }
 
     &:disabled {
-        opacity: .4;
-        filter: saturate(.2);
+        opacity: 0.4;
+        filter: saturate(0.2);
         animation: ease-in-out 3s loadingPulse infinite;
         pointer-events: none;
     }
 }
-

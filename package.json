@@ -10,10 +10,13 @@
   "scripts": {
     "preview": "pnpm serve public",
     "build": "pnpm run -r build",
-    "start": "concurrently 'pnpm run -r  --parallel start' 'pnpm preview'"
+    "start": "concurrently 'pnpm run -r  --parallel start' 'pnpm preview'",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "concurrently": "^7.6.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
     "serve": "^14.1.2"
   }
 }

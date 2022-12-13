@@ -1,26 +1,27 @@
-import { PowerGlitch } from 'powerglitch'
+import { PowerGlitch } from "powerglitch";
 
 const randInt = (a: number = 0, b: number = 1) => Math.random() * (b - a) + a;
 
 const getItemsToReveal = (logo: SVGElement) => {
-    const paths = Array.from(logo.querySelectorAll<HTMLElement | SVGElement>('path'));
+    const paths = Array.from(
+        logo.querySelectorAll<HTMLElement | SVGElement>("path")
+    );
 
-    paths.push(logo!.querySelector<SVGSVGElement>('use')!);
+    paths.push(logo!.querySelector<SVGSVGElement>("use")!);
 
     return paths;
 };
-
 
 export const startLogoAnimation = (logo: SVGElement) => {
     let lastVisibleItem = -1;
 
     let itemsToReveal = [getItemsToReveal(logo)];
 
-    itemsToReveal[0].forEach(item => item.style.visibility = 'hidden');
+    itemsToReveal[0].forEach((item) => (item.style.visibility = "hidden"));
 
-    const glitchWrapper = document.createElement('div');
-    glitchWrapper.style.width = '100%';
-    glitchWrapper.style.height = '100%';
+    const glitchWrapper = document.createElement("div");
+    glitchWrapper.style.width = "100%";
+    glitchWrapper.style.height = "100%";
     logo.parentElement!.appendChild(glitchWrapper);
     glitchWrapper.appendChild(logo);
 
@@ -32,8 +33,10 @@ export const startLogoAnimation = (logo: SVGElement) => {
             timeout = randInt(1000, 6000);
         } else {
             ++lastVisibleItem;
-            itemsToReveal.forEach(glitchElement =>
-                glitchElement[lastVisibleItem].style.visibility = 'visible'
+            itemsToReveal.forEach(
+                (glitchElement) =>
+                    (glitchElement[lastVisibleItem].style.visibility =
+                        "visible")
             );
             timeout = randInt(300, 700);
         }
@@ -55,12 +58,17 @@ export const startLogoAnimation = (logo: SVGElement) => {
     const initGlitch = () => {
         reinitGlitch();
 
-        itemsToReveal = Array.from(glitchWrapper.parentElement!.querySelectorAll<SVGElement>('svg[role=img]'))
-            .map(glitchElement => getItemsToReveal(glitchElement));
+        itemsToReveal = Array.from(
+            glitchWrapper.parentElement!.querySelectorAll<SVGElement>(
+                "svg[role=img]"
+            )
+        ).map((glitchElement) => getItemsToReveal(glitchElement));
 
-        glitchWrapper.parentElement!.style.width = glitchWrapper.parentElement!.parentElement!.style.width = '100%';
-        glitchWrapper.parentElement!.style.height = glitchWrapper.parentElement!.parentElement!.style.height = '100%';
-        glitchWrapper.parentElement!.style.gridTemplate = '50% 50% / 50% 50%';
+        glitchWrapper.parentElement!.style.width =
+            glitchWrapper.parentElement!.parentElement!.style.width = "100%";
+        glitchWrapper.parentElement!.style.height =
+            glitchWrapper.parentElement!.parentElement!.style.height = "100%";
+        glitchWrapper.parentElement!.style.gridTemplate = "50% 50% / 50% 50%";
     };
 
     setTimeout(progressReveal.bind(this), 2500); // starting timeout
