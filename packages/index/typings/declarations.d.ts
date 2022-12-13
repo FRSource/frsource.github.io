@@ -15,5 +15,5 @@ declare module '*.sass' {
 
 declare module '*.html' {
     const tpl: string;
-    export default classes;
+    export default tpl;
 }

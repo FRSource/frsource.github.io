@@ -1,3 +1,5 @@
+/// <reference lib="dom" />
+
 import 'regenerator-runtime/runtime';
 import type ResizeObserverType from 'resize-observer-polyfill';
 import './index.scss';
@@ -25,19 +27,14 @@ declare global {
             3500
         ));
 
-        let logo = document.querySelector<SVGSVGElement>('.icon-logomark');
-        const paths = Array.from(logo.querySelectorAll<HTMLElement | SVGElement>('path'));
+        const logo = document.querySelector<SVGSVGElement>('.icon-logomark')!;
 
-        paths.push(logo.querySelector<SVGSVGElement>('use'));
-
-        startLogoAnimation(logo, paths);
-        // dereference element to allow garbade collect to collect it
-        logo = undefined;
+        startLogoAnimation(logo);
     }
 
     let contactDialogCtrl: ContactDialogCtrl;
 
-    document.body.querySelector<HTMLButtonElement>('.btn--contact').addEventListener('click', async function () {
+    document.body.querySelector<HTMLButtonElement>('.btn--contact')!.addEventListener('click', async function () {
         if (!contactDialogCtrl) {
             this.disabled = true;
             const contactDialogModule = await import('./contactDialog')
@@ -46,7 +43,7 @@ declare global {
             contactDialogCtrl = new contactDialogModule.ContactDialogCtrl();
             await contactDialogModule.ContactDialogCtrl.templateLoader;
 
-            document.body.querySelector('.content').insertAdjacentElement('afterbegin', contactDialogCtrl.element);
+            document.body.querySelector('.content')!.insertAdjacentElement('afterbegin', contactDialogCtrl.element);
             this.disabled = false;
         }
 
@@ -55,9 +52,9 @@ declare global {
             : contactDialogCtrl.show();
     });
 
-    const themes = [];
+    const themes: string[] = [];
     document.body.querySelectorAll('.btn[data-theme]').forEach(btn => {
-        const theme = btn.getAttribute('data-theme');
+        const theme = btn.getAttribute('data-theme')!;
         themes.push(theme);
         btn.addEventListener('click', () => {
             localStorage.setItem('FRS:theme', theme);

@@ -1,0 +1,10 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "lib": ["ES2015", "esnext", "DOM"]
+    },
+    "include": [
+        "./tsconfig.json",
+        "./**/*.ts"
+    ]
+}

@@ -10,7 +10,7 @@
     "build": "parcel build src/index.html --dist-dir ../../public --no-scope-hoist && pnpm postbuild",
     "postbuild": "pnpm injectBodyScript && pnpm generateFavicons && pnpm injectFavicons && pnpm removeFaviconHtmlCodeTmp",
     "prestart": "rimraf '?(dist|?(../../public))/*.?(css|js|map|html|svg|png|ico|xml|webmanifest)'",
-    "start": "pnpm prestart && parcel watch src/index.html",
+    "start": "pnpm prestart && parcel watch src/index.html --dist-dir ../../public",
     "start:single": "pnpm prestart && parcel serve --https src/index.html",
     "injectBodyScript": "frs-replace '<main>' './build/bodyScriptInjector.js' -r -i ../../public/index.html -o ../../public/index.html",
     "generateFavicons": "real-favicon generate ./build/faviconCfg.json faviconData.json.tmp ../../public",
@@ -29,12 +29,12 @@
     "parcel": "2.8.0",
     "rimraf": "3.0.2",
     "sass": "1.56.1",
-    "typescript": "4.9.3"
+    "typescript": "4.9.4"
   },
   "dependencies": {
     "@parcel/service-worker": "^2.8.0",
     "domready": "1.0.8",
-    "powerglitch": "1.2.0",
+    "powerglitch": "2.3.0",
     "regenerator-runtime": "^0.13.11",
     "resize-observer-polyfill": "1.5.1"
   }

@@ -2,7 +2,7 @@
     "compilerOptions": {
         "plugins": [{ "name": "typescript-plugin-css-modules" }],
         "typeRoots" : [ "./typings", "./node_modules/@types" ],
-        "lib": ["DOM", "ES2015", "esnext"],
+        "lib": ["ES2015", "esnext"],
         "esModuleInterop": true,
         "target": "es2018",
         "sourceMap": true,

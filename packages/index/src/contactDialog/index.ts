@@ -11,22 +11,23 @@ export class ContactDialogCtrl {
     constructor () {
         if (!ContactDialogCtrl.grecaptchaScriptLoader) this.createScriptElement();
 
-        this.createDialogElement();
+        this.element = document.createElement('dialog');
+        this.setupDialogElement(this.element);
     }
 
-    private async createDialogElement () {
-        this.element = document.createElement('dialog');
-
+    private async setupDialogElement (element: HTMLDialogElement) {
         if (!ContactDialogCtrl.templateLoader) ContactDialogCtrl.templateLoader = fetch(tplUrl);
         const tplResponse = await ContactDialogCtrl.templateLoader;
 
-        this.element.innerHTML = await tplResponse.text();
-        this.element.querySelectorAll('input,textarea').forEach(inputEl => {
+        element.innerHTML = await tplResponse.text();
+        element.querySelectorAll('input,textarea').forEach(inputEl => {
             inputEl.setAttribute('placeholder', ' '); // to let 'placeholder-shown' styling to kick in
         });
-        this.element.querySelector('.dialog__btn-close').addEventListener('click', this.hide.bind(this));
+        element.querySelector('.dialog__btn-close')!.addEventListener('click', this.hide.bind(this));
 
-        this.element.querySelector<HTMLFormElement>('.gform').addEventListener('submit', this.onFormSubmit.bind(this))
+        element.querySelector<HTMLFormElement>('.gform')!.addEventListener('submit', this.onFormSubmit.bind(this))
+
+        this.element = element;
     }
 
     private createScriptElement () {
@@ -40,7 +41,7 @@ export class ContactDialogCtrl {
                     (window as any).grecaptcha.render(container, {
                         sitekey: '6LdQaM8ZAAAAAJwBCtGEYIyh9u6be1rBOlsd-FWj',
                         size: 'invisible',
-                        callback: (token) => this.grecaptchaCallbackResolver(token)
+                        callback: (token: string) => this.grecaptchaCallbackResolver(token)
                     });
                     resolve();
                 });
@@ -103,7 +104,7 @@ export class ContactDialogCtrl {
         await ContactDialogCtrl.grecaptchaScriptLoader;
 
         const form = e.currentTarget as HTMLFormElement;
-        const button = form.querySelector('button');
+        const button = form.querySelector('button')!;
         button.disabled = true;
         e.preventDefault();
 

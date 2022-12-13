@@ -27,18 +27,22 @@
     position: relative;
     display: flex;
     flex-flow: column;
+    margin: auto 0;
     height: 72px;
+    max-height: 20vh;
 
     @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
         margin-top: calc(24.5vh - #{map.get($spacings, 6)});
         padding: map.get($spacings, 3) 0;
         width: 60%;
         height: 45vh;
+        max-height: none;
     }
 
     @media (orientation: landscape) and (min-width: #{$breakpoint3}) and (min-height: #{$breakpoint1}) {
         margin-top: calc(14.5vh - #{map.get($spacings, 3)});
         padding: 10vh 0;
+        max-height: none;
     }
 }
 
