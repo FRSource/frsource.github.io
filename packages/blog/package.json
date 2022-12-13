@@ -13,9 +13,14 @@
   },
   "keywords": [],
   "devDependencies": {
+    "@types/cross-spawn": "^6.0.2",
     "@types/remove-markdown": "^0.3.1",
+    "cross-spawn": "^7.0.3",
     "gray-matter": "^4.0.3",
     "vitepress": "1.0.0-alpha.30",
     "vue": "^3.2.45"
+  },
+  "dependencies": {
+    "simple-icons": "^8.1.0"
   }
 }
