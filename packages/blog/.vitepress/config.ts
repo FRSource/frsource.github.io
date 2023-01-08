@@ -1,51 +1,55 @@
 /// <reference path="../typings.d.ts" />
 
-import { defineConfigWithTheme, DefaultTheme } from 'vitepress';
+import { defineConfigWithTheme, DefaultTheme, LocaleConfig, createMarkdownRenderer } from 'vitepress';
 import { promises as fs } from 'fs';
+import path from 'path';
 import matter from 'gray-matter';
 import { getGitCreationTimestamp } from './scripts/getGitCreationTimestamp';
 
-const getArticlesData = async () => {
-  const articles = await fs.readdir('./post/', { withFileTypes: true });
-
-  return Promise.all(
-    articles
-    .filter(fileOrDir => fileOrDir.isDirectory())
-    .map(async ({ name: article }) => {
-      const file = matter.read(`./post/${article}/index.md`);
-
-      const { data, path } = file as typeof file & { path: string }
-
-      if (!data.title || !data.description)
-        console.error(`Every post must contain title and description in frontmatter, post "${path}" does not!`);
-
-      return {
-        title: data.title as string,
-        description: data.description as string,
-        path: path.replace(/\.md$/, '').substring(1),
-      }
-    })
-  )
-};
-
-const locales = {
-  en: {
-    lang: 'en-US',
+const locales: LocaleConfig = {
+  root: {
+    lang: 'en',
     label: 'English',
+    title: 'FRSPACE',
+    description: 'Web, IT, robotics & much more!',
   },
   pl: {
-    lang: 'pl-PL',
+    lang: 'pl',
     label: 'Polski',
+    title: 'FRSPACE',
+    description: 'Web, IT, robotyka i znacznie więcej!',
+    themeConfig: {
+      nav: [
+        { text: 'Strona główna', link: '/pl/' },
+        { text: 'Nasz zespół', link: '/pl/team' },
+        { text: 'Wspomóż nas ❤️', link: '/pl/sponsoring' },
+        { text: 'Szukasz ekspertów?', link: 'https://www.frsource.org/' }
+      ],
+      lastUpdatedText: 'Ostatni aktualizacja',
+      creationDateText: 'Opublikowany',
+      darkModeSwitchLabel: 'Wygląd',
+      sidebarMenuLabel: 'Menu',
+      returnToTopLabel: 'Wróc do góry strony',
+      outlineTitle: 'W tym artykule',
+      editLink: {
+        pattern: 'https://github.com/FRSOURCE/FRSource.github.io/edit/main/packages/blog/:path',
+        text: 'Zaproponuj zmiany do tego artykułu'
+      },
+      footer: {
+        copyright: 'Wszelkie prawa zastrzeżone © FRSOURCE'
+      },
+      docFooter: {
+        prev: 'Poprzedni artykuł',
+        next: 'Następny artykuł'
+      }
+    },
   },
 };
 
 export default defineConfigWithTheme<DefaultTheme.Config & { locales: typeof locales; creationDateText: string }>({
   base: '/blog/',
-  title: 'Web, IT, robotics & much more!',
   titleTemplate: 'FRSPACE blog',
-  description: 'Web, IT, robotics & much more!',
-  lang: 'en-US',
-  cleanUrls: 'with-subfolders',
+  cleanUrls: true,
   lastUpdated: true,
   markdown: {
     headers: {
@@ -59,26 +63,14 @@ export default defineConfigWithTheme<DefaultTheme.Config & { locales: typeof loc
     ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inconsolata&display=swap' }]
   ],
   themeConfig: {
-    nav: nav(),
+    locales,
     sidebar: {
     //   '/post/': sidebarPost()
     },
-    locales,
-    lastUpdatedText: 'Last updated',
-    creationDateText: 'Published',
     logo: {
-        light: {
-          src: 'https://www.frsource.org/logo.svg',
-          alt: 'FRSOURCE logo - geometric, orange-blue-gradient-filled letter F and a small "FRS" subtext'
-        },
-        dark: {
-          src: 'https://www.frsource.org/logo-dark.svg',
-          alt: 'FRSOURCE logo - geometric, orange-blue-gradient-filled letter F and a small "FRS" subtext'
-        },
-    },
-    editLink: {
-      pattern: 'https://github.com/FRSOURCE/FRSource.github.io/edit/main/packages/blog/:path',
-      text: 'Propose changes to this article'
+        light: 'https://www.frsource.org/logo.svg',
+        dark: 'https://www.frsource.org/logo-dark.svg',
+        alt: 'FRSOURCE logo - geometric, orange-blue-gradient-filled letter F and a small "FRS" subtext'
     },
     socialLinks: [
       { icon: 'facebook', link: 'https://facebook.com/FRSOURCE' },
@@ -88,6 +80,24 @@ export default defineConfigWithTheme<DefaultTheme.Config & { locales: typeof loc
       { icon: 'linkedin', link: 'https://www.linkedin.com/company/83486451/' },
       { icon: 'youtube', link: 'https://www.youtube.com/@frsource' },
     ],
+    // en only
+
+    outlineTitle: 'In this article',
+    nav: [
+      { text: 'Home', link: '/' },
+      { text: 'Our team', link: '/team' },
+      { text: 'Sponsor us ❤️', link: '/sponsoring' },
+      { text: 'Looking for Web wizards?', link: 'https://www.frsource.org/' }
+    ],
+    lastUpdatedText: 'Last updated',
+    creationDateText: 'Published',
+    darkModeSwitchLabel: 'Appearance',
+    sidebarMenuLabel: 'Menu',
+    returnToTopLabel: 'Return to top',
+    editLink: {
+      pattern: 'https://github.com/FRSOURCE/FRSource.github.io/edit/main/packages/blog/:path',
+      text: 'Propose changes to this article'
+    },
     footer: {
       copyright: 'Copyright © FRSOURCE'
     },
@@ -97,19 +107,10 @@ export default defineConfigWithTheme<DefaultTheme.Config & { locales: typeof loc
     }
   },
   async transformPageData(pageData) {
-    pageData.articles = await getArticlesData();
+    pageData.articles = await getAllLangsArticlesData();
     pageData.creationDate = await getGitCreationTimestamp(pageData.relativePath);
   }
 });
-
-function nav() {
-  return [
-    { text: 'Home', link: '/' },
-    { text: 'Our team', link: '/team' },
-    { text: 'Sponsor us ❤️', link: '/sponsoring' },
-    { text: 'Looking for Web wizards?', link: 'https://www.frsource.org/' }
-  ]
-}
 
 function sidebarPost() {
   return [
@@ -129,4 +130,37 @@ function sidebarPost() {
       ]
     },
   ]
+};
+
+async function getAllLangsArticlesData () {
+  const articles = {} as Record<keyof typeof locales, Awaited<ReturnType<typeof getArticlesData>>>;
+  await Promise.all((Object.keys(locales) as (keyof typeof locales)[])
+    .map(async localeLink => {
+      articles[localeLink] = await getArticlesData(localeLink === 'root' ? '' : localeLink);
+    }));
+  return articles;
 }
+
+async function getArticlesData (lang?: string) {
+  const articles = await fs.readdir(path.join('.', lang || '', 'post'), { withFileTypes: true });
+
+  return Promise.all(
+    articles
+    .filter(fileOrDir => fileOrDir.isDirectory())
+    .map(async ({ name: article }) => {
+      const file = matter.read(`./post/${article}/index.md`);
+
+      const { data, path } = file as typeof file & { path: string };
+      const title: string = data.title || file.content.match(/# (.+)/)[1];
+
+      if (!title || !data.description)
+        console.error(`Every post must contain title and description in frontmatter (title might be written as a main article markdown heading), post "${path}" does not!`);
+
+      return {
+        title,
+        description: data.description as string,
+        path: path.replace(/\.md$/, '').substring(1),
+      }
+    })
+  )
+};

@@ -17,7 +17,7 @@ watch(author, () => {
   <p class="author" v-if="author">
     <VPLink href="/team">
         <img class="avatar" :src="author.avatar" :alt="`Photo of ${author.name}`" />
-        {{ author.name }}
+        <span class="author__name">{{ author.name }}</span>
     </VPLink>
   </p>
 </template>
@@ -42,11 +42,13 @@ watch(author, () => {
     vertical-align: middle;
 }
 
+.author__name {
+  display: none;
+}
+
 @media (min-width: 640px) {
-  .author {
-    line-height: 32px;
-    font-size: 14px;
-    font-weight: 500;
+  .author__name {
+    display: inline;
   }
 }
 </style>

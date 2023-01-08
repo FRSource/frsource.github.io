@@ -5,6 +5,7 @@ dist
 public/*
 !public/humans.txt
 !public/robots.txt
+!public/serve.json
 !public/logo.jpg
 !public/logo.svg
 !public/logo-dark.svg

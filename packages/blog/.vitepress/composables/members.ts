@@ -1,4 +1,5 @@
-import { siMedium, siDevdotto, siHashnode, siMinutemailer } from 'simple-icons';
+import simpleIcons from 'simple-icons';
+const { siMedium, siDevdotto, siHashnode, siMinutemailer } = simpleIcons
 
 export const members = [
   {
@@ -17,6 +18,9 @@ export const members = [
       { icon: siHashnode, link: 'https://twitter.com/youyuxi' },
       { icon: 'linkedin', link: 'https://www.linkedin.com/in/jakub-freisler-03a32138/' },
       { icon: siMinutemailer, link: 'mailto:jakub+blog@frsource.org' },
-    ]
+    ],
+    pl: {
+      desc: 'Założyciel FRSOURCE, znawca Frontendu, entuzjasta Typescript 💙 Chcesz porozmawiać o wydajności na Webie? Napisz do mnie! 🚀'
+    }
   },
 ];

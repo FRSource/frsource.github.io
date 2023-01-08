@@ -25,8 +25,6 @@ export const startLogoAnimation = (logo: SVGElement) => {
     logo.parentElement!.appendChild(glitchWrapper);
     glitchWrapper.appendChild(logo);
 
-    console.log(PowerGlitch);
-
     const progressReveal = async () => {
         let timeout: number;
         if (lastVisibleItem === itemsToReveal[0].length - 1) {

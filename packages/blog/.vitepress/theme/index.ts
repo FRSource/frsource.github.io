@@ -5,7 +5,4 @@ import Layout from './components/Layout.vue';
 export default {
   ...DefaultTheme,
   Layout,
-  enhanceApp(...args) {
-    console.log(...args);
-  }
 };
