@@ -12,30 +12,30 @@
     "sync-posts": "swc-node ./.vitepress/scripts/syncPosts.ts",
     "sync-posts:watch": "swc-node ./.vitepress/scripts/syncPosts.ts -w",
     "docs:start": "vitepress dev .",
-    "docs:build": "pnpm sync-posts && vitepress build .",
+    "docs:build": "vitepress build .",
     "docs:preview": "vitepress preview ."
   },
   "keywords": [],
   "devDependencies": {
-    "@swc/core": "^1.3.25",
-    "@types/command-line-args": "^5.2.0",
-    "@types/cross-spawn": "^6.0.2",
-    "@types/fs-extra": "^9.0.13",
-    "@types/lodash": "^4.14.191",
-    "@types/remove-markdown": "^0.3.1",
-    "chokidar": "^3.5.3",
-    "command-line-args": "^5.2.1",
-    "concurrently": "^7.6.0",
-    "cross-spawn": "^7.0.3",
-    "deep-object-diff": "^1.1.9",
-    "fs-extra": "^11.1.0",
-    "gray-matter": "^4.0.3",
-    "lodash": "^4.17.21",
-    "swc-node": "^1.0.0",
+    "@swc/core": "1.3.25",
+    "@types/command-line-args": "5.2.0",
+    "@types/cross-spawn": "6.0.2",
+    "@types/fs-extra": "9.0.13",
+    "@types/lodash": "4.14.191",
+    "@types/remove-markdown": "0.3.1",
+    "chokidar": "3.5.3",
+    "command-line-args": "5.2.1",
+    "concurrently": "7.6.0",
+    "cross-spawn": "7.0.3",
+    "deep-object-diff": "1.1.9",
+    "fs-extra": "11.1.0",
+    "gray-matter": "4.0.3",
+    "lodash": "4.17.21",
+    "swc-node": "1.0.0",
     "vitepress": "1.0.0-alpha.45",
-    "vue": "^3.2.45"
+    "vue": "3.2.45"
   },
   "dependencies": {
-    "simple-icons": "^8.1.0"
+    "simple-icons": "8.1.0"
   }
 }
