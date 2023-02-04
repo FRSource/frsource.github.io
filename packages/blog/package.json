@@ -8,13 +8,14 @@
     "license": "UNLICENSED FOR ANY USE",
     "scripts": {
         "start": "concurrently \"pnpm sync-posts:watch\" \"pnpm docs:start\"",
-        "build": "pnpm sync-posts && pnpm docs:build",
+        "build": "pnpm sync-posts && pnpm docs:build && pnpm copy-production-dist",
         "sync-posts": "swc-node ./.vitepress/scripts/syncPosts.ts",
         "sync-posts:watch": "swc-node ./.vitepress/scripts/syncPosts.ts -w",
         "docs:start": "vitepress dev .",
         "docs:build": "vitepress build .",
         "docs:preview": "vitepress preview .",
-        "format": "prettier --write ."
+        "format": "prettier --write .",
+        "copy-production-dist": "cpy . ../../../../public/blog  --cwd .vitepress/dist"
     },
     "keywords": [],
     "devDependencies": {
@@ -27,6 +28,7 @@
         "chokidar": "3.5.3",
         "command-line-args": "5.2.1",
         "concurrently": "7.6.0",
+        "cpy-cli": "4.2.0",
         "cross-spawn": "7.0.3",
         "deep-object-diff": "1.1.9",
         "fs-extra": "11.1.0",

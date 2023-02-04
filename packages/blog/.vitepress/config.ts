@@ -1,11 +1,6 @@
 /// <reference path="../typings.d.ts" />
 
-import {
-    defineConfigWithTheme,
-    DefaultTheme,
-    LocaleConfig,
-    createMarkdownRenderer,
-} from "vitepress";
+import { defineConfigWithTheme, DefaultTheme, LocaleConfig } from "vitepress";
 import { promises as fs } from "fs";
 import path from "path";
 import matter from "gray-matter";
