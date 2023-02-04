@@ -1,9 +1,9 @@
 ---
 description: In this tutorial I'll walk you through creation of blog solution based on Vitepress v1
 head:
-  - - meta
-    - name: keywords
-      content: Vitepress, SSG, blog, tutorial, Vue
+    - - meta
+      - name: keywords
+        content: Vitepress, SSG, blog, tutorial, Vue
 author: frs
 ---
 
@@ -13,13 +13,12 @@ Have you ever wondered how cool that would be?
 
 ![demo image alt](/post/developing-vitepress-powered-blog/demo.jpeg)
 
-
 ## Introduction to the problem
 
 asdasdasd
 
-* something
-* something 2
+-   something
+-   something 2
 
 ## Code
 

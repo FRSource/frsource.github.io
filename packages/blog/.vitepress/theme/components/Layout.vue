@@ -1,43 +1,56 @@
 <script setup>
-import { computed } from 'vue';
-import { useData, useRoute, useRouter } from 'vitepress';
-import Layout from 'vitepress/dist/client/theme-default/Layout.vue';
-import VPFeatures from 'vitepress/dist/client/theme-default/components/VPFeatures.vue';
-import VPHero from 'vitepress/dist/client/theme-default/components/VPHero.vue';
-import VPDocFooterLastUpdated from 'vitepress/dist/client/theme-default/components/VPDocFooterLastUpdated.vue'
-import CreationDate from '../../components/CreationDate.vue';
-import AuthorInfo from '../../components/AuthorInfo.vue';
+import { computed } from "vue";
+import { useData, useRoute, useRouter } from "vitepress";
+import Layout from "vitepress/dist/client/theme-default/Layout.vue";
+import VPFeatures from "vitepress/dist/client/theme-default/components/VPFeatures.vue";
+import VPHero from "vitepress/dist/client/theme-default/components/VPHero.vue";
+import VPDocFooterLastUpdated from "vitepress/dist/client/theme-default/components/VPDocFooterLastUpdated.vue";
+import CreationDate from "../../components/CreationDate.vue";
+import AuthorInfo from "../../components/AuthorInfo.vue";
 
 const { localeIndex, page } = useData();
-const formattedArticles = computed(() => page.value.articles[localeIndex.value]
-  ?.map(({ title, description, path }) => ({
-    title,
-    details: description,
-    link: path,
-    linkText: localeIndex === 'root' ? 'Read the full article' : 'Przeczytaj cały artykuł',
-  })));
+const formattedArticles = computed(() =>
+    page.value.articles[localeIndex.value]?.map(
+        ({ title, description, path }) => ({
+            title,
+            details: description,
+            link: path,
+            linkText:
+                localeIndex === "root"
+                    ? "Read the full article"
+                    : "Przeczytaj cały artykuł",
+        })
+    )
+);
 </script>
 
 <template>
-  <Layout>
-    <template #home-features-before v-if="page.frontmatter.showNewestArticles">
-        <VPHero
-            class="hero"
-            :tagline="localeIndex === 'root' ? 'Newest articles' : 'Najnowsze artykuły'"
-        />
-        <!-- :actions="[{ theme: 'brand', text: 'see all articles', link: '/post' }]" -->
-        <!-- TODO: when we have more articles - create a separated post.md page -->
-        <VPFeatures :features="formattedArticles" />
-    </template>
+    <Layout>
+        <template
+            #home-features-before
+            v-if="page.frontmatter.showNewestArticles"
+        >
+            <VPHero
+                class="hero"
+                :tagline="
+                    localeIndex === 'root'
+                        ? 'Newest articles'
+                        : 'Najnowsze artykuły'
+                "
+            />
+            <!-- :actions="[{ theme: 'brand', text: 'see all articles', link: '/post' }]" -->
+            <!-- TODO: when we have more articles - create a separated post.md page -->
+            <VPFeatures :features="formattedArticles" />
+        </template>
 
-    <template #doc-before>
-      <div class="header-info">
-        <!-- <CreationDate /> -->
-        <VPDocFooterLastUpdated />
-      <AuthorInfo />
-      </div>
-    </template>
-  </Layout>
+        <template #doc-before>
+            <div class="header-info">
+                <!-- <CreationDate /> -->
+                <VPDocFooterLastUpdated />
+                <AuthorInfo />
+            </div>
+        </template>
+    </Layout>
 </template>
 
 <style scoped>

@@ -11,6 +11,7 @@
     "preview": "serve public",
     "build": "pnpm run -r build",
     "start": "concurrently 'pnpm run -r --parallel start' 'pnpm preview'",
+    "format": "pnpm run -r format",
     "prepare": "husky install"
   },
   "devDependencies": {

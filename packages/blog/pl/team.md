@@ -2,6 +2,7 @@
 layout: page
 title: Nasz zespół
 ---
+
 <script setup>
 import {
   VPTeamPage,
