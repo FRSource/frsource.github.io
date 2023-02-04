@@ -16,26 +16,26 @@ importers:
 
   packages/blog:
     specifiers:
-      '@swc/core': ^1.3.25
-      '@types/command-line-args': ^5.2.0
-      '@types/cross-spawn': ^6.0.2
-      '@types/fs-extra': ^9.0.13
-      '@types/lodash': ^4.14.191
-      '@types/remove-markdown': ^0.3.1
-      chokidar: ^3.5.3
-      command-line-args: ^5.2.1
-      concurrently: ^7.6.0
-      cross-spawn: ^7.0.3
-      deep-object-diff: ^1.1.9
-      fs-extra: ^11.1.0
-      gray-matter: ^4.0.3
-      lodash: ^4.17.21
-      simple-icons: ^8.1.0
-      swc-node: ^1.0.0
+      '@swc/core': 1.3.25
+      '@types/command-line-args': 5.2.0
+      '@types/cross-spawn': 6.0.2
+      '@types/fs-extra': 9.0.13
+      '@types/lodash': 4.14.191
+      '@types/remove-markdown': 0.3.1
+      chokidar: 3.5.3
+      command-line-args: 5.2.1
+      concurrently: 7.6.0
+      cross-spawn: 7.0.3
+      deep-object-diff: 1.1.9
+      fs-extra: 11.1.0
+      gray-matter: 4.0.3
+      lodash: 4.17.21
+      simple-icons: 8.1.0
+      swc-node: 1.0.0
       vitepress: 1.0.0-alpha.45
-      vue: ^3.2.45
+      vue: 3.2.45
     dependencies:
-      simple-icons: 8.2.0
+      simple-icons: 8.1.0
     devDependencies:
       '@swc/core': 1.3.25
       '@types/command-line-args': 5.2.0
@@ -59,7 +59,7 @@ importers:
     specifiers:
       '@frsource/frs-replace': 4.0.0
       '@parcel/packager-raw-url': 2.8.0
-      '@parcel/service-worker': ^2.8.0
+      '@parcel/service-worker': 2.8.0
       '@parcel/transformer-inline-string': 2.8.0
       '@parcel/transformer-jsonld': 2.8.0
       '@parcel/transformer-sass': 2.8.0
@@ -70,13 +70,13 @@ importers:
       parcel: 2.8.0
       powerglitch: 2.3.0
       prettier: ^2.8.1
-      regenerator-runtime: ^0.13.11
+      regenerator-runtime: 0.13.11
       resize-observer-polyfill: 1.5.1
       rimraf: 3.0.2
       sass: 1.56.1
       typescript: 4.9.4
     dependencies:
-      '@parcel/service-worker': 2.8.1
+      '@parcel/service-worker': 2.8.0
       domready: 1.0.8
       powerglitch: 2.3.0
       regenerator-runtime: 0.13.11
@@ -1125,9 +1125,9 @@ packages:
       nullthrows: 1.1.1
     dev: true
 
-  /@parcel/service-worker/2.8.1:
-    resolution: {integrity: sha512-hjuHxdy6ppxHKqvqylSEmuUs1VU3Oan0FdCDaroKomA3v2pdS4ZqMXTEzKjVqh2owMTrK5J+/1JmqcfCad3Y7Q==}
-    engines: {node: '>= 12.0.0', parcel: ^2.8.1}
+  /@parcel/service-worker/2.8.0:
+    resolution: {integrity: sha512-fSz0+TApuFrJwshSQubaXABik1S/H0yUmP+U31ntsmJDb3g6FYY/pTdeM70p7l5XIHrQiVs01ee+Jx33labUsw==}
+    engines: {node: '>= 12.0.0', parcel: ^2.8.0}
     dev: false
 
   /@parcel/source-map/2.1.1:
@@ -1601,7 +1601,7 @@ packages:
       '@vue/shared': 3.2.45
       estree-walker: 2.0.2
       magic-string: 0.25.9
-      postcss: 8.4.20
+      postcss: 8.4.21
       source-map: 0.6.1
     dev: true
 
@@ -3421,15 +3421,6 @@ packages:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
     dev: true
 
-  /postcss/8.4.20:
-    resolution: {integrity: sha512-6Q04AXR1212bXr5fh03u8aAwbLxAQNGQ/Q1LNa0VfOI06ZAlhPHtQvE4OIdpj4kLThXilalPnmDSOD65DcHt+g==}
-    engines: {node: ^10 || ^12 || >=14}
-    dependencies:
-      nanoid: 3.3.4
-      picocolors: 1.0.0
-      source-map-js: 1.0.2
-    dev: true
-
   /postcss/8.4.21:
     resolution: {integrity: sha512-tP7u/Sn/dVxK2NnruI4H9BG+x+Wxz6oeZ1cJ8P6G/PZY0IKk4k/63TDsQf2kQq3+qoJeLm2kIBUNlZe3zgb4Zg==}
     engines: {node: ^10 || ^12 || >=14}
@@ -3750,8 +3741,8 @@ packages:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
     dev: true
 
-  /simple-icons/8.2.0:
-    resolution: {integrity: sha512-W4awmfHa4a+XF3iPS0MEIM6KF+iUgkCaf3/ISRq5UWhdiYxAs4uvF8eQ/RsDsau1/Z540otcvq9AKoPuUZqvog==}
+  /simple-icons/8.1.0:
+    resolution: {integrity: sha512-N2JKvoRoiFqsRaHiKLNHf6GzpfLqO+Bgoijq54rzIosfQIhmxgCiAKYW9ejzw0arCAeoQ3RiG18fIZct6xBXFA==}
     engines: {node: '>=0.12.18'}
     dev: false
 
