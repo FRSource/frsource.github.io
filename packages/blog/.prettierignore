@@ -1,0 +1,4 @@
+**/post
+!.vitepress/post
+.vitepress/cache
+.vitepress/dist

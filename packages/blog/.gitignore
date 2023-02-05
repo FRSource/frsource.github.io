@@ -1,0 +1,3 @@
+**/post
+!.vitepress/post
+.vitepress/cache
