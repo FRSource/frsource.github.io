@@ -13,9 +13,7 @@ const formattedArticles = computed(() =>
         ({ title, description, path }) => ({
             title,
             details: description,
-            link: `${
-                localeIndex.value === "root" ? "" : `${lang.value}/`
-            }${path}`,
+            link: path,
             linkText:
                 localeIndex.value === "root"
                     ? "Read the full article"
