@@ -1,20 +1,21 @@
 <script setup>
 import { computed } from "vue";
-import { useData, useRoute, useRouter } from "vitepress";
+import { useData } from "vitepress";
 import Layout from "vitepress/dist/client/theme-default/Layout.vue";
 import VPFeatures from "vitepress/dist/client/theme-default/components/VPFeatures.vue";
 import VPHero from "vitepress/dist/client/theme-default/components/VPHero.vue";
 import VPDocFooterLastUpdated from "vitepress/dist/client/theme-default/components/VPDocFooterLastUpdated.vue";
-import CreationDate from "../../components/CreationDate.vue";
 import AuthorInfo from "../../components/AuthorInfo.vue";
 
-const { localeIndex, page } = useData();
+const { localeIndex, page, lang } = useData();
 const formattedArticles = computed(() =>
     page.value.articles[localeIndex.value]?.map(
         ({ title, description, path }) => ({
             title,
             details: description,
-            link: path,
+            link: `${
+                localeIndex.value === "root" ? "" : `${lang.value}/`
+            }${path}`,
             linkText:
                 localeIndex.value === "root"
                     ? "Read the full article"

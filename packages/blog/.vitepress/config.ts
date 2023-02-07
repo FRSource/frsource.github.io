@@ -203,7 +203,7 @@ async function getArticlesData(lang?: string) {
                 return {
                     title,
                     description: data.description as string,
-                    path: path.replace(/\.md$/, "").substring(1),
+                    path: path.replace(/index\.md$/, "").substring(1),
                 };
             })
     );
