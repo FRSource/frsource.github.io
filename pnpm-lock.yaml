@@ -16,6 +16,7 @@ importers:
 
   packages/blog:
     specifiers:
+      '@swc-node/register': ^1.5.6
       '@swc/core': 1.3.25
       '@types/command-line-args': 5.2.0
       '@types/cross-spawn': 6.0.2
@@ -32,12 +33,12 @@ importers:
       gray-matter: 4.0.3
       lodash: 4.17.21
       simple-icons: 8.1.0
-      swc-node: 1.0.0
       vitepress: 1.0.0-alpha.45
       vue: 3.2.45
     dependencies:
       simple-icons: 8.1.0
     devDependencies:
+      '@swc-node/register': 1.5.6_@swc+core@1.3.25
       '@swc/core': 1.3.25
       '@types/command-line-args': 5.2.0
       '@types/cross-spawn': 6.0.2
@@ -53,7 +54,6 @@ importers:
       fs-extra: 11.1.0
       gray-matter: 4.0.3
       lodash: 4.17.21
-      swc-node: 1.0.0_@swc+core@1.3.25
       vitepress: 1.0.0-alpha.45
       vue: 3.2.45
 
@@ -1383,28 +1383,28 @@ packages:
       '@swc/core': 1.3.25
     dev: true
 
-  /@swc-node/register/1.5.5_@swc+core@1.3.25:
-    resolution: {integrity: sha512-SNpbRG8EOXShk3YAnC4suAVovYQ7oFOFdCVBA3J8hkO5qy0WHPVnlnMojTYI+8UT1CrfQ1QSUySaAARRvEdwjg==}
+  /@swc-node/register/1.5.6_@swc+core@1.3.25:
+    resolution: {integrity: sha512-RWd/b1MdBFseySzJHUchVz6ohneD9oA/D3O3plBglkISKp/iDgSpUUcJ0RfdooARTcQWHgkYt31KshnyxukyQw==}
     peerDependencies:
       '@swc/core': '>= 1.3'
       typescript: '>= 4.3'
     dependencies:
       '@swc-node/core': 1.9.2_@swc+core@1.3.25
-      '@swc-node/sourcemap-support': 0.2.3
+      '@swc-node/sourcemap-support': 0.2.4
       '@swc/core': 1.3.25
       colorette: 2.0.19
       debug: 4.3.4
       pirates: 4.0.5
-      tslib: 2.4.1
+      tslib: 2.5.0
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@swc-node/sourcemap-support/0.2.3:
-    resolution: {integrity: sha512-LOC/z9HDUmTqSAF08YIRLThGGNZLdRrjcEdoQu/EANxPSVRedYgh4AiZlOX8sY8Rp1p7S/StOmZogJLuvR4mcA==}
+  /@swc-node/sourcemap-support/0.2.4:
+    resolution: {integrity: sha512-lAi8xXFpUPMaABCI0sFdKQL4owsjw6BPGjtrVJ90sRCUS4yNPMT0KbTeTWCxB8oQwYbbaQGOusd/+kavNMqJcg==}
     dependencies:
       source-map-support: 0.5.21
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: true
 
   /@swc/core-darwin-arm64/1.3.25:
@@ -4291,17 +4291,6 @@ packages:
       stable: 0.1.8
     dev: true
 
-  /swc-node/1.0.0_@swc+core@1.3.25:
-    resolution: {integrity: sha512-4+kibROq06E7Yj3kEcCRN1Ki2C/5i+5P1B7An9iS9PO1BQY5VzWFuLhV7y7xNxkZjc8FEaLCh97NGzs/XBfOMQ==}
-    hasBin: true
-    dependencies:
-      '@swc-node/register': 1.5.5_@swc+core@1.3.25
-    transitivePeerDependencies:
-      - '@swc/core'
-      - supports-color
-      - typescript
-    dev: true
-
   /term-size/2.2.1:
     resolution: {integrity: sha512-wK0Ri4fOGjv/XPy8SBHZChl8CM7uMc5VML7SqiQ0zG7+J5Vr+RMQDoHa2CNT6KHUnTGIXH34UDMkPzAUyapBZg==}
     engines: {node: '>=8'}
@@ -4354,6 +4343,10 @@ packages:
 
   /tslib/2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
+    dev: true
+
+  /tslib/2.5.0:
+    resolution: {integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==}
     dev: true
 
   /type-fest/0.20.2:
