@@ -16,7 +16,7 @@ const formattedArticles = computed(() =>
             details: description,
             link: path,
             linkText:
-                localeIndex === "root"
+                localeIndex.value === "root"
                     ? "Read the full article"
                     : "Przeczytaj cały artykuł",
         })
