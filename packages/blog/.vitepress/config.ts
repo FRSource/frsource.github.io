@@ -28,7 +28,7 @@ const locales: LocaleConfig = {
                     link: "https://www.frsource.org/",
                 },
             ],
-            lastUpdatedText: "Ostatni aktualizacja",
+            lastUpdatedText: "Ostatnia aktualizacja",
             creationDateText: "Opublikowany",
             darkModeSwitchLabel: "Wygląd",
             sidebarMenuLabel: "Menu",
