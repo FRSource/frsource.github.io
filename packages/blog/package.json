@@ -35,7 +35,6 @@
         "fs-extra": "11.1.0",
         "gray-matter": "4.0.3",
         "lodash": "4.17.21",
-        "swc-node": "1.0.0",
         "vitepress": "1.0.0-alpha.45",
         "vue": "3.2.45"
     },
