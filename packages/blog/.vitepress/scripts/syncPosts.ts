@@ -71,7 +71,9 @@ async function copyPosts(postsToCopy: Record<string, string[]>) {
         Object.keys(postsToCopy).map((dirPath) =>
             Promise.all(
                 postsToCopy[dirPath].map((filename) =>
-                    copyPostFile(path.join(dirPath, filename))
+                    filename === "index.md"
+                        ? copyPostFile(path.join(dirPath, filename))
+                        : copyPostAsset(path.join(dirPath, filename))
                 )
             )
         )
@@ -79,6 +81,18 @@ async function copyPosts(postsToCopy: Record<string, string[]>) {
 }
 
 async function copyPostFile(srcFilepath: string) {
+    const srcContent = await fsExtra.readFile(
+        withCwd(path.dirname(srcFilepath), path.basename(srcFilepath))
+    );
+    return fsExtra.outputFile(
+        memoizedPostDestinationPath(srcFilepath),
+        srcContent
+            .toString()
+            .replace("---", `---\ntype: article\nsrcPath: "${srcFilepath}"`)
+    );
+}
+
+async function copyPostAsset(srcFilepath: string) {
     return fsExtra.copy(
         withCwd(path.dirname(srcFilepath), path.basename(srcFilepath)),
         memoizedPostDestinationPath(srcFilepath),

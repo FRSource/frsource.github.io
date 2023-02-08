@@ -1,10 +1,18 @@
 /// <reference path="../typings.d.ts" />
 
-import { defineConfigWithTheme, DefaultTheme, LocaleConfig } from "vitepress";
+import {
+    defineConfigWithTheme,
+    DefaultTheme,
+    LocaleConfig,
+    PageData,
+} from "vitepress";
 import { promises as fs } from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { getGitCreationTimestamp } from "./scripts/getGitCreationTimestamp";
+import { getGitTimestamp } from "./scripts/getGitTimestamp";
+
+type ArticleData = PageData["articles"]["root"][0];
 
 const locales: LocaleConfig = {
     root: {
@@ -134,9 +142,17 @@ export default defineConfigWithTheme<
     },
     async transformPageData(pageData) {
         pageData.articles = await getAllLangsArticlesData();
-        pageData.creationDate = await getGitCreationTimestamp(
-            pageData.relativePath
-        );
+        if (pageData.frontmatter?.type === "article") {
+            // it's an article
+            pageData.lastUpdated = await getGitTimestamp(
+                pageData.frontmatter.srcPath,
+                { cwd: __dirname }
+            );
+            pageData.creationDate = await getGitCreationTimestamp(
+                pageData.frontmatter.srcPath,
+                { cwd: __dirname }
+            );
+        }
     },
 });
 
@@ -181,17 +197,21 @@ async function getAllLangsArticlesData() {
 }
 
 async function getArticlesData(lang?: string) {
-    const articles = await fs.readdir(path.join(".", lang || "", "post"), {
+    const articles = await fs.readdir(path.join(lang || "", "post"), {
         withFileTypes: true,
     });
 
     return Promise.all(
         articles
             .filter((fileOrDir) => fileOrDir.isDirectory())
-            .map(async ({ name: article }) => {
-                const file = matter.read(`./post/${article}/index.md`);
+            .map<Promise<ArticleData>>(async ({ name: article }) => {
+                const file = matter.read(
+                    path.join(lang || "", "post", article, "/index.md")
+                );
 
-                const { data, path } = file as typeof file & { path: string };
+                const { data, path: filepath } = file as typeof file & {
+                    path: string;
+                };
                 const title: string =
                     data.title || file.content.match(/# (.+)/)[1];
 
@@ -203,9 +223,7 @@ async function getArticlesData(lang?: string) {
                 return {
                     title,
                     description: data.description as string,
-                    path:
-                        (lang ? `${lang}/` : "") +
-                        path.replace(/index\.md$/, "").substring(1),
+                    path: filepath.replace(/index\.md$/, ""),
                 };
             })
     );

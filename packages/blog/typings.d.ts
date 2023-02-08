@@ -2,11 +2,11 @@ import "vitepress";
 
 declare module "vitepress" {
     type Locales = {
-        "/": {
+        root: {
             lang: "en-US";
             label: string;
         };
-        "/pl/": {
+        pl: {
             lang: "pl-PL";
             label: string;
         };

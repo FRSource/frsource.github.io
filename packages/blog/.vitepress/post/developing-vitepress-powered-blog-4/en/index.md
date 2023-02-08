@@ -13,6 +13,8 @@ Have you ever wondered how cool that would be?
 
 ![demo image alt](/post/developing-vitepress-powered-blog/demo.jpeg)
 
+Some change
+
 ## Introduction to the problem
 
 asdasdasd
