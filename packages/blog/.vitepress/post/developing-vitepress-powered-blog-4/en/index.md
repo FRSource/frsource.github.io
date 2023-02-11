@@ -11,7 +11,7 @@ author: frs
 
 Have you ever wondered how cool that would be?
 
-![demo image alt](/post/developing-vitepress-powered-blog/demo.jpeg)
+![demo image alt](/post/developing-vitepress-powered-blog/demo.webp)
 
 Some change
 

@@ -5,7 +5,7 @@ head:
       - name: keywords
         content: Vitepress, SSG, blog, tutorial, Vue
 image:
-    src: /post/developing-vitepress-powered-blog/demo.jpeg
+    src: /post/developing-vitepress-powered-blog/demo.webp
     alt: Some demo splash image
 author: frs
 ---
@@ -14,7 +14,7 @@ author: frs
 
 Have you ever wondered how cool that would be?
 
-![demo image alt](/post/developing-vitepress-powered-blog/demo.jpeg)
+![demo image alt](/post/developing-vitepress-powered-blog/demo.webp)
 
 ## Introduction to the problem
 

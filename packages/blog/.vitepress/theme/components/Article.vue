@@ -37,7 +37,12 @@ onMounted(() => {
 
 <template>
     <article class="article" :class="{ 'article--with-img': image }">
-        <VPLink class="article__link" :href="link" no-icon />
+        <VPLink
+            class="article__link"
+            :href="link"
+            no-icon
+            :title="`${linkText}: ${title}`"
+        />
         <div class="article__inner">
             <div class="article__content">
                 <div class="info-box">
