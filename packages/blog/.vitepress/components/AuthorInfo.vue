@@ -32,6 +32,8 @@ watch(
             <img
                 class="avatar__img"
                 :src="authorData.avatar"
+                width="40"
+                height="40"
                 :alt="
                     localeIndex === 'root'
                         ? `Photo of article author: ${authorData.name}`
@@ -39,7 +41,7 @@ watch(
                 "
             />
         </span>
-        <span class="author__name" v-if="onlyAvatar">{{
+        <span class="author__name" v-if="!onlyAvatar">{{
             authorData.name
         }}</span>
     </VPLink>
@@ -50,7 +52,7 @@ watch(
     display: inline-block;
     line-height: 24px;
     font-size: 10px;
-    background: var(--vp-c-black-soft);
+    background: var(--vp-c-bg);
 }
 
 .avatar {
@@ -63,7 +65,6 @@ watch(
 
 .avatar__img {
     display: inline-block;
-    height: 40px;
     vertical-align: middle;
     mix-blend-mode: multiply;
 }

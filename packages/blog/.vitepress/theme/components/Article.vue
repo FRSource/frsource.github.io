@@ -49,7 +49,7 @@ onMounted(() => {
                     <AuthorInfo
                         class="autor"
                         :author="author"
-                        :only-avatar="!!image"
+                        :only-avatar="!image"
                     />
                     <time class="creation-date" :datetime="isoDatetime">{{
                         datetime
@@ -92,6 +92,7 @@ onMounted(() => {
 .author {
     position: relative;
     z-index: 1;
+    background: var(--vp-c-black-soft);
 }
 
 .info-box {
