@@ -4,7 +4,7 @@ const { siMedium, siDevdotto, siHashnode, siMinutemailer } = simpleIcons;
 export const members = [
     {
         id: "frs",
-        avatar: "https://github.com/FRSgit.png",
+        avatar: "/authors/frs.webp",
         name: "Jakub FRS Freisler",
         title: "Tech Lead",
         org: "Vue Storefront",
