@@ -4,6 +4,9 @@ head:
     - - meta
       - name: keywords
         content: Vitepress, SSG, blog, tutorial, Vue
+image:
+    src: /post/developing-vitepress-powered-blog/demo.jpeg
+    alt: Some demo splash image
 author: frs
 ---
 

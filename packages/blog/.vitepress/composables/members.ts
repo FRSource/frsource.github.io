@@ -14,8 +14,8 @@ export const members = [
             { icon: "github", link: "https://github.com/FRSgit" },
             { icon: "twitter", link: "https://twitter.com/frsource1" },
             { icon: siMedium, link: "https://medium.com/@kubafreisler" },
-            { icon: siDevdotto, link: "https://twitter.com/youyuxi" },
-            { icon: siHashnode, link: "https://twitter.com/youyuxi" },
+            { icon: siDevdotto, link: "https://dev.to/frsgit" },
+            { icon: siHashnode, link: "https://frs.hashnode.dev/" },
             {
                 icon: "linkedin",
                 link: "https://www.linkedin.com/in/jakub-freisler-03a32138/",

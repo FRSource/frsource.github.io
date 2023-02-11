@@ -4,6 +4,13 @@ import fsExtra from "fs-extra";
 import chokidar from "chokidar";
 import commandLineArgs from "command-line-args";
 import { memoize } from "lodash";
+import {
+    diff,
+    addedDiff,
+    deletedDiff,
+    updatedDiff,
+    detailedDiff,
+} from "deep-object-diff";
 
 const SYNCED_FILES_PATH = path.join(__dirname, ".synced-posts");
 const LOCALES = ["en", "pl"];
@@ -26,6 +33,7 @@ const watcher = chokidar
     .on("ready", async () => {
         await clearPosts();
         const filesToSync = await filterOutDirs(watcher.getWatched());
+        console.log("ready", filesToSync);
         await copyPosts(filesToSync);
         if (!args.watch) await watcher.close();
     })
@@ -95,15 +103,16 @@ async function copyPostFile(srcFilepath: string) {
 async function copyPostAsset(srcFilepath: string) {
     return fsExtra.copy(
         withCwd(path.dirname(srcFilepath), path.basename(srcFilepath)),
-        memoizedPostDestinationPath(srcFilepath),
+        memoizedPostDestinationPath(srcFilepath, true),
         { overwrite: true, recursive: true }
     );
 }
 
-function postDestinationPath(srcFilepath: string) {
+function postDestinationPath(srcFilepath: string, isAsset?: boolean) {
     const { locale, postname, rest } = parsePostPath(srcFilepath);
     return withCwd(
         "..",
+        isAsset ? "public" : "",
         locale === DEFAULT_LOCALE ? DEFAULT_LOCALE_DIR : locale,
         "post",
         postname,
@@ -123,6 +132,10 @@ async function clearPosts() {
             )
         )
     );
+}
+
+async function readSyncedFiles() {
+    return JSON.parse((await fs.readFile(SYNCED_FILES_PATH)).toString());
 }
 
 async function filterOutDirs(fileTree: Record<string, string[]>) {

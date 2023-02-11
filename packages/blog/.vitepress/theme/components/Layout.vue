@@ -1,19 +1,21 @@
-<script setup>
+<script lang="ts" setup>
 import { computed } from "vue";
-import { useData } from "vitepress";
+import { useData, Locales } from "vitepress";
 import Layout from "vitepress/dist/client/theme-default/Layout.vue";
-import VPFeatures from "vitepress/dist/client/theme-default/components/VPFeatures.vue";
-import VPHero from "vitepress/dist/client/theme-default/components/VPHero.vue";
+import Articles from "./Articles.vue";
 import VPDocFooterLastUpdated from "vitepress/dist/client/theme-default/components/VPDocFooterLastUpdated.vue";
 import AuthorInfo from "../../components/AuthorInfo.vue";
 // import CreationDate from "../../components/CreationDate.vue";
 
-const { localeIndex, page, lang } = useData();
+const { localeIndex, page, frontmatter, isDark } = useData();
 const formattedArticles = computed(() =>
-    page.value.articles[localeIndex.value]?.map(
-        ({ title, description, path }) => ({
+    page.value.articles[localeIndex.value as keyof Locales]?.map(
+        ({ title, author, description, path, image, creationDate }) => ({
             title,
-            details: description,
+            author,
+            description,
+            image,
+            creationDate,
             link: path,
             linkText:
                 localeIndex.value === "root"
@@ -21,6 +23,10 @@ const formattedArticles = computed(() =>
                     : "Przeczytaj cały artykuł",
         })
     )
+);
+
+const headerArray = computed(
+    () => frontmatter.value.frs_hero.text.split(" ") as string[]
 );
 </script>
 
@@ -30,24 +36,60 @@ const formattedArticles = computed(() =>
             #home-features-before
             v-if="page.frontmatter.showNewestArticles"
         >
-            <VPHero
-                class="hero"
-                :tagline="
-                    localeIndex === 'root'
-                        ? 'Newest articles'
-                        : 'Najnowsze artykuły'
-                "
-            />
+            <div class="layout-container">
+                <div class="hero">
+                    <hgroup
+                        class="hero__text-wrapper"
+                        v-if="frontmatter.frs_hero"
+                    >
+                        <h1 class="hero__text">
+                            {{ frontmatter.frs_hero.name }}
+                        </h1>
+                        <h2 class="hero__text">
+                            <span class="c-secondary">{{
+                                headerArray[0] + " "
+                            }}</span>
+                            <span class="c-tertiary">{{
+                                headerArray[1] + " "
+                            }}</span>
+                            <span class="c-primary"
+                                >{{ headerArray[2] }} {{ headerArray[3] }}</span
+                            >
+                        </h2>
+                    </hgroup>
+
+                    <img
+                        class="hero_image"
+                        :src="
+                            isDark
+                                ? 'https://www.frsource.org/logo-dark.svg'
+                                : 'https://www.frsource.org/logo.svg'
+                        "
+                        :alt="frontmatter.frs_hero.image.alt"
+                    />
+                </div>
+            </div>
             <!-- :actions="[{ theme: 'brand', text: 'see all articles', link: '/post' }]" -->
             <!-- TODO: when we have more articles - create a separated post.md page -->
-            <VPFeatures :features="formattedArticles" />
+            <Articles :articles="formattedArticles">
+                <template #prefix>
+                    <h3
+                        class="section-title font-secondary"
+                        v-text="
+                            localeIndex === 'root'
+                                ? 'Newest articles'
+                                : 'Najnowsze artykuły'
+                        "
+                    />
+                </template>
+            </Articles>
         </template>
 
         <template #doc-before>
             <div class="header-info">
                 <!-- <CreationDate /> -->
                 <VPDocFooterLastUpdated />
-                <AuthorInfo />
+                <div><AuthorInfo :author="page.frontmatter.author" /></div>
             </div>
         </template>
     </Layout>
@@ -55,19 +97,36 @@ const formattedArticles = computed(() =>
 
 <style scoped>
 .hero {
-    --vp-layout-top-height: 0px;
-    --vp-nav-height: 0px;
-    padding-top: 0;
-    padding-bottom: 24px;
+    display: flex;
+    flex-flow: column-reverse;
+    padding-bottom: 48px;
+    align-items: center;
+    gap: 15%;
+    text-align: center;
 }
 
-.hero :where(.tagline) {
-    display: inline-block;
+.hero__text-wrapper {
+    flex-shrink: 0;
 }
 
-.hero :where(.actions) {
-    margin-left: 16px;
-    display: inline-flex;
+.hero__text {
+    max-width: 392px;
+    line-height: 32px;
+    font-size: 32px;
+    font-family: var(--font-family-secondary);
+    letter-spacing: 2.7px;
+    white-space: pre-wrap;
+}
+
+.hero_image {
+    min-width: 0;
+    height: 160px;
+}
+
+.section-title {
+    padding: 0 0 20px 20px;
+    text-transform: uppercase;
+    color: #fff;
 }
 
 .header-info {
@@ -75,5 +134,36 @@ const formattedArticles = computed(() =>
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+@media (min-width: 640px) {
+    .hero__text {
+        max-width: 576px;
+        line-height: 48px;
+        font-size: 48px;
+    }
+
+    .hero_image {
+        height: 200px;
+    }
+}
+
+@media (min-width: 960px) {
+    .hero {
+        gap: 0;
+        flex-flow: row;
+        text-align: left;
+    }
+
+    .hero__text {
+        line-height: 54px;
+        font-size: 56px;
+    }
+
+    .hero_image {
+        margin: -5% auto;
+        height: auto;
+        width: 30%;
+    }
 }
 </style>

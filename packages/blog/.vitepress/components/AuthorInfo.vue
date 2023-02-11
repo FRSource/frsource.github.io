@@ -5,63 +5,82 @@ import { watch, computed } from "vue";
 import VPLink from "vitepress/dist/client/theme-default/components/VPLink.vue";
 import { members } from "../composables/members";
 
-const { page } = useData();
-const author = computed(() =>
-    members.find(({ id }) => id === page.value.frontmatter.author)
+const props = defineProps({
+    author: String,
+    onlyAvatar: Boolean,
+});
+
+const { localeIndex } = useData();
+
+const authorData = computed(() =>
+    members.find(({ id }) => id === props.author)
 );
 
 watch(
-    author,
-    () => {
-        if (!author)
-            throw new Error(
-                `Cannot find author with id: ${page.value.frontmatter.author}`
-            );
+    authorData,
+    (authorData) => {
+        if (!authorData)
+            throw new Error(`Cannot find author with id: ${props.author}`);
     },
     { immediate: true }
 );
 </script>
 
 <template>
-    <p class="author" v-if="author">
-        <VPLink href="/team">
+    <VPLink v-if="authorData" href="/team" class="author">
+        <span class="avatar">
             <img
-                class="avatar"
-                :src="author.avatar"
-                :alt="`Photo of ${author.name}`"
+                class="avatar__img"
+                :src="authorData.avatar"
+                :alt="
+                    localeIndex === 'root'
+                        ? `Photo of article author: ${authorData.name}`
+                        : `Na zdjęciu autor artykułu: ${authorData.name}`
+                "
             />
-            <span class="author__name">{{ author.name }}</span>
-        </VPLink>
-    </p>
+        </span>
+        <span class="author__name" v-if="onlyAvatar">{{
+            authorData.name
+        }}</span>
+    </VPLink>
 </template>
 
 <style scoped>
 .author {
+    display: inline-block;
     line-height: 24px;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--vp-c-brand);
-    transition: color 0.25s;
-}
-
-.author:hover {
-    color: var(--vp-c-brand-dark);
+    font-size: 10px;
+    background: var(--vp-c-black-soft);
 }
 
 .avatar {
     display: inline-block;
-    margin-right: 8px;
-    height: 32px;
     vertical-align: middle;
+    border-radius: 50%;
+    background: #fff;
+    transition: 0.2s background-color ease-in-out;
+}
+
+.avatar__img {
+    display: inline-block;
+    height: 40px;
+    vertical-align: middle;
+    mix-blend-mode: multiply;
 }
 
 .author__name {
     display: none;
+    opacity: 0.7;
+}
+
+:where(.author:active, .author:focus, .author:hover) .avatar {
+    background: var(--c-primary);
 }
 
 @media (min-width: 640px) {
     .author__name {
         display: inline;
+        margin-left: 8px;
     }
 }
 </style>

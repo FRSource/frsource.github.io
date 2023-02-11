@@ -1,4 +1,4 @@
-import "vitepress";
+import { DefaultTheme } from "vitepress";
 
 declare module "vitepress" {
     type Locales = {
@@ -17,8 +17,13 @@ declare module "vitepress" {
             keyof Locales,
             {
                 title: string;
+                author: string;
                 description: string;
+                image?: DefaultTheme.ThemeableImage;
+                srcPath: string;
                 path: string;
+                lastUpdated: number;
+                creationDate: number;
             }[]
         >;
         creationDate: number;

@@ -11,6 +11,7 @@ import path from "path";
 import matter from "gray-matter";
 import { getGitCreationTimestamp } from "./scripts/getGitCreationTimestamp";
 import { getGitTimestamp } from "./scripts/getGitTimestamp";
+import { members } from "./composables/members";
 
 type ArticleData = PageData["articles"]["root"][0];
 
@@ -18,13 +19,15 @@ const locales: LocaleConfig = {
     root: {
         lang: "en",
         label: "English",
-        title: "FRSPACE",
+        title: "",
+        titleTemplate: ":titleFRSPACE - Web, IT & robotics",
         description: "Web, IT, robotics & much more!",
     },
     pl: {
         lang: "pl",
         label: "Polski",
-        title: "FRSPACE",
+        title: "",
+        titleTemplate: ":titleFRSPACE - Web, IT i robotyka",
         description: "Web, IT, robotyka i znacznie więcej!",
         themeConfig: {
             nav: [
@@ -62,7 +65,6 @@ export default defineConfigWithTheme<
     DefaultTheme.Config & { locales: typeof locales; creationDateText: string }
 >({
     base: "/blog/",
-    titleTemplate: "FRSPACE blog",
     cleanUrls: true,
     lastUpdated: true,
     markdown: {
@@ -77,6 +79,14 @@ export default defineConfigWithTheme<
             "link",
             {
                 rel: "preconnect",
+                href: "https://fonts.googleapis.com",
+                crossorigin: "",
+            },
+        ],
+        [
+            "link",
+            {
+                rel: "preconnect",
                 href: "https://fonts.gstatic.com",
                 crossorigin: "",
             },
@@ -85,7 +95,7 @@ export default defineConfigWithTheme<
             "link",
             {
                 rel: "stylesheet",
-                href: "https://fonts.googleapis.com/css2?family=Inconsolata&display=swap",
+                href: "https://fonts.googleapis.com/css2?family=Figtree&family=Inconsolata:wght@400;700&display=swap",
             },
         ],
     ],
@@ -95,13 +105,13 @@ export default defineConfigWithTheme<
             //   '/post/': sidebarPost()
         },
         logo: {
-            light: "https://www.frsource.org/logo.svg",
-            dark: "https://www.frsource.org/logo-dark.svg",
-            alt: 'FRSOURCE logo - geometric, orange-blue-gradient-filled letter F and a small "FRS" subtext',
+            light: "/navbar-icon.svg",
+            dark: "/navbar-icon-dark.svg",
+            alt: 'FRSPACE logo - "FRS" text in a circle and stylized FRSPACE text next to it',
         },
         socialLinks: [
             { icon: "facebook", link: "https://facebook.com/FRSOURCE" },
-            { icon: "github", link: "https://github.com/FRSource" },
+            { icon: "github", link: "https://github.com/FRSOURCE" },
             { icon: "twitter", link: "https://twitter.com/frsource1" },
             { icon: "instagram", link: "https://www.instagram.com/frsource/" },
             {
@@ -141,7 +151,6 @@ export default defineConfigWithTheme<
         },
     },
     async transformPageData(pageData) {
-        pageData.articles = await getAllLangsArticlesData();
         if (pageData.frontmatter?.type === "article") {
             // it's an article
             pageData.lastUpdated = await getGitTimestamp(
@@ -152,6 +161,8 @@ export default defineConfigWithTheme<
                 pageData.frontmatter.srcPath,
                 { cwd: __dirname }
             );
+        } else {
+            pageData.articles = await getAllLangsArticlesData();
         }
     },
 });
@@ -219,11 +230,27 @@ async function getArticlesData(lang?: string) {
                     console.error(
                         `Every post must contain title and description in frontmatter (title might be written as a main article markdown heading), post "${path}" does not!`
                     );
+                if (
+                    !data.author ||
+                    !members.some(({ id }) => id === data.author)
+                )
+                    console.error(
+                        `Post "${path}" is missing a valid author id in frontmatter data,!`
+                    );
 
                 return {
                     title,
+                    author: data.author,
                     description: data.description as string,
+                    image: data.image,
+                    srcPath: data.srcPath,
                     path: filepath.replace(/index\.md$/, ""),
+                    lastUpdated: await getGitTimestamp(data.srcPath, {
+                        cwd: __dirname,
+                    }),
+                    creationDate: await getGitCreationTimestamp(data.srcPath, {
+                        cwd: __dirname,
+                    }),
                 };
             })
     );

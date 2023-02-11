@@ -28,16 +28,8 @@ onMounted(() => {
 <style scoped>
 .creation-date {
     line-height: 24px;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 10px;
     color: var(--vp-c-text-2);
-}
-
-@media (min-width: 640px) {
-    .creation-date {
-        line-height: 32px;
-        font-size: 14px;
-        font-weight: 500;
-    }
+    opacity: 0.7;
 }
 </style>
