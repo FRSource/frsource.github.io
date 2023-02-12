@@ -1,16 +1,18 @@
 :root {
-    --vp-c-bg: #242629;
-    --vp-c-bg-soft: #1E1E1E;
-    --vp-c-bg-soft-up: #242629;
+    --vp-c-bg: #EFEFEF;
+    --vp-c-bg-soft: #fff;
+    --vp-c-bg-soft-up: #fff;
+    --vp-nav-bg-color: rgb(239 239 239 / 30%);
+    --vp-c-black-soft: #fff;
+    --vs-c-text-1: #000B1C;
+
     --vp-c-gutter: transparent;
-    --vp-nav-bg-color: rgb(36 38 41 / 30%);
 
     --vp-c-brand: #f35e48;
     --vp-c-brand-light: #f07b6a;
     --vp-c-brand-lighter: #e8978b;
     --vp-c-brand-dark: #d2503d;
     --vp-c-brand-darker: #642017;
-    --vp-c-black-soft: #1E1E1E;
 
     --c-primary: #F15F4D;
     --c-secondary: #4CBD94;
@@ -22,6 +24,15 @@
     --font-family-secondary: Inconsolata, "Ubuntu Mono", "Trebuchet MS", Tahoma, monospace;
 
     --layout-horizontal-spacing: 24px;
+}
+
+:root.dark {
+    --vp-c-bg: #242629;
+    --vp-c-bg-soft: #1E1E1E;
+    --vp-c-bg-soft-up: #242629;
+    --vp-nav-bg-color: rgb(36 38 41 / 30%);
+    --vp-c-black-soft: #000;
+    --vs-c-text-1: #fff;
 }
 
 .font-secondary {

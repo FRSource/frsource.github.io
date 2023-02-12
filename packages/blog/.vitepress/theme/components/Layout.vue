@@ -126,7 +126,6 @@ const headerArray = computed(
 .section-title {
     padding: 0 0 20px 20px;
     text-transform: uppercase;
-    color: #fff;
 }
 
 .header-info {

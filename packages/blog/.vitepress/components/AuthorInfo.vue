@@ -27,7 +27,16 @@ watch(
 </script>
 
 <template>
-    <VPLink v-if="authorData" href="/team" class="author">
+    <VPLink
+        v-if="authorData"
+        href="/team"
+        class="author"
+        :title="
+            localeIndex === 'root'
+                ? `Read more about the author: ${authorData.name}`
+                : `Dowiedz się więcej nt. autora artykułu: ${authorData.name}`
+        "
+    >
         <span class="avatar">
             <img
                 class="avatar__img"
@@ -52,7 +61,6 @@ watch(
     display: inline-block;
     line-height: 24px;
     font-size: 10px;
-    background: var(--vp-c-bg);
 }
 
 .avatar {

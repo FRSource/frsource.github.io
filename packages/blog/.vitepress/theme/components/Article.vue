@@ -78,6 +78,7 @@ onMounted(() => {
     background: var(--vp-c-black-soft);
     box-shadow: 0 0 0 2px transparent;
     transition: 0.2s box-shadow ease-in-out;
+    transition-property: box-shadow, background;
 }
 
 .article--with-img .article__content {
@@ -92,7 +93,6 @@ onMounted(() => {
 .author {
     position: relative;
     z-index: 1;
-    background: var(--vp-c-black-soft);
 }
 
 .info-box {
@@ -122,7 +122,6 @@ onMounted(() => {
 .title {
     margin-top: 10px;
     font-size: 18px;
-    color: #fff;
     font-weight: 700;
 }
 
@@ -148,6 +147,7 @@ onMounted(() => {
 
 :where(.article__link:active, .article__link:hover, .article__link:focus)
     + .article__inner {
+    background: none;
     box-shadow: 0 0 0 2px #1464eb;
 }
 
