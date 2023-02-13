@@ -27,7 +27,7 @@ const members = computed(() => [
             siPatreon.svg.replace("<svg ", '<svg style="fill:#FF424D" ')
         ),
         name: "Patreon",
-        title: props.patreonDesc,
+        desc: props.patreonDesc,
         sponsor: "https://www.patreon.com/frsource",
     },
     {
@@ -35,7 +35,7 @@ const members = computed(() => [
             siGithubsponsors.svg.replace("<svg ", '<svg style="fill:#EA4AAA" ')
         ),
         name: "Github Sponsors",
-        title: props.githubDesc,
+        desc: props.githubDesc,
         sponsor: "https://github.com/sponsors/FRSOURCE/",
     },
     {
@@ -43,7 +43,7 @@ const members = computed(() => [
             siBuymeacoffee.svg.replace("<svg ", '<svg style="fill:#FFDD00" ')
         ),
         name: "Buy me a coffee",
-        title: props.buyMeACoffeeDesc,
+        desc: props.buyMeACoffeeDesc,
         sponsor: "https://www.buymeacoffee.com/FRSOURCE",
     },
 ]);

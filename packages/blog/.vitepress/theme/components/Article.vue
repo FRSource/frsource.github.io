@@ -12,8 +12,9 @@ export type ArticleProps = {
 
 <script setup lang="ts">
 import type { DefaultTheme } from "vitepress/theme";
-import VPLink from "vitepress/dist/client/theme-default/components/VPLink.vue";
 import VPImage from "vitepress/dist/client/theme-default/components/VPImage.vue";
+import Tile from "./Tile.vue";
+import TileTextContent from "./TileTextContent.vue";
 import AuthorInfo from "../../components/AuthorInfo.vue";
 import { computed, onMounted, ref, watchEffect } from "vue";
 
@@ -36,51 +37,31 @@ onMounted(() => {
 </script>
 
 <template>
-    <article class="article" :class="{ 'article--with-img': image }">
-        <VPLink
-            class="article__link"
-            :href="link"
-            no-icon
-            :title="`${linkText}: ${title}`"
-        />
-        <div class="article__inner">
-            <div class="article__content">
-                <div class="info-box">
-                    <AuthorInfo
-                        class="autor"
-                        :author="author"
-                        :only-avatar="!image"
-                    />
-                    <time class="creation-date" :datetime="isoDatetime">{{
-                        datetime
-                    }}</time>
-                </div>
-                <h4 class="title font-secondary" v-text="title" />
-                <p class="desc" v-text="description" />
-                <p v-if="linkText" class="link-text c-secondary font-secondary">
-                    {{ linkText }}&nbsp;&gt;
-                </p>
+    <Tile
+        v-bind="$props"
+        tag="article"
+        class="article"
+        :class="{ 'article--with-img': image }"
+    >
+        <div class="article__content">
+            <div class="info-box">
+                <AuthorInfo :author="author" :only-avatar="!image" />
+                <time class="creation-date" :datetime="isoDatetime">{{
+                    datetime
+                }}</time>
             </div>
-            <div class="img" v-if="image"><VPImage :image="image" /></div>
+            <TileTextContent
+                :title="title"
+                :description="description"
+                :link-text="linkText"
+                title-tag="h4"
+            />
         </div>
-    </article>
+        <div class="img" v-if="image"><VPImage :image="image" /></div>
+    </Tile>
 </template>
 
 <style scoped>
-.article {
-    position: relative;
-}
-
-.article__inner {
-    display: flex;
-    flex-flow: column-reverse;
-    height: 100%;
-    background: var(--vp-c-black-soft);
-    box-shadow: 0 0 0 2px transparent;
-    transition: 0.2s box-shadow ease-in-out;
-    transition-property: box-shadow, background;
-}
-
 .article--with-img .article__content {
     padding-right: 32px;
     flex-basis: 50%;
@@ -90,15 +71,15 @@ onMounted(() => {
     padding: 20px;
 }
 
-.author {
-    position: relative;
-    z-index: 1;
-}
-
 .info-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.author {
+    position: relative;
+    z-index: 1;
 }
 
 .creation-date {
@@ -119,45 +100,9 @@ onMounted(() => {
     object-fit: cover;
 }
 
-.title {
-    margin-top: 10px;
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.desc {
-    margin-top: 16px;
-    font-size: 14px;
-    line-height: 18px;
-    opacity: 0.6;
-}
-
-.link-text {
-    margin-top: 22px;
-    font-size: 14px;
-    line-height: 15px;
-    text-transform: uppercase;
-}
-
-.article__link {
-    z-index: 1;
-    position: absolute;
-    inset: 0;
-}
-
-:where(.article__link:active, .article__link:hover, .article__link:focus)
-    + .article__inner {
-    background: none;
-    box-shadow: 0 0 0 2px #1464eb;
-}
-
 @media (min-width: 542px) {
     .article--with-img {
         grid-column-end: span 2;
-    }
-
-    .article__inner {
-        flex-flow: row;
     }
 
     .img {
