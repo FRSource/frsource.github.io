@@ -110,6 +110,37 @@
     opacity: 0.6;
 }
 
+.VPDoc .header-info {
+    margin-bottom: 10px!important;
+}
+
+.VPLastUpdated {
+    font-size: 10px!important;
+}
+
+.vp-doc :is(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--font-family-secondary);
+    font-weight: 300;
+}
+
+.vp-doc h1 {
+    margin-top: .8em;
+    margin-bottom: 1em;
+    font-size: 36px!important;
+    line-height:40px;
+}
+
+.VPDocFooter .edit-link-button {
+    --vp-c-brand: var(--c-secondary);
+    --vp-c-brand-dark: var(--c-secondary);
+    text-transform: uppercase;
+    transition: .2s opacity ease-in-out!important;
+}
+
+.VPDocFooter .edit-link-button:is(:hover,:focus,:active) {
+    opacity: .7;
+}
+
 /** dark **/
 :root.dark {
     --vp-c-bg: #242629;
@@ -129,6 +160,11 @@
 @media (min-width: 640px) {
     :root {
         --layout-horizontal-spacing: 48px;
+    }
+
+    .vp-doc h1 {
+        font-size: 42px!important;
+        line-height:46px;
     }
 }
 

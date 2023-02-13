@@ -87,9 +87,9 @@ const headerArray = computed(
 
         <template #doc-before>
             <div class="header-info">
+                <AuthorInfo :author="page.frontmatter.author" />
                 <!-- <CreationDate /> -->
                 <VPDocFooterLastUpdated />
-                <div><AuthorInfo :author="page.frontmatter.author" /></div>
             </div>
         </template>
     </Layout>
