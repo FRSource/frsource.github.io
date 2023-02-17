@@ -95,7 +95,7 @@ export default defineConfigWithTheme<
             "link",
             {
                 rel: "stylesheet",
-                href: "https://fonts.googleapis.com/css2?family=Figtree&family=Inconsolata:wght@400;700&display=swap",
+                href: "https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap",
             },
         ],
     ],
