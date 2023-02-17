@@ -66,8 +66,7 @@ defineProps({
     inset: 0;
 }
 
-:where(.tile__link:active, .tile__link:hover, .tile__link:focus)
-    + .tile__inner {
+.tile__link:where(:active, :hover, :focus) + .tile__inner {
     background: none;
     box-shadow: 0 0 0 2px #1464eb;
 }

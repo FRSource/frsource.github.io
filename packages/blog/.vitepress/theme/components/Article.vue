@@ -91,6 +91,8 @@ onMounted(() => {
     position: relative;
     overflow: hidden;
     height: 200px;
+    background: #fff;
+    transition: 0.2s background-color ease-in-out;
 }
 
 .article :deep(.VPImage) {
@@ -98,6 +100,11 @@ onMounted(() => {
     width: 100%;
     max-width: none;
     object-fit: cover;
+    mix-blend-mode: multiply;
+}
+
+.article :deep(.tile__link):where(:active, :hover, :focus) + .tile__inner .img {
+    background: var(--c-primary);
 }
 
 @media (min-width: 542px) {
