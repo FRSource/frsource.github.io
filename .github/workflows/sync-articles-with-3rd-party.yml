@@ -1,0 +1,23 @@
+name: Deploy
+on: workflow_dispatch
+jobs:
+  sync-articles-with-3rd-party:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2.2.4
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          cache: 'pnpm'
+      - run: pnpm i
+      - name: sync articles
+        run: cd packages/blog && pnpm sync-posts --sync-with-medium
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore: add updated articles after sync [no ci]"
+          file_pattern: 'packages/blog/.vitepress/*'
+          disable_globbing: true
+
