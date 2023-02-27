@@ -69,6 +69,7 @@ onMounted(() => {
 
 .article__content {
     padding: 20px;
+    width: 100%;
 }
 
 .info-box {
