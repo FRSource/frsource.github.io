@@ -119,11 +119,11 @@ const headerArray = computed(
     padding-bottom: 48px;
     align-items: center;
     gap: 15%;
-    text-align: center;
 }
 
 .hero__text-wrapper {
     flex-shrink: 0;
+    align-self: flex-start;
 }
 
 .hero__text {
@@ -184,6 +184,10 @@ const headerArray = computed(
         gap: 0;
         flex-flow: row;
         text-align: left;
+    }
+
+    .hero__text-wrapper {
+        align-self: auto;
     }
 
     .hero__text {

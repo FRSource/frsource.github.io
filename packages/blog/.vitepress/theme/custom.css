@@ -79,6 +79,7 @@
     color: rgba(2 11 26 / 20%);
     border-top: thin solid ;
     padding: 20px 0;
+    text-align: left;
 }
 
 .items .item .VPFeature.link:hover {
