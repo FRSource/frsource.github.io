@@ -6,7 +6,7 @@ frs_hero:
     text: Web, IT i robotyka
     tagline: ""
     image:
-        alt: logo FRSOURCE
+        alt: logo FRSPACE
 
 showNewestArticles: true
 ---
