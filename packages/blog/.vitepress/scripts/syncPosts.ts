@@ -4,18 +4,12 @@ import fsExtra from "fs-extra";
 import chokidar from "chokidar";
 import commandLineArgs from "command-line-args";
 import { memoize } from "lodash";
-import {
-    diff,
-    addedDiff,
-    deletedDiff,
-    updatedDiff,
-    detailedDiff,
-} from "deep-object-diff";
+import { publish as mediumPublish } from "./syncToMedium";
 
-const SYNCED_FILES_PATH = path.join(__dirname, ".synced-posts");
 const LOCALES = ["en", "pl"];
 const DEFAULT_LOCALE = LOCALES[0];
 const DEFAULT_LOCALE_DIR = "";
+const IGNORED_POST_FILES = [".DS_Store"];
 
 const memoizedPostDestinationPath = memoize(postDestinationPath);
 
@@ -33,8 +27,18 @@ const watcher = chokidar
     .on("ready", async () => {
         await clearPosts();
         const filesToSync = await filterOutDirs(watcher.getWatched());
-        console.log("ready", filesToSync);
-        await copyPosts(filesToSync);
+        const syncedPosts = await copyPosts(filesToSync);
+        if (args["sync-with-medium"]) {
+            await Promise.all(
+                syncedPosts.map((post) => {
+                    if (post?.locale !== "en") return;
+                    return mediumPublish({
+                        srcDirPath: post.src,
+                        postname: post.postname,
+                    });
+                })
+            );
+        }
         if (!args.watch) await watcher.close();
     })
     .on("all", (event, filepath, stats) => {
@@ -70,21 +74,25 @@ function parsePostPath(srcPostPath: string) {
         "i"
     );
     const [, postname, locale, rest = ""] = srcPostPath.match(regex);
-
     return { postname, locale, rest };
 }
 
 async function copyPosts(postsToCopy: Record<string, string[]>) {
-    await Promise.all(
-        Object.keys(postsToCopy).map((dirPath) =>
-            Promise.all(
-                postsToCopy[dirPath].map((filename) =>
-                    filename === "index.md"
-                        ? copyPostFile(path.join(dirPath, filename))
-                        : copyPostAsset(path.join(dirPath, filename))
-                )
-            )
-        )
+    return await Promise.all(
+        Object.keys(postsToCopy).map(async (postSrcDir, i) => {
+            return {
+                src: withCwd(postSrcDir),
+                dest: memoizedPostDestinationPath(postSrcDir),
+                ...parsePostPath(postSrcDir),
+                files: await Promise.all(
+                    postsToCopy[postSrcDir].map((filename) =>
+                        filename === "index.md"
+                            ? copyPostFile(path.join(postSrcDir, filename))
+                            : copyPostAsset(path.join(postSrcDir, filename))
+                    )
+                ),
+            };
+        })
     );
 }
 
@@ -92,32 +100,39 @@ async function copyPostFile(srcFilepath: string) {
     const srcContent = await fsExtra.readFile(
         withCwd(path.dirname(srcFilepath), path.basename(srcFilepath))
     );
-    return fsExtra.outputFile(
-        memoizedPostDestinationPath(srcFilepath),
+    const dest = memoizedPostDestinationPath(srcFilepath);
+    await fsExtra.outputFile(
+        dest,
         srcContent
             .toString()
-            .replace("---", `---\ntype: article\nsrcPath: "${srcFilepath}"`)
+            .replace(
+                "---",
+                `---\ntype: article\nsrcPath: "${path.dirname(srcFilepath)}"`
+            )
     );
+    return dest;
 }
 
 async function copyPostAsset(srcFilepath: string) {
-    return fsExtra.copy(
+    const dest = memoizedPostDestinationPath(srcFilepath, true);
+    await fsExtra.copy(
         withCwd(path.dirname(srcFilepath), path.basename(srcFilepath)),
         memoizedPostDestinationPath(srcFilepath, true),
-        { overwrite: true, recursive: true }
+        { overwrite: true }
     );
+    return dest;
 }
 
 function postDestinationPath(srcFilepath: string, isAsset?: boolean) {
     const { locale, postname, rest } = parsePostPath(srcFilepath);
-    return withCwd(
-        "..",
-        isAsset ? "public" : "",
-        locale === DEFAULT_LOCALE ? DEFAULT_LOCALE_DIR : locale,
-        "post",
-        postname,
-        rest
-    );
+    const pathParts = isAsset
+        ? [
+              "public",
+              "post",
+              locale === DEFAULT_LOCALE ? DEFAULT_LOCALE_DIR : locale,
+          ]
+        : [locale === DEFAULT_LOCALE ? DEFAULT_LOCALE_DIR : locale, "post"];
+    return withCwd("..", ...pathParts, postname, rest);
 }
 
 async function clearPosts() {
@@ -134,10 +149,6 @@ async function clearPosts() {
     );
 }
 
-async function readSyncedFiles() {
-    return JSON.parse((await fs.readFile(SYNCED_FILES_PATH)).toString());
-}
-
 async function filterOutDirs(fileTree: Record<string, string[]>) {
     const fileTreeCopy = {};
     await Promise.all(
@@ -145,7 +156,10 @@ async function filterOutDirs(fileTree: Record<string, string[]>) {
             fileTreeCopy[dirPath] = [];
             await Promise.all(
                 fileTree[dirPath].map(async (pathname) => {
-                    if (await isFile(withCwd(dirPath, pathname)))
+                    if (
+                        (await isFile(withCwd(dirPath, pathname))) &&
+                        !IGNORED_POST_FILES.includes(path.basename(pathname))
+                    )
                         fileTreeCopy[dirPath].push(pathname);
                 })
             );

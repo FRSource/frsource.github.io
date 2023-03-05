@@ -9,9 +9,9 @@ import {
 import { promises as fs } from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { parsePostMarkdown } from "./scripts/posts.utils";
 import { getGitCreationTimestamp } from "./scripts/getGitCreationTimestamp";
 import { getGitTimestamp } from "./scripts/getGitTimestamp";
-import { members } from "./composables/members";
 
 type ArticleData = PageData["articles"]["root"][0];
 
@@ -212,46 +212,17 @@ async function getArticlesData(lang?: string) {
         withFileTypes: true,
     });
 
-    return Promise.all(
-        articles
-            .filter((fileOrDir) => fileOrDir.isDirectory())
-            .map<Promise<ArticleData>>(async ({ name: article }) => {
-                const file = matter.read(
-                    path.join(lang || "", "post", article, "/index.md")
-                );
-
-                const { data, path: filepath } = file as typeof file & {
-                    path: string;
-                };
-                const title: string =
-                    data.title || file.content.match(/# (.+)/)[1];
-
-                if (!title || !data.description)
-                    console.error(
-                        `Every post must contain title and description in frontmatter (title might be written as a main article markdown heading), post "${path}" does not!`
-                    );
-                if (
-                    !data.author ||
-                    !members.some(({ id }) => id === data.author)
-                )
-                    console.error(
-                        `Post "${path}" is missing a valid author id in frontmatter data,!`
+    return (
+        await Promise.all(
+            articles
+                .filter((fileOrDir) => fileOrDir.isDirectory())
+                .map<Promise<ArticleData | void>>(async ({ name: article }) => {
+                    const file = matter.read(
+                        path.join(lang || "", "post", article, "/index.md")
                     );
 
-                return {
-                    title,
-                    author: data.author,
-                    description: data.description as string,
-                    image: data.image,
-                    srcPath: data.srcPath,
-                    path: filepath.replace(/index\.md$/, ""),
-                    lastUpdated: await getGitTimestamp(data.srcPath, {
-                        cwd: __dirname,
-                    }),
-                    creationDate: await getGitCreationTimestamp(data.srcPath, {
-                        cwd: __dirname,
-                    }),
-                };
-            })
-    );
+                    return await parsePostMarkdown(file);
+                })
+        )
+    ).filter((article): article is ArticleData => !!article);
 }

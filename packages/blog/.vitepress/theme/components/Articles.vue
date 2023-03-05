@@ -15,7 +15,9 @@ defineProps({
                 v-for="(article, i) in articles"
                 :key="article.title"
                 v-bind="article"
-                :image="i % 4 === 0 ? article.image : undefined"
+                :image="
+                    article.image && i % 4 === 0 ? article.image : undefined
+                "
             />
         </div>
     </section>
