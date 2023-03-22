@@ -29,7 +29,7 @@
         "cli-real-favicon": "0.0.8",
         "parcel": "2.8.3",
         "prettier": "2.8.1",
-        "rimraf": "4.1.2",
+        "rimraf": "4.4.1",
         "sass": "1.58.2",
         "typescript": "4.9.5"
     },
