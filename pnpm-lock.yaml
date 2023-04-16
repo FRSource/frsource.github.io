@@ -4,12 +4,12 @@ importers:
 
   .:
     specifiers:
-      concurrently: ^7.6.0
+      concurrently: ^8.0.0
       husky: ^8.0.3
       lint-staged: ^13.1.2
       serve: ^14.2.0
     devDependencies:
-      concurrently: 7.6.0
+      concurrently: 8.0.1
       husky: 8.0.3
       lint-staged: 13.1.2
       serve: 14.2.0
@@ -26,7 +26,7 @@ importers:
       '@types/sharp': ^0.31.1
       chokidar: 3.5.3
       command-line-args: 5.2.1
-      concurrently: 7.6.0
+      concurrently: 8.0.1
       cpy-cli: 4.2.0
       cross-spawn: 7.0.3
       fs-extra: 11.1.1
@@ -52,7 +52,7 @@ importers:
       '@types/sharp': 0.31.1
       chokidar: 3.5.3
       command-line-args: 5.2.1
-      concurrently: 7.6.0
+      concurrently: 8.0.1
       cpy-cli: 4.2.0
       cross-spawn: 7.0.3
       fs-extra: 11.1.1
@@ -2332,9 +2332,9 @@ packages:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
     dev: true
 
-  /concurrently/7.6.0:
-    resolution: {integrity: sha512-BKtRgvcJGeZ4XttiDiNcFiRlxoAeZOseqUvyYRUp/Vtd+9p1ULmeoSqGsDA+2ivdeDFpqrJvGvmI+StKfKl5hw==}
-    engines: {node: ^12.20.0 || ^14.13.0 || >=16.0.0}
+  /concurrently/8.0.1:
+    resolution: {integrity: sha512-Sh8bGQMEL0TAmAm2meAXMjcASHZa7V0xXQVDBLknCPa9TPtkY9yYs+0cnGGgfdkW0SV1Mlg+hVGfXcoI8d3MJA==}
+    engines: {node: ^14.13.0 || >=16.0.0}
     hasBin: true
     dependencies:
       chalk: 4.1.2
@@ -2345,7 +2345,7 @@ packages:
       spawn-command: 0.0.2-1
       supports-color: 8.1.1
       tree-kill: 1.2.2
-      yargs: 17.7.0
+      yargs: 17.7.1
     dev: true
 
   /content-disposition/0.5.2:
@@ -4991,8 +4991,8 @@ packages:
       yargs-parser: 21.1.1
     dev: true
 
-  /yargs/17.7.0:
-    resolution: {integrity: sha512-dwqOPg5trmrre9+v8SUo2q/hAwyKoVfu8OC1xPHKJGNdxAvPl4sKxL4vBnh3bQz/ZvvGAFeA5H3ou2kcOY8sQQ==}
+  /yargs/17.7.1:
+    resolution: {integrity: sha512-cwiTb08Xuv5fqF4AovYacTFNxk62th7LKJ6BL9IGUpTJrWoU7/7WdQGTP2SjKf1dUNBGzDd28p/Yfs/GI6JrLw==}
     engines: {node: '>=12'}
     dependencies:
       cliui: 8.0.1
