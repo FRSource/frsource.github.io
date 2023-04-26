@@ -56,10 +56,10 @@ export const parsePostMarkdown = async (
               srcPath: data.srcPath,
               path: filepath.replace(/index\.md$/, ""),
               lastUpdated: await getGitTimestamp(data.srcPath, {
-                  cwd: path.resolve("..", __dirname),
+                  cwd: path.resolve(__dirname, ".."),
               }),
               creationDate: await getGitCreationTimestamp(data.srcPath, {
-                  cwd: path.resolve("..", __dirname),
+                  cwd: path.resolve(__dirname, ".."),
               }),
           };
 };
