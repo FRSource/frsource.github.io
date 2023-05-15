@@ -6,7 +6,7 @@ head:
         content: tutorial, Vue, generics, typescript, type-safety
 image:
     src: /post/welcome-generics-in-vue/splash.webp
-    alt: Generics in Vue
+    alt: Vue logo with "Generics" text on blurry, brownish, rain-style background
 author: frs
 ---
 

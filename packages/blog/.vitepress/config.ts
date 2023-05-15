@@ -166,6 +166,43 @@ export default defineConfigWithTheme<
             pageData.articles = await getAllLangsArticlesData();
         }
     },
+    async transformHead(context) {
+        if (
+            context?.pageData.frontmatter?.type === "article" &&
+            context?.pageData.frontmatter.image
+        ) {
+            return [
+                [
+                    "meta",
+                    { property: "og:title", content: context?.pageData.title },
+                ],
+                [
+                    "meta",
+                    {
+                        property: "og:title",
+                        content: context?.pageData.description,
+                    },
+                ],
+                ["meta", { property: "og:type", content: "article" }],
+                [
+                    "meta",
+                    {
+                        property: "og:image",
+                        content:
+                            "https://www.frsource.org/blog" +
+                            context?.pageData.frontmatter.image.src,
+                    },
+                ],
+                [
+                    "meta",
+                    {
+                        property: "og:image:alt",
+                        content: context?.pageData.frontmatter.image.alt,
+                    },
+                ],
+            ];
+        }
+    },
 });
 
 function sidebarPost() {

@@ -6,7 +6,7 @@ head:
         content: poradnik, tutorial, Vue, generyki, typescript, typy
 image:
     src: /post/welcome-generics-in-vue/splash.webp
-    alt: Generics in Vue
+    alt: Logo Vue z napisem "Generics" na rozmytym, brązowanym tle pokrytym kroplami deszczu
 author: frs
 ---
 
