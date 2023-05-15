@@ -1,13 +1,16 @@
 ---
-description: Vue 3.3 has been just released 💚 And alongside other features and improvements, it includes a new compiler feature that I have been eagerly waiting on - generics support!
+description: "Vue 3.3 has been just released \U0001F49A And alongside other features and improvements, it includes a new compiler feature that I have been eagerly waiting on - generics support!"
 head:
     - - meta
       - name: keywords
-        content: tutorial, Vue, generics, typescript, type-safety
+        content: "tutorial, Vue, generics, typescript, type-safety"
 image:
     src: /post/welcome-generics-in-vue/splash.webp
-    alt: Vue logo with "Generics" text on blurry, brownish, rain-style background
+    alt: 'Vue logo with "Generics" text on blurry, brownish, rain-style background'
 author: frs
+syncDateMedium: 1684126658000
+syncedIdMedium: 1c01cc3da0fa
+syncedUrlMedium: "https://medium.com/@kubafreisler/welcome-generics-in-vue-1c01cc3da0fa"
 ---
 
 # Welcome generics in Vue
