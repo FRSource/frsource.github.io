@@ -12,15 +12,15 @@ author: frs
 
 # Powitajmy generyki w Vue
 
-Vue 3.3 został właśnie opublikowany 💚 Poza innymi usprawnieniami, znajdziemy w nim nową funkcjonalność kompilatora na którą bardzo czekałem - wsparcie dla [**generyków w komponentach**](https://vuejs.org/api/sfc-script-setup.html#generics)! Typy generyczne pozwalają na zbudowanie znacznie bardziej elastycznych i reużywalnych komponentów w Vue.js poprzez ułatwienie dodawania **dynamcznych typów do slotów i event emitterów**.
+Vue 3.3 został właśnie opublikowany 💚 Poza innymi usprawnieniami, znajdziemy w nim nową funkcjonalność kompilatora na którą bardzo czekałem - wsparcie dla [**generyków w komponentach**](https://vuejs.org/api/sfc-script-setup.html#generics)! Typy generyczne pozwalają na zbudowanie znacznie bardziej elastycznych i reużywalnych komponentów poprzez umożliwienie definiowania **dynamicznych typów do slotów i event emitterów**.
 
 ## Generyki w TypeSscript
 
-Statyczne typowanie w TypeScipt (TS) pozwala odkryć błędy na wcześniejszych etapach wytwarzania kodu. Deweloperzy mogą używać wielu narzędzi dostarczanych przez TypeScript by wyrazić interfejsy swoich komponentów, komposabli, serwisó∑ i innych części składowych aplikacji. Generyki są kluczową funkcjonalnością TypeScript i pozwalają na definiowanie typów lub funkcji, które mogą poprawnie wspierać zróżnicowane typy danych bez poświęcania type safety.
+Statyczne typowanie w TypeScipt (TS) pozwala odkryć błędy na wcześniejszych etapach wytwarzania kodu. Deweloperzy mogą używać wielu narzędzi dostarczanych przez TypeScript by wyrazić interfejsy swoich komponentów, komposabli, serwisów i innych części składowych aplikacji. Generyki są kluczową funkcjonalnością TypeScript i pozwalają na definiowanie typów lub funkcji, które mogą poprawnie wspierać zróżnicowane typy danych bez poświęcania type safety.
 
 ### Generyki w akcji - funkcja tablicowa filterEven
 
-Zastanówmy się nad prostym przykładem funkcji `filterEven`, które jako wejście przyjmuje tablicę i zwracą nową tablicę z odfiltrowanymi elementami znajdującymi się na nieparzystych miejscach:
+Zastanówmy się nad prostym przykładem funkcji `filterEven`, które jako wejście przyjmuje tablicę i zwracą nową tablicę z odfiltrowanymi elementami o nieparzystych indeksach:
 
 ```ts
 export const filterEven = (array: unknown[]) =>
@@ -32,25 +32,25 @@ Mimo tego, iż ta funkcja działa w prostych przypadkach zawiera ona znaczący b
 ![Tablica zwracana przez funkcję "filterEven" jest otypowana jako "unknown[]"](/post/welcome-generics-in-vue/example1-issue.webp)
 [Zobacz w środowisku online](https://www.typescriptlang.org/play?#code/MYewdgzgLgBAZgSwDZQKYCcCiA3VYYC8MAFAIbrqkCeAXDAK5gDWYIA7mANoC6AlIQD4Y5SlQB0iFBmLEA+gBoYCMABNUAD34EhytepgBSGACZeAbgBQF0JFgBbKgEEK1OgG8YNtGCh1o6ZQBzGABfHkIYTg8vPF8YAHIIEDtUKAALIPjQxWjwbzj40jAqdMzQ7ksrG2h4ZDR0VBVnUQjJepw8Ygdm6nMLIA).
 
-Takie zachowanie jest oczekiwane patrząc z perspektywy TypeScripta, ponieważ wejście jest opisane typem `unknown[]` w deklaracji funkcji `filterEven`. Jeśli weźmiemy pod uwagę fakt, że celem ten funkcji jest przyjędzie tablicy wejściowe i zwrócenie jej odfiltrowanej wersji, TS poprawnie zakłada, że jej typ nie zmieni się w między czasie.
+Takie zachowanie jest oczekiwane patrząc z perspektywy TypeScripta, ponieważ w deklaracji funkcji `filterEven` argument wejściowy opisany jest typem `unknown[]`. Celem tej funkcji jest przyjęcie tablicy wejściowej i zwrócenie jej odfiltrowanej wersji. Patrząc z tej perspektywy TS poprawnie zakłada, że typ tablicy nie zmieni się w trakcie wykonywania funkcji `filterEven`.
 
-Niestety, nie chcieliśmy, by funkcja zachowywała się w ten sposób. Nie za każdym razem powinna być zwracana tablica o typie `unknown[]` - typ zwracany powinien być zawsze taki sam jak typ tablicy wejściowej. Aby osiągnąć taki cel, możemy użyć generyków.
+Niestety, my nie chcemy, by funkcja zachowywała się w ten sposób. Nie za każdym razem powinna być zwracana tablica o typie `unknown[]` - typ zwracany powinien być zawsze taki sam jak typ tablicy wejściowej. Aby osiągnąć ten cel, powinniśmy użyć generyków.
 
-Zamiast bezpośrednio określać typ argumentu wejściowego jako `unknown[]` możemy zdeklarować go jako jakikolwiek typ, który rozszerza (tzn. jest zbudowany mając jako podstawę) `unknown[]`.
+Zamiast bezpośrednio określać typ argumentu wejściowego jako `unknown[]` możemy zdeklarować go jako jakikolwiek typ, który rozszerza (tzn. jest zbudowany mając jako podstawę) `unknown[]`:
 
 ```ts
 export const filterEven = <Array extends unknown[]>(array: Array) =>
     array.filter((_, index) => index % 2);
 ```
 
-Dzięki takiemu podejściu TypeScript ma szanse na inferencję typu tablicy wejściowej, przypisanie go do generyka `Array`, a następnie użycie do otypowania tablicy wyjściowej:
+Dzięki takiemu podejściu TypeScript ma szanse na inferencję typu tablicy wejściowej i przypisanie go do generyka `Array`. Następnie, typ zapisany w generyku użyty zostaje do otypowania tablicy wyjściowej:
 
 ![Tablica zwracana przez funckje "filterEven" jest już otypowana dokładnie takim samym typem jak tablica wejściowa](/post/welcome-generics-in-vue/example3-output.webp)
 [Zobacz to w środowisku online](https://www.typescriptlang.org/play?#code/MYewdgzgLgBAZgSwDZQKYCcCiA3VYYC8MAPAILroCGAnjKgB5pgAmEMArmANZggDuYANoBdAHwAKShRoAuGOSrUAlIVEwpigHSIUGceID6AGhgIWDFQTVnmDGAFIYAJiUBuAFDvQkWAFtqCrIwAN4w3kxQctDoZgDmMAC+IoQwgqHheJEwAOQQIL6oUAAWcdmJJungEXLZlGDUxaWJwh6ent7Q8Mho6KjMgbREOj04eOL+A27uQA).
 
 Voila, teraz wszystko działa jak chcieliśmy - tablica zwracana przez funkcję `filterEven` ma odpowiedni typ! 🎉
 
-> Jeśli dalej nie rozumiesz jak działają generyki nie poddawaj się! Spojrzenie na [oficjalny poradnik](https://www.typescriptlang.org/docs/handbook/2/generics.html) na ten temat może Ci pomóc.
+> Jeśli dalej nie rozumiesz jak działają generyki nie poddawaj się! Spojrzenie na [oficjalny poradnik](https://www.typescriptlang.org/docs/handbook/2/generics.html) opisujący ten temat może Ci pomóc.
 
 ## Składnia generyków w Vue Single-File Components (SFC)
 
