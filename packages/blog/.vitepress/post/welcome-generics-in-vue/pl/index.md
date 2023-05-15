@@ -167,7 +167,7 @@ const activeTab = computed(() => props.tabs[activeIndex.value]);
 </template>
 ```
 
-Przyjrzyjmy się tej implementacji. Po pierwsze, stworzyliśmy generyka dodając `generic="T extends { id: string; heading: string; content: string; }"` do sekcji `<script>` komponentu. Po drugie, użyliśmy generyka `Tab` do zadeklarowania propa `tabs` jako `Tab[]`. Dokonując tych dwóch zmian poinformowaliśmy kompilator TypeScript, że prop `tabs` może być uzupełniony dowolnym typem - tak długo jak jest on tablicą i rozszerza typ `{ id: string; heading: string; content: string; }`.
+Przyjrzyjmy się tej implementacji. Po pierwsze, stworzyliśmy generyka dodając `generic="Tab extends { id: string; heading: string; content: string; }"` do sekcji `<script>` komponentu. Po drugie, użyliśmy generyka `Tab` do zadeklarowania propa `tabs` jako `Tab[]`. Dokonując tych dwóch zmian poinformowaliśmy kompilator TypeScript, że prop `tabs` może być uzupełniony dowolnym typem - tak długo jak jest on tablicą i rozszerza typ `{ id: string; heading: string; content: string; }`.
 
 A co z naszym komponentem-konsumentem? Czy typ danych przesyłanych do slotu jest już inferowany poprawnie? Zobaczmy:
 

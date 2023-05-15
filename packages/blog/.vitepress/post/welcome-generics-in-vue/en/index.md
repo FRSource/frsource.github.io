@@ -126,15 +126,15 @@ const productTabs = [
 
 [Click here to see a working demo](https://play.vuejs.org/#eNqNVEtu20AMvQqrTRzAloIsFSdIu2m7ahfZWVnIEhVPLM0MZiglhqCzdNkT9F49Qkl9HAkFghiwoeGQj4+PT26Dz9aGTY1BHGx95pQlKFP9dJsE5JMAPFJt7xINoCprHMFDuvdQOFNBEoSRnKQ6CW4kR76Z0Z7AOpPXGfXZt7CTC4AWVB5z3R49eSxLdNxiDQdMc6Wf5ObL8oaxCDXJzcMBQeo2cs3ZkDpSWYkelAZTO/BkHH6SqrG3j2HXgk4rlPqvLj2Bf8GU0PFc3SN06yUrUxT/E/pxDs64fEOH3B/Bm2pgBUMxUKpKppHDc81BMnASaqU6CuO/v37/eYcfooaHjT8oR3OCj6zsNhpWw4vgA2FlS56jX8uWxTiCw5I35unEghwQBeDgsODYgcj6OIqyXIfPPsdSNS7USJG2VfQiaoSZ9/fXkanp7cz10QBfpUr3T/zcbzMm/mXg2YY5u9n40hCHW9ZgD10SjEWsbx8KR/2g60a03jxDk2jsso1mswXrYLLXR83ZshCFrKqyNfEWusGpFwxxwTIu7GnFmDkWSuNPOW3bgZeMF4+m8OR4cTdvhpgCZzNMgW4newLo7laXi05pRqrB7zrHV+7H9FZXkrC85jn5cqK9Wl3C7d3AMRQ6uxlI2KRljY+C8Z4rctVMW9vXRKZnJJ9mUxjHAq7aaao1j8peA3Upr5L0S4IpOz7iiZNV/haik0UOjajn8H1WquzIF8uB1ZQxt8PYmK0w/GWIAwa8ibNHRjEasjL1YrZR75mrtuK33oznnqzi2bcCOYKMFhsUWTiMj/0rw49ne7ILEqpS96T0hoyN4frKvrLY7FpGHLOD7h9KGb8T).
 
-In this example, we pass an array `productTabs` into the `Tabs` component as a prop. The component then displays tab navigation buttons and allows the consumer to provide a tab template through a slot. [This slot is scoped](https://vuejs.org/guide/components/slots.html#scoped-slots) as the data `tab` - containing information about the currently active tab - is passed into it.
+In this example, we pass an array `productTabs` into the `Tabs` component as a prop. The component then displays tab navigation buttons and allows the consumer to provide a tab template through a slot. [This slot is scoped](https://vuejs.org/guide/components/slots.html#scoped-slots) as the data `tab` (containing information about the currently active tab) is passed into it.
 
-Looks like everything has worked on the first try! But did it? Let's inspect the type of the `tab` property that's passed into a slot template more closely:
+It seems like everything has worked on the first try, but has it really? Let's take a closer look at the type of the `tab` property that's passed into a slot template:
 
 ![Tab property available in slot has a type of "{ id: string; heading: string; content: string }"](/post/welcome-generics-in-vue/vue-example1-type-output.webp)
 
-Did you catch anything missing? The issue here is similar to the one previously encountered in this article. The type of `tab` property has been narrowed down to the type of the `tabs` prop. However, in our case, the input type is broader than that as the `products` field is being stripped down. We have to address this.
+Did you notice anything missing? The issue here is similar to the one previously encountered in this article. The type of `tab` property has been narrowed down to the type of the `tabs` prop. However, in our case, the input type is broader than that as the `products` field is being stripped down.
 
-You've guessed it - the solution involves the use of generics! Instead of typing `tabs` prop as `{ id: string; heading: string; content: string; }` we should allow TypeScript to accept and infer any type that fulfills previously specified type:
+Okay, so how to fix it? The solution, of course, involves the use of generics! Instead of typing `tabs` prop strictly like we did in previous example we should allow TypeScript to accept and infer specific type that fulfills the type `{ id: string; heading: string; content: string; }`:
 
 ```vue
 // Tabs.vue
@@ -170,7 +170,7 @@ const activeTab = computed(() => props.tabs[activeIndex.value]);
 </template>
 ```
 
-Let's examine the implementation. First, we created a generic by adding `generic="T extends { id: string; heading: string; content: string; }"` to the component `<script>` section. Second, we used the `Tab` generic to declare the type of `tabs` prop as `Tab[]`. By making these two changes, we informed TypeScript that the `tabs` prop can be filled with any type, as long as it's an array, and each item is built on top of type `{ id: string; heading: string; content: string; }`.
+Let's examine the implementation. First, we created a generic by adding `generic="Tab extends { id: string; heading: string; content: string; }"` to the component `<script>` section. Second, we used the `Tab` generic to declare the type of `tabs` prop as `Tab[]`. By making these two changes, we informed TypeScript that the `tabs` prop can be filled with any type, as long as it's an array, and each item is built on top of type `{ id: string; heading: string; content: string; }`.
 
 And what about the consumer component? Is the slot type inferred correctly now? Let's take a look:
 
