@@ -56,7 +56,7 @@ Voila, teraz wszystko działa jak chcieliśmy - tablica zwracana przez funkcję 
 
 Teraz rozumiesz zasadę działania typów generycznych w TypeScript (i innych statycznie typowanych językach), ale jak się to ma do Vue? Spróbujmy napisać przykładowy komponent w którym będzimy mogli wykorzystać generyki.
 
-Wyobraź sobie komponent `Tabs`, który:
+Wyobraźmy sobie komponent `Tabs`, który:
 
 -   sam zarządza nawigacją pomiędzy zakładkami,
 -   wspiera dowolne rozszerzanie renderowania treści zakładek w opaciu o sloty.
@@ -129,9 +129,9 @@ Wygląda na to, że wszystko zadziałało za pierwszym razem! Ale czy na pewno? 
 
 ![Argument tab dostępny w slocie ma typ "{ id: string; heading: string; content: string }"](/post/welcome-generics-in-vue/vue-example1-type-output.webp)
 
-Czy udało Ci się coś znaleźć? Problem z którym borykami się teraz jest podobny do tego opisywanego już w tym artykule. Typ zmiennej `tab` został zawężony do typu propa `tabs`. Jednak w naszym przypadku wiemy, że typ wejściowy jest szerszy - zawiera on przecież pole `products`, do którego nie mamy dostępu z poziomu slotu. Pora naprawić tę usterkę.
+Czy udało Ci się coś znaleźć? Problem z którym borykamy się teraz jest podobny do tego opisywanego już wcześniej w tym artykule. Typ zmiennej `tab` został zawężony do typu propa `tabs`. Jednak w naszym przypadku wiemy, że typ wejściowy jest szerszy - zawiera on przecież pole `products` do którego nie mamy teraz dostępu z poziomu slotu. Pora to zmienić.
 
-Jak można było się domyśleć - proponowanym rozwiązaniem będą generyki! Zamiast typować prop `tabs` jako `{ id: string; heading: string; content: string; }` powinniśmy pozwolić TypeScriptowi na zaakceptowanie i zinferowanie dowolnego typo, który spełnia wcześniej zdefiniowany typ `tabs`:
+Jak można było się domyśleć - proponowanym rozwiązaniem będą generyki! Zamiast typować prop `tabs` jako `{ id: string; heading: string; content: string; }` powinniśmy pozwolić TypeScriptowi na zaakceptowanie i inferencję dowolnego typu, który spełnia typ `{ id: string; heading: string; content: string; }`:
 
 ```vue
 // Tabs.vue
@@ -167,14 +167,14 @@ const activeTab = computed(() => props.tabs[activeIndex.value]);
 </template>
 ```
 
-Przyjżyjmy się tej implementacji. Po pierwsze, stworzyliśmy generyka dodając `generic="T extends { id: string; heading: string; content: string; }"` do sekcji `<script>` komponentu. Po drugie, użyliśmy generyka `Tab` do zadeklarowania propa `tabs` jako `Tab[]`. Dokonując tych dwóch zmian poinformowaliśmy kompilator TypeScript, że prop `tabs` może być uzupełniony dowolnym typem - tak długo jak jest on tablica i rozszerza typ `{ id: string; heading: string; content: string; }`.
+Przyjrzyjmy się tej implementacji. Po pierwsze, stworzyliśmy generyka dodając `generic="T extends { id: string; heading: string; content: string; }"` do sekcji `<script>` komponentu. Po drugie, użyliśmy generyka `Tab` do zadeklarowania propa `tabs` jako `Tab[]`. Dokonując tych dwóch zmian poinformowaliśmy kompilator TypeScript, że prop `tabs` może być uzupełniony dowolnym typem - tak długo jak jest on tablicą i rozszerza typ `{ id: string; heading: string; content: string; }`.
 
 A co z naszym komponentem-konsumentem? Czy typ danych przesyłanych do slotu jest już inferowany poprawnie? Zobaczmy:
 
 ![Zmienna tab dostępna w slocie ma typ "{ id: string; heading: string; content: string; products: { name: string }[] }"](/post/welcome-generics-in-vue/vue-example2-output.webp)
 
-Wspaniale! Zmienna tab przesyłana jest teraz do slotu z odpowiednim typem budowanym na podstawie typu tablicy wejściowej! 🎉 To poprawia możliwości i elastycznośc naszego komponentu - treść slotu może teraz używać dowolnych, unikalnych pól wypływających z typu tabs. To wszystko bez straty benefitów statycznej analizy typów.
+Wspaniale! Zmienna tab przesyłana jest teraz do slotu z odpowiednim typem budowanym na podstawie typu tablicy wejściowej! 🎉 To poprawia możliwości i elastyczność naszego komponentu - treść slotu może teraz używać dowolnych, unikalnych pól wypływających z typu propa `tabs`. To wszystko bez straty benefitów dokładnej, statycznej analizy typów.
 
 ## Konkluzja
 
-Wsparcie dla generyków jest dużym dodatkiem do Vue.js i jego nadejście odbije się echem po ekosystemie tego frameworka. Wejście ten funkcjonalności uprości proces reprezentowania dynamicznych typów, które są niezbędne dla uzyskiwania wymaganej elastyczności w konkretnych przypadkach. Dodatkowo zapis `generic=""` wydaje się być dobrym wyborem - bardzo naturalnie wyglądającym na tle składni Vue SFC. Mam nadzieję zobaczyć użycie generyków w wielu bibliotekach Vue (szczególnie tych, skupionych na budowaniu komponentów UI), co w widoczny sposób powinno poprawić ich type safety!
+Wsparcie dla generyków jest dużym dodatkiem do Vue.js i jego nadejście odbije się echem po ekosystemie tego frameworka. Wejście tej funkcjonalności umożliwiło reprezentację dynamicznych typów, które są niezbędne dla uzyskania niezbędnej elastyczności w niektórych przypadkach. Dodatkowo zapis `generic=""` wydaje się być dobrym wyborem - wygląda bardzo naturalnie na tle reszty składni Vue SFC. Mam nadzieję zobaczyć użycie generyków w wielu bibliotekach Vue (szczególnie tych skupionych na dostarczaniu komponentów UI), co w widoczny sposób powinno poprawić ich type safety!
