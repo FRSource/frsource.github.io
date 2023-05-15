@@ -17,7 +17,7 @@ Github account is required, but there are also few additional steps needed to st
 
 ## Guidelines about copywriting
 
-1. Use images in `.webp` format. You can use tools like [convertIO](https://convertio.co/jpg-webp/) to convert your jpeg/png images to webp. Blog will handle convertion to any other relevant formats.
+1. Use images in `.webp` format. You can use tools like [convertIO](https://convertio.co/jpg-webp/) to convert your jpeg/png images to webp. Blog will handle conversion to any other relevant formats.
 2. For article-related assets that apply to more than one locale version: place them in the directory of the `en` version of an article. E.g. `.vitepress/post/my-article/en`.
 3. For article-related assets that apply to only one locale version: place them in the locale directory of an article. E.g. `.vitepress/post/my-article/pl`.
 4. Always link images using absolute path and starting with `/`, e.g. `/post/my-article/assets/demo.webp`.

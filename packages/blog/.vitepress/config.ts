@@ -71,6 +71,7 @@ export default defineConfigWithTheme<
         headers: {
             level: [0, 0],
         },
+        lineNumbers: true,
     },
     locales,
     head: [
