@@ -13,6 +13,14 @@ import { parsePostMarkdown } from "./scripts/posts.utils";
 import { getGitCreationTimestamp } from "./scripts/getGitCreationTimestamp";
 import { getGitTimestamp } from "./scripts/getGitTimestamp";
 
+const generateEditLink = (pageData: PageData) => {
+    if (pageData.frontmatter?.type === "article") {
+        return `https://github.com/FRSOURCE/FRSource.github.io/edit/dev/packages/blog/.vitepress/${pageData.frontmatter.srcPath}/index.md`;
+    }
+
+    return "https://github.com/FRSOURCE/FRSource.github.io/";
+};
+
 type ArticleData = PageData["articles"]["root"][0];
 
 const locales: LocaleConfig = {
@@ -46,8 +54,7 @@ const locales: LocaleConfig = {
             returnToTopLabel: "Wróc do góry strony",
             outlineTitle: "W tym artykule",
             editLink: {
-                pattern:
-                    "https://github.com/FRSOURCE/FRSource.github.io/edit/main/packages/blog/:path",
+                pattern: generateEditLink,
                 text: "Zaproponuj zmiany do tego artykułu",
             },
             footer: {
@@ -139,8 +146,7 @@ export default defineConfigWithTheme<
         sidebarMenuLabel: "Menu",
         returnToTopLabel: "Return to top",
         editLink: {
-            pattern:
-                "https://github.com/FRSOURCE/FRSource.github.io/edit/main/packages/blog/:path",
+            pattern: generateEditLink,
             text: "Propose changes to this article",
         },
         footer: {
