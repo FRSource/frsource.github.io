@@ -6,7 +6,7 @@
   "repository": "https://github.com/FRSource/frsource.github.io.git",
   "author": "Jakub Freisler",
   "license": "Apache 2.0",
-  "packageManager": "pnpm@7.32.4",
+  "packageManager": "pnpm@8.5.1",
   "scripts": {
     "preview": "serve public",
     "build": "pnpm run -r build",
@@ -15,7 +15,7 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "concurrently": "^7.6.0",
+    "concurrently": "^8.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.2",
     "serve": "^14.2.0"
