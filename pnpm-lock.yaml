@@ -74,7 +74,7 @@ importers:
       '@parcel/transformer-jsonld': 2.8.3
       '@parcel/transformer-sass': 2.8.3
       '@types/domready': 1.0.0
-      '@types/node': 18.16.2
+      '@types/node': 18.16.14
       cli-real-favicon: 0.0.8
       domready: 1.0.8
       parcel: 2.8.3
@@ -98,7 +98,7 @@ importers:
       '@parcel/transformer-jsonld': 2.8.3
       '@parcel/transformer-sass': 2.8.3
       '@types/domready': 1.0.0
-      '@types/node': 18.16.2
+      '@types/node': 18.16.14
       cli-real-favicon: 0.0.8
       parcel: 2.8.3
       prettier: 2.8.1
@@ -1620,7 +1620,7 @@ packages:
   /@types/jsonfile/6.1.1:
     resolution: {integrity: sha512-GSgiRCVeapDN+3pqA35IkQwasaCh/0YFH5dEF6S88iDvEn901DjOeH3/QPY+XYP1DFzDZPvIvfeEgk+7br5png==}
     dependencies:
-      '@types/node': 18.16.2
+      '@types/node': 18.16.14
     dev: true
 
   /@types/lodash/4.14.194:
@@ -1639,8 +1639,8 @@ packages:
     resolution: {integrity: sha512-5EWrvLmglK+imbCJY0+INViFWUHg1AHel1sq4ZVSfdcNqGy9Edv3UB9IIzzg+xPaUcAgZYcfVs2fBcwDeZzU0A==}
     dev: true
 
-  /@types/node/18.16.2:
-    resolution: {integrity: sha512-GQW/JL/5Fz/0I8RpeBG9lKp0+aNcXEaVL71c0D2Q0QHDTFvlYKT7an0onCUXj85anv7b4/WesqdfchLc0jtsCg==}
+  /@types/node/18.16.14:
+    resolution: {integrity: sha512-+ImzUB3mw2c5ISJUq0punjDilUQ5GnUim0ZRvchHIWJmOC0G+p0kzhXBqj6cDjK0QdPFwzrHWgrJp3RPvCG5qg==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
