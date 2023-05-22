@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, defineProps } from "vue";
+import { computed } from "vue";
 import { VPTeamPage, VPTeamPageTitle, VPTeamMembers } from "vitepress/theme";
-import simpleIcons from "simple-icons";
+import { siPatreon, siBuymeacoffee, siGithubsponsors } from "simple-icons";
 import { toInlineImgSvgString } from "../utils/url.utils";
 
 const props = defineProps({
@@ -18,8 +18,6 @@ const props = defineProps({
         requred: true,
     },
 });
-
-const { siPatreon, siBuymeacoffee, siGithubsponsors } = simpleIcons;
 
 const members = computed(() => [
     {
