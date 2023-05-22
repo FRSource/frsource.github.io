@@ -1,5 +1,4 @@
-import simpleIcons from "simple-icons";
-const { siMedium, siDevdotto, siHashnode, siMinutemailer } = simpleIcons;
+import { siMedium, siDevdotto, siHashnode, siMinutemailer } from "simple-icons";
 
 export const members = [
     {

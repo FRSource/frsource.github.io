@@ -7,7 +7,7 @@ import VPDocFooterLastUpdated from "vitepress/dist/client/theme-default/componen
 import AuthorInfo from "../../components/AuthorInfo.vue";
 // import CreationDate from "../../components/CreationDate.vue";
 
-const { localeIndex, page, frontmatter, isDark } = useData();
+const { localeIndex, page, frontmatter } = useData();
 const formattedArticles = computed(() =>
     page.value.articles[localeIndex.value as keyof Locales]?.map(
         ({ title, author, description, path, image, creationDate }) => ({
@@ -32,10 +32,7 @@ const headerArray = computed(
 
 <template>
     <Layout>
-        <template
-            #home-features-before
-            v-if="page.frontmatter.showNewestArticles"
-        >
+        <template #home-features-before v-if="frontmatter.showNewestArticles">
             <div class="layout-container">
                 <div class="hero">
                     <hgroup
@@ -104,7 +101,10 @@ const headerArray = computed(
 
         <template #doc-before>
             <div class="header-info">
-                <AuthorInfo :author="page.frontmatter.author" />
+                <AuthorInfo
+                    v-if="frontmatter.author"
+                    :author="frontmatter.author"
+                />
                 <!-- <CreationDate /> -->
                 <VPDocFooterLastUpdated />
             </div>

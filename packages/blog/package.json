@@ -38,12 +38,12 @@
         "is-animated": "^2.0.2",
         "lodash": "4.17.21",
         "node-fetch": "^3.3.0",
-        "sharp": "^0.31.3",
+        "sharp": "^0.32.0",
         "string-replace-async": "^3.0.2",
         "vitepress": "1.0.0-alpha.76",
         "vue": "3.2.47"
     },
     "dependencies": {
-        "simple-icons": "8.1.0"
+        "simple-icons": "8.15.0"
     }
 }
