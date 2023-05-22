@@ -29,7 +29,7 @@ watch(
 <template>
     <VPLink
         v-if="authorData"
-        href="/team"
+        :href="`/team#:~:text=${encodeURIComponent(authorData.name)}`"
         class="author"
         :title="
             localeIndex === 'root'
