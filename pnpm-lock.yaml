@@ -39,8 +39,8 @@ importers:
         specifier: 11.0.1
         version: 11.0.1
       '@types/lodash':
-        specifier: 4.14.194
-        version: 4.14.194
+        specifier: 4.14.195
+        version: 4.14.195
       '@types/remove-markdown':
         specifier: 0.3.1
         version: 0.3.1
@@ -127,8 +127,8 @@ importers:
         specifier: 1.0.0
         version: 1.0.0
       '@types/node':
-        specifier: 18.16.14
-        version: 18.16.14
+        specifier: 18.16.16
+        version: 18.16.16
       cli-real-favicon:
         specifier: 0.0.8
         version: 0.0.8
@@ -1676,11 +1676,11 @@ packages:
   /@types/jsonfile@6.1.1:
     resolution: {integrity: sha512-GSgiRCVeapDN+3pqA35IkQwasaCh/0YFH5dEF6S88iDvEn901DjOeH3/QPY+XYP1DFzDZPvIvfeEgk+7br5png==}
     dependencies:
-      '@types/node': 18.16.14
+      '@types/node': 18.16.16
     dev: true
 
-  /@types/lodash@4.14.194:
-    resolution: {integrity: sha512-r22s9tAS7imvBt2lyHC9B8AGwWnXaYb1tY09oyLkXDs4vArpYJzw09nj8MLx5VfciBPGIb+ZwG0ssYnEPJxn/g==}
+  /@types/lodash@4.14.195:
+    resolution: {integrity: sha512-Hwx9EUgdwf2GLarOjQp5ZH8ZmblzcbTBC2wtQWNKARBSxM9ezRIAUpeDTgoQRAFB0+8CNWXVA9+MaSOzOF3nPg==}
     dev: true
 
   /@types/minimist@1.2.2:
@@ -1695,8 +1695,8 @@ packages:
     resolution: {integrity: sha512-5EWrvLmglK+imbCJY0+INViFWUHg1AHel1sq4ZVSfdcNqGy9Edv3UB9IIzzg+xPaUcAgZYcfVs2fBcwDeZzU0A==}
     dev: true
 
-  /@types/node@18.16.14:
-    resolution: {integrity: sha512-+ImzUB3mw2c5ISJUq0punjDilUQ5GnUim0ZRvchHIWJmOC0G+p0kzhXBqj6cDjK0QdPFwzrHWgrJp3RPvCG5qg==}
+  /@types/node@18.16.16:
+    resolution: {integrity: sha512-NpaM49IGQQAUlBhHMF82QH80J08os4ZmyF9MkpCzWAGuOHqE4gTEbhzd7L3l5LmWuZ6E0OiC1FweQ4tsiW35+g==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
