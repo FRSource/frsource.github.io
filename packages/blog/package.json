@@ -25,7 +25,7 @@
         "@types/command-line-args": "5.2.0",
         "@types/cross-spawn": "6.0.2",
         "@types/fs-extra": "11.0.1",
-        "@types/lodash": "4.14.194",
+        "@types/lodash": "4.14.195",
         "@types/remove-markdown": "0.3.1",
         "@types/sharp": "^0.31.1",
         "chokidar": "3.5.3",
