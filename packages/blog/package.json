@@ -30,7 +30,7 @@
         "@types/sharp": "^0.31.1",
         "chokidar": "3.5.3",
         "command-line-args": "5.2.1",
-        "concurrently": "8.0.1",
+        "concurrently": "8.2.0",
         "cpy-cli": "4.2.0",
         "cross-spawn": "7.0.3",
         "fs-extra": "11.1.1",
@@ -41,7 +41,7 @@
         "sharp": "^0.32.0",
         "string-replace-async": "^3.0.2",
         "vitepress": "1.0.0-beta.5",
-        "vue": "3.2.47"
+        "vue": "3.3.4"
     },
     "dependencies": {
         "simple-icons": "8.15.0"
