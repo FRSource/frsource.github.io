@@ -44,6 +44,6 @@
         "vue": "3.3.4"
     },
     "dependencies": {
-        "simple-icons": "8.15.0"
+        "simple-icons": "9.8.0"
     }
 }
