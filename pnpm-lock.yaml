@@ -24,8 +24,8 @@ importers:
   packages/blog:
     dependencies:
       simple-icons:
-        specifier: 8.15.0
-        version: 8.15.0
+        specifier: 9.8.0
+        version: 9.8.0
     devDependencies:
       '@swc-node/register':
         specifier: 1.6.6
@@ -4584,8 +4584,8 @@ packages:
       simple-concat: 1.0.1
     dev: true
 
-  /simple-icons@8.15.0:
-    resolution: {integrity: sha512-W9USb8Yic98wAZc9HpjMyH/wrJZx/BRqGK82SsmdApFaO5XqYe5peWV5A18XLYIgdcAsUC6PS2Z0STJoHdNXXQ==}
+  /simple-icons@9.8.0:
+    resolution: {integrity: sha512-xVHfr+souquvsKoqYzfgEoQeZSt1i8ka9botwc81wGZ9VNOc2xr96GPz1ziycpX+vHLuZFlgibYcqCzJZeCPfg==}
     engines: {node: '>=0.12.18'}
     dev: false
 
