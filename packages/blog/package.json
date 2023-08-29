@@ -40,7 +40,7 @@
         "node-fetch": "^3.3.0",
         "sharp": "^0.32.0",
         "string-replace-async": "^3.0.2",
-        "vitepress": "1.0.0-rc.10",
+        "vitepress": "1.0.0-beta.7",
         "vue": "3.3.4"
     },
     "dependencies": {
