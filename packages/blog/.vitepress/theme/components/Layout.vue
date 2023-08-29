@@ -8,25 +8,26 @@ import AuthorInfo from "../../components/AuthorInfo.vue";
 // import CreationDate from "../../components/CreationDate.vue";
 
 const { localeIndex, page, frontmatter } = useData();
-const formattedArticles = computed(() =>
-    page.value.articles[localeIndex.value as keyof Locales]?.map(
-        ({ title, author, description, path, image, creationDate }) => ({
-            title,
-            author,
-            description,
-            image,
-            creationDate,
-            link: path,
-            linkText:
-                localeIndex.value === "root"
-                    ? "Read the full article"
-                    : "Przeczytaj cały artykuł",
-        })
-    )
+const formattedArticles = computed(
+    () =>
+        page.value.articles[localeIndex.value as keyof Locales]?.map(
+            ({ title, author, description, path, image, creationDate }) => ({
+                title,
+                author,
+                description,
+                image,
+                creationDate,
+                link: path,
+                linkText:
+                    localeIndex.value === "root"
+                        ? "Read the full article"
+                        : "Przeczytaj cały artykuł",
+            }),
+        ),
 );
 
 const headerArray = computed(
-    () => frontmatter.value.frs_hero.text.split(" ") as string[]
+    () => frontmatter.value.frs_hero.text.split(" ") as string[],
 );
 </script>
 

@@ -4,7 +4,7 @@ const mediumAuthToken = process.argv[2];
 
 if (!mediumAuthToken) {
     console.log(
-        'Error :: You need to provide medium authorization token as an argument, e.g.:\n\n./getMediumUserDetails.ts "<YOUR_MEDIUM_AUTH_TOKEN>"\n\nTo obtain it, go to:\nhttps://medium.com/me/settings/security -> "Integration tokens" -> "Get token"'
+        'Error :: You need to provide medium authorization token as an argument, e.g.:\n\n./getMediumUserDetails.ts "<YOUR_MEDIUM_AUTH_TOKEN>"\n\nTo obtain it, go to:\nhttps://medium.com/me/settings/security -> "Integration tokens" -> "Get token"',
     );
     throw process.exit(1);
 }

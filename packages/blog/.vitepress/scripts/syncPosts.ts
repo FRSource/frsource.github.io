@@ -36,7 +36,7 @@ const watcher = chokidar
                         srcDirPath: post.src,
                         postname: post.postname,
                     });
-                })
+                }),
             );
         }
         if (!args.watch) await watcher.close();
@@ -54,8 +54,8 @@ const watcher = chokidar
                     .catch(
                         (e) =>
                             `Error :: unsuccessful unlink for path: ${memoizedPostDestinationPath(
-                                filepath
-                            )}`
+                                filepath,
+                            )}`,
                     );
                 break;
         }
@@ -71,7 +71,7 @@ function parsePostPath(srcPostPath: string) {
     const separator = `\\${path.sep}`;
     const regex = new RegExp(
         `post${separator}([^${separator}]+)${separator}([^${separator}]+)${separator}?(.*)?$`,
-        "i"
+        "i",
     );
     const [, postname, locale, rest = ""] = srcPostPath.match(regex);
     return { postname, locale, rest };
@@ -88,17 +88,17 @@ async function copyPosts(postsToCopy: Record<string, string[]>) {
                     postsToCopy[postSrcDir].map((filename) =>
                         filename === "index.md"
                             ? copyPostFile(path.join(postSrcDir, filename))
-                            : copyPostAsset(path.join(postSrcDir, filename))
-                    )
+                            : copyPostAsset(path.join(postSrcDir, filename)),
+                    ),
                 ),
             };
-        })
+        }),
     );
 }
 
 async function copyPostFile(srcFilepath: string) {
     const srcContent = await fsExtra.readFile(
-        withCwd(path.dirname(srcFilepath), path.basename(srcFilepath))
+        withCwd(path.dirname(srcFilepath), path.basename(srcFilepath)),
     );
     const dest = memoizedPostDestinationPath(srcFilepath);
     await fsExtra.outputFile(
@@ -107,8 +107,8 @@ async function copyPostFile(srcFilepath: string) {
             .toString()
             .replace(
                 "---",
-                `---\ntype: article\nsrcPath: "${path.dirname(srcFilepath)}"`
-            )
+                `---\ntype: article\nsrcPath: "${path.dirname(srcFilepath)}"`,
+            ),
     );
     return dest;
 }
@@ -118,7 +118,7 @@ async function copyPostAsset(srcFilepath: string) {
     await fsExtra.copy(
         withCwd(path.dirname(srcFilepath), path.basename(srcFilepath)),
         memoizedPostDestinationPath(srcFilepath, true),
-        { overwrite: true }
+        { overwrite: true },
     );
     return dest;
 }
@@ -142,10 +142,10 @@ async function clearPosts() {
                 withCwd(
                     "..",
                     locale === DEFAULT_LOCALE ? DEFAULT_LOCALE_DIR : locale,
-                    "post"
-                )
-            )
-        )
+                    "post",
+                ),
+            ),
+        ),
     );
 }
 
@@ -161,10 +161,10 @@ async function filterOutDirs(fileTree: Record<string, string[]>) {
                         !IGNORED_POST_FILES.includes(path.basename(pathname))
                     )
                         fileTreeCopy[dirPath].push(pathname);
-                })
+                }),
             );
             if (!fileTreeCopy[dirPath].length) delete fileTreeCopy[dirPath];
-        })
+        }),
     );
     return fileTreeCopy;
 }

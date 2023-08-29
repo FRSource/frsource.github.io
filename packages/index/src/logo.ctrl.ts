@@ -4,7 +4,7 @@ const randInt = (a: number = 0, b: number = 1) => Math.random() * (b - a) + a;
 
 const getItemsToReveal = (logo: SVGElement) => {
     const paths = Array.from(
-        logo.querySelectorAll<HTMLElement | SVGElement>("path")
+        logo.querySelectorAll<HTMLElement | SVGElement>("path"),
     );
 
     paths.push(logo!.querySelector<SVGSVGElement>("use")!);
@@ -34,7 +34,7 @@ export const startLogoAnimation = (logo: SVGElement) => {
             itemsToReveal.forEach(
                 (glitchElement) =>
                     (glitchElement[lastVisibleItem].style.visibility =
-                        "visible")
+                        "visible"),
             );
             timeout = randInt(300, 700);
         }
@@ -58,8 +58,8 @@ export const startLogoAnimation = (logo: SVGElement) => {
 
         itemsToReveal = Array.from(
             glitchWrapper.parentElement!.querySelectorAll<SVGElement>(
-                "svg[role=img]"
-            )
+                "svg[role=img]",
+            ),
         ).map((glitchElement) => getItemsToReveal(glitchElement));
 
         glitchWrapper.parentElement!.style.width =

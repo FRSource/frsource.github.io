@@ -21,7 +21,7 @@ type AdditionalPostData = {
 
 const getFetch = new Function(
     "modulePath",
-    "return import('node-fetch').then(mod => mod.default)"
+    "return import('node-fetch').then(mod => mod.default)",
 ) as () => Promise<typeof fetch>;
 
 const processImageForMedium = async (imgRelativePath: string) => {
@@ -30,7 +30,7 @@ const processImageForMedium = async (imgRelativePath: string) => {
         "..",
         "..",
         "public",
-        ...imgRelativePath.split("/")
+        ...imgRelativePath.split("/"),
     );
     if (!existsSync(imgPath))
         throw new Error(`Error :: Image: "${imgRelativePath}" does not exist!`);
@@ -41,12 +41,12 @@ const processImageForMedium = async (imgRelativePath: string) => {
             .toFile(
                 path.join(
                     path.dirname(imgPath),
-                    path.basename(imgPath, ".webp") + ".gif"
-                )
+                    path.basename(imgPath, ".webp") + ".gif",
+                ),
             );
         return path.join(
             path.dirname(imgRelativePath),
-            path.basename(imgRelativePath, ".webp") + ".gif"
+            path.basename(imgRelativePath, ".webp") + ".gif",
         );
     }
 
@@ -55,12 +55,12 @@ const processImageForMedium = async (imgRelativePath: string) => {
         .toFile(
             path.join(
                 path.dirname(imgPath),
-                path.basename(imgPath, ".webp") + ".png"
-            )
+                path.basename(imgPath, ".webp") + ".png",
+            ),
         );
     return path.join(
         path.dirname(imgRelativePath),
-        path.basename(imgRelativePath, ".webp") + ".png"
+        path.basename(imgRelativePath, ".webp") + ".png",
     );
 };
 
@@ -83,19 +83,19 @@ export const preparePostForPublish = async ({
     if (syncDateMedium && syncDateMedium === lastUpdated) {
         skipPublish = true;
         console.log(
-            `Post "${title}" is already up to date on Medium (${syncedUrlMedium}), skipping...`
+            `Post "${title}" is already up to date on Medium (${syncedUrlMedium}), skipping...`,
         );
         return;
     }
 
     if (!syncDateMedium)
         console.log(
-            `Post "${title}" wasn't published to medium yet, attempting to publish.`
+            `Post "${title}" wasn't published to medium yet, attempting to publish.`,
         );
     else {
         skipPublish = true;
         console.log(
-            `Warn :: Post "${title}" is already published on medium (${syncedUrlMedium}), but it needs to be updated. Medium API does not expose possibility to update existing article, so you need to update this article manually.`
+            `Warn :: Post "${title}" is already published on medium (${syncedUrlMedium}), but it needs to be updated. Medium API does not expose possibility to update existing article, so you need to update this article manually.`,
         );
     }
 
@@ -104,7 +104,7 @@ export const preparePostForPublish = async ({
     if (!authorId) {
         skipPublish = true;
         console.error(
-            `Author id: ${author} is missing "mediumId" in its data. Skipping publish of post "${title}"...`
+            `Author id: ${author} is missing "mediumId" in its data. Skipping publish of post "${title}"...`,
         );
     }
 
@@ -114,7 +114,7 @@ export const preparePostForPublish = async ({
     if (typeof token === "undefined") {
         skipPublish = true;
         console.error(
-            `Medium integration token missing. Make sure to specify env "${tokenName}".`
+            `Medium integration token missing. Make sure to specify env "${tokenName}".`,
         );
     }
 
@@ -134,7 +134,7 @@ export const preparePostForPublish = async ({
                   content:
                       (await convertImagesToAbsolutePaths(
                           frontmatterData.content,
-                          processImageForMedium
+                          processImageForMedium,
                       )) +
                       `\n\n> This article has been originaly published on [FRSPACE blog](${canonicalUrl}).\n> Take a look there to find more of my articles 🎉`,
                   tags,
@@ -179,7 +179,7 @@ export const publish = async ({
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(post.body),
-            }
+            },
         );
         const data = (await response.json()) as {
             data: Record<string, string>;
@@ -191,7 +191,7 @@ export const publish = async ({
             frontmatterData.data.syncedUrlMedium = data.data.url;
             await outputFile(
                 articleIndexPath,
-                matter.stringify(frontmatterData.content, frontmatterData.data)
+                matter.stringify(frontmatterData.content, frontmatterData.data),
             );
         } else {
             const error = response;
@@ -203,25 +203,25 @@ export const publish = async ({
             console.error(
                 "Required fields were invalid, not specified.",
                 error.statusText,
-                await error.json?.()
+                await error.json?.(),
             );
         else if (error.status === 401)
             console.error(
                 "The access token is invalid or has been revoked.",
                 error.statusText,
-                await error.json?.()
+                await error.json?.(),
             );
         else if (error.status === 403)
             console.error(
                 "The user does not have permission to publish, or the authorId in the request path points to wrongnon-existent user.",
                 error.statusText,
-                await error.json?.()
+                await error.json?.(),
             );
         else if (error.status === 429)
             console.error(
                 "You have reached the rate limit for publishing today.",
                 error.statusText,
-                await error.json?.()
+                await error.json?.(),
             );
         else {
             console.error("Unknown error.", error);

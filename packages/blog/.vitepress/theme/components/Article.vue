@@ -30,7 +30,7 @@ const datetime = ref("");
 onMounted(() => {
     watchEffect(() => {
         datetime.value = date.value.toLocaleDateString(
-            window.navigator.language
+            window.navigator.language,
         );
     });
 });

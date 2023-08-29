@@ -13,7 +13,7 @@ const props = defineProps({
 const { localeIndex } = useData();
 
 const authorData = computed(() =>
-    members.find(({ id }) => id === props.author)
+    members.find(({ id }) => id === props.author),
 );
 
 watch(
@@ -22,7 +22,7 @@ watch(
         if (!authorData)
             throw new Error(`Cannot find author with id: ${props.author}`);
     },
-    { immediate: true }
+    { immediate: true },
 );
 </script>
 

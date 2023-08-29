@@ -3,13 +3,13 @@ import { spawn } from "cross-spawn";
 
 export function getGitCreationTimestamp(
     file: string,
-    options?: SpawnOptionsWithoutStdio
+    options?: SpawnOptionsWithoutStdio,
 ) {
     return new Promise<number>((resolve, reject) => {
         const child = spawn(
             "git",
             ["log", "--diff-filter=A", "--follow", '--pretty="%ci"', file],
-            options
+            options,
         );
         let output = "";
         child.stdout.on("data", (d: unknown) => (output += String(d)));
