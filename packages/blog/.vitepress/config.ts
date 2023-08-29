@@ -162,11 +162,11 @@ export default defineConfigWithTheme<
             // it's an article
             pageData.lastUpdated = await getGitTimestamp(
                 pageData.frontmatter.srcPath,
-                { cwd: __dirname }
+                { cwd: __dirname },
             );
             pageData.creationDate = await getGitCreationTimestamp(
                 pageData.frontmatter.srcPath,
-                { cwd: __dirname }
+                { cwd: __dirname },
             );
         } else {
             pageData.articles = await getAllLangsArticlesData();
@@ -243,10 +243,10 @@ async function getAllLangsArticlesData() {
         (Object.keys(locales) as (keyof typeof locales)[]).map(
             async (localeLink) => {
                 articles[localeLink] = await getArticlesData(
-                    localeLink === "root" ? "" : localeLink
+                    localeLink === "root" ? "" : localeLink,
                 );
-            }
-        )
+            },
+        ),
     );
     return articles;
 }
@@ -262,11 +262,11 @@ async function getArticlesData(lang?: string) {
                 .filter((fileOrDir) => fileOrDir.isDirectory())
                 .map<Promise<ArticleData | void>>(async ({ name: article }) => {
                     const file = matter.read(
-                        path.join(lang || "", "post", article, "/index.md")
+                        path.join(lang || "", "post", article, "/index.md"),
                     );
 
                     return await parsePostMarkdown(file);
-                })
+                }),
         )
     ).filter((article): article is ArticleData => !!article);
 }

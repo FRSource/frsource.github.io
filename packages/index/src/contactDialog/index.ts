@@ -60,7 +60,7 @@ export class ContactDialogCtrl {
                 script.async = true;
 
                 document.body.appendChild(script);
-            }
+            },
         );
     }
 
@@ -127,7 +127,7 @@ export class ContactDialogCtrl {
                 (el: HTMLInputElement | HTMLTextAreaElement) =>
                     encodeURIComponent(el.name) +
                     "=" +
-                    encodeURIComponent(el.value)
+                    encodeURIComponent(el.value),
             )
             .join("&");
 
@@ -137,7 +137,7 @@ export class ContactDialogCtrl {
                 button.classList.remove("fill");
                 button.classList.add("pe-n");
             },
-            () => {}
+            () => {},
         );
         button.disabled = false;
     }
