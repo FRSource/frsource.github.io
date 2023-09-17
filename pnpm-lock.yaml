@@ -40,8 +40,8 @@ importers:
         specifier: 6.0.3
         version: 6.0.3
       '@types/fs-extra':
-        specifier: 11.0.1
-        version: 11.0.1
+        specifier: 11.0.2
+        version: 11.0.2
       '@types/lodash':
         specifier: 4.14.198
         version: 4.14.198
@@ -131,8 +131,8 @@ importers:
         specifier: 1.0.0
         version: 1.0.0
       '@types/node':
-        specifier: 18.17.15
-        version: 18.17.15
+        specifier: 18.17.17
+        version: 18.17.17
       cli-real-favicon:
         specifier: 0.0.8
         version: 0.0.8
@@ -1658,17 +1658,17 @@ packages:
     resolution: {integrity: sha512-z6KzANiu6UaHOi1NaZHcYZfKTeHC0C9Lhb0brTrej1AMHSqIjyRgR+vlc93pJOxmY2JXtPbyIZAuYiRFs9iKBg==}
     dev: true
 
-  /@types/fs-extra@11.0.1:
-    resolution: {integrity: sha512-MxObHvNl4A69ofaTRU8DFqvgzzv8s9yRtaPPm5gud9HDNvpB3GPQFvNuTWAI59B9huVGV5jXYJwbCsmBsOGYWA==}
+  /@types/fs-extra@11.0.2:
+    resolution: {integrity: sha512-c0hrgAOVYr21EX8J0jBMXGLMgJqVf/v6yxi0dLaJboW9aQPh16Id+z6w2Tx1hm+piJOLv8xPfVKZCLfjPw/IMQ==}
     dependencies:
       '@types/jsonfile': 6.1.1
-      '@types/node': 18.11.9
+      '@types/node': 18.17.17
     dev: true
 
   /@types/jsonfile@6.1.1:
     resolution: {integrity: sha512-GSgiRCVeapDN+3pqA35IkQwasaCh/0YFH5dEF6S88iDvEn901DjOeH3/QPY+XYP1DFzDZPvIvfeEgk+7br5png==}
     dependencies:
-      '@types/node': 18.17.15
+      '@types/node': 18.17.17
     dev: true
 
   /@types/lodash@4.14.198:
@@ -1679,10 +1679,6 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node@18.11.9:
-    resolution: {integrity: sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==}
-    dev: true
-
   /@types/node@18.14.0:
     resolution: {integrity: sha512-5EWrvLmglK+imbCJY0+INViFWUHg1AHel1sq4ZVSfdcNqGy9Edv3UB9IIzzg+xPaUcAgZYcfVs2fBcwDeZzU0A==}
     dev: true
@@ -1691,8 +1687,8 @@ packages:
     resolution: {integrity: sha512-ZE/5aB73CyGqgQULkLG87N9GnyGe5TcQjv34pwS8tfBs1IkCh0ASM69mydb2znqd6v0eX+9Ytvk6oQRqu8T1Vw==}
     dev: true
 
-  /@types/node@18.17.15:
-    resolution: {integrity: sha512-2yrWpBk32tvV/JAd3HNHWuZn/VDN1P+72hWirHnvsvTGSqbANi+kSeuQR9yAHnbvaBvHDsoTdXV0Fe+iRtHLKA==}
+  /@types/node@18.17.17:
+    resolution: {integrity: sha512-cOxcXsQ2sxiwkykdJqvyFS+MLQPLvIdwh5l6gNg8qF6s+C7XSkEWOZjK+XhUZd+mYvHV/180g2cnCcIl4l06Pw==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
