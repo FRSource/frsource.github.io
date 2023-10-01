@@ -3,9 +3,10 @@ import { promises as fs } from "fs";
 import fsExtra from "fs-extra";
 import chokidar from "chokidar";
 import commandLineArgs from "command-line-args";
-import { memoize } from "lodash";
+import { memoize } from "lodash-es";
 import { publish as mediumPublish } from "./syncToMedium";
 
+const __dirname = new URL(".", import.meta.url).pathname;
 const LOCALES = ["en", "pl"];
 const DEFAULT_LOCALE = LOCALES[0];
 const DEFAULT_LOCALE_DIR = "";
