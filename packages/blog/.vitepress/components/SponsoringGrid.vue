@@ -22,7 +22,7 @@ const props = defineProps({
 const members = computed(() => [
     {
         avatar: toInlineImgSvgString(
-            siPatreon.svg.replace("<svg ", '<svg style="fill:#FF424D" ')
+            siPatreon.svg.replace("<svg ", '<svg style="fill:#FF424D" '),
         ),
         name: "Patreon",
         desc: props.patreonDesc,
@@ -30,7 +30,7 @@ const members = computed(() => [
     },
     {
         avatar: toInlineImgSvgString(
-            siGithubsponsors.svg.replace("<svg ", '<svg style="fill:#EA4AAA" ')
+            siGithubsponsors.svg.replace("<svg ", '<svg style="fill:#EA4AAA" '),
         ),
         name: "Github Sponsors",
         desc: props.githubDesc,
@@ -38,7 +38,7 @@ const members = computed(() => [
     },
     {
         avatar: toInlineImgSvgString(
-            siBuymeacoffee.svg.replace("<svg ", '<svg style="fill:#FFDD00" ')
+            siBuymeacoffee.svg.replace("<svg ", '<svg style="fill:#FFDD00" '),
         ),
         name: "Buy me a coffee",
         desc: props.buyMeACoffeeDesc,

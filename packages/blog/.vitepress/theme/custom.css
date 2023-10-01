@@ -1,20 +1,22 @@
 @font-face {
-    font-family: 'Avenir Book';
-    src: local('Avenir Book'), local('Avenir-Book'),
-        url('blog/fonts/subset-Avenir-Book.woff2') format('woff2'),
-        url('blog/fonts/subset-Avenir-Book.woff') format('woff');
+    font-family: "Avenir Book";
+    src:
+        local("Avenir Book"),
+        local("Avenir-Book"),
+        url("blog/fonts/subset-Avenir-Book.woff2") format("woff2"),
+        url("blog/fonts/subset-Avenir-Book.woff") format("woff");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 :root {
-    --vp-c-bg: #EFEFEF;
+    --vp-c-bg: #efefef;
     --vp-c-bg-soft: #fff;
     --vp-c-bg-soft-up: #fff;
     --vp-nav-bg-color: rgb(239 239 239 / 30%);
     --vp-c-black-soft: #fff;
-    --vp-c-text-1: #000B1C;
+    --vp-c-text-1: #000b1c;
     --vp-shadow-3: none;
 
     --vp-c-gutter: transparent;
@@ -25,14 +27,15 @@
     --vp-c-brand-dark: #d2503d;
     --vp-c-brand-darker: #642017;
 
-    --c-primary: #F15F4D;
-    --c-secondary: #4CBD94;
-    --c-tertiary: #2A67E3;
+    --c-primary: #f15f4d;
+    --c-secondary: #4cbd94;
+    --c-tertiary: #2a67e3;
 
     --vp-nav-height: 84px;
 
-    --vp-font-family-base: 'Avenir Book', Tahoma, Verdana, sans-serif;
-    --font-family-secondary: Inconsolata, "Ubuntu Mono", "Trebuchet MS", Tahoma, monospace;
+    --vp-font-family-base: "Avenir Book", Tahoma, Verdana, sans-serif;
+    --font-family-secondary: Inconsolata, "Ubuntu Mono", "Trebuchet MS", Tahoma,
+        monospace;
 
     --layout-horizontal-spacing: 24px;
 }
@@ -71,19 +74,19 @@
 }
 
 .VPFooter {
-    padding-top: 0!important;
-    padding-bottom: 0!important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 .VPFooter .container .copyright {
     color: rgba(2 11 26 / 20%);
-    border-top: thin solid ;
+    border-top: thin solid;
     padding: 20px 0;
     text-align: left;
 }
 
 .items .item .VPFeature.link:hover {
-    border-color: #2173FF;
+    border-color: #2173ff;
     border-radius: 0;
 }
 
@@ -96,11 +99,11 @@
 }
 
 .VPTeamMembersItem {
-    border-radius: 0!important;
+    border-radius: 0 !important;
 }
 
 .VPTeamMembersItem .profile {
-    padding: 30px 20px 20px!important;
+    padding: 30px 20px 20px !important;
 }
 
 .VPTeamMembersItem .name {
@@ -116,17 +119,17 @@
 
 .VPTeamMembersItem .profile .desc {
     margin: 10px auto;
-    font-size: 14px!important;
+    font-size: 14px !important;
     line-height: 18px;
     opacity: 0.6;
 }
 
 .VPDoc .header-info {
-    margin-bottom: 10px!important;
+    margin-bottom: 10px !important;
 }
 
 .VPLastUpdated {
-    font-size: 10px!important;
+    font-size: 10px !important;
 }
 
 .vp-doc :is(h1, h2, h3, h4, h5, h6) {
@@ -135,30 +138,30 @@
 }
 
 .vp-doc h1 {
-    margin-top: .8em;
+    margin-top: 0.8em;
     margin-bottom: 1em;
-    font-size: 36px!important;
-    line-height:40px;
+    font-size: 36px !important;
+    line-height: 40px;
 }
 
 .VPDocFooter .edit-link-button {
     --vp-c-brand: var(--c-secondary);
     --vp-c-brand-dark: var(--c-secondary);
     text-transform: uppercase;
-    transition: .2s opacity ease-in-out!important;
+    transition: 0.2s opacity ease-in-out !important;
 }
 
-.VPDocFooter .edit-link-button:is(:hover,:focus,:active) {
-    opacity: .7;
+.VPDocFooter .edit-link-button:is(:hover, :focus, :active) {
+    opacity: 0.7;
 }
 
 /** dark **/
 :root.dark {
     --vp-c-bg: #242629;
-    --vp-c-bg-soft: #1E1E1E;
+    --vp-c-bg-soft: #1e1e1e;
     --vp-c-bg-soft-up: #242629;
     --vp-nav-bg-color: rgb(36 38 41 / 30%);
-    --vp-c-black-soft: #1E1E1E;
+    --vp-c-black-soft: #1e1e1e;
     --vp-c-text-1: #fff;
 }
 
@@ -174,13 +177,14 @@
     }
 
     .vp-doc h1 {
-        font-size: 42px!important;
-        line-height:46px;
+        font-size: 42px !important;
+        line-height: 46px;
     }
 }
 
 @media (min-width: 768px) {
-    .VPNavBar, .VPFooter {
+    .VPNavBar,
+    .VPFooter {
         margin: 0 18px;
     }
 

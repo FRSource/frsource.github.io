@@ -138,7 +138,7 @@ Jak można było się domyśleć - proponowanym rozwiązaniem będą generyki! Z
 <script
     lang="ts"
     setup
-    generic="Tab extends { id: string; heading: string; content: string; }"
+    generic="Tab extends { id: string; heading: string; content: string }"
 >
 import { ref, computed } from "vue";
 

@@ -7,13 +7,13 @@ import type replaceAsync from "string-replace-async";
 
 const getReplaceAsync = new Function(
     "modulePath",
-    "return import('string-replace-async').then(mod => mod.default)"
+    "return import('string-replace-async').then(mod => mod.default)",
 ) as () => Promise<typeof replaceAsync>;
 
 export const baseUrl = "https://www.frsource.org/blog";
 
 export const parsePostMarkdown = async (
-    mdData: matter.GrayMatterFile<string>
+    mdData: matter.GrayMatterFile<string>,
 ) => {
     const {
         data,
@@ -26,13 +26,13 @@ export const parsePostMarkdown = async (
     let error = false;
     if (!title || !data.description) {
         console.error(
-            `Every post must contain title and description in frontmatter (title might be written as a main article markdown heading), post "${filepath}" does not! Skipping.`
+            `Every post must contain title and description in frontmatter (title might be written as a main article markdown heading), post "${filepath}" does not! Skipping.`,
         );
         error = true;
     }
     if (!data.author || !members.some(({ id }) => id === data.author)) {
         console.error(
-            `Post "${filepath}" is missing a valid author id in frontmatter data! Skipping.`
+            `Post "${filepath}" is missing a valid author id in frontmatter data! Skipping.`,
         );
         error = true;
     }
@@ -47,7 +47,7 @@ export const parsePostMarkdown = async (
                       ?.find(
                           (items) =>
                               typeof items === "object" &&
-                              items?.name === "keywords"
+                              items?.name === "keywords",
                       )
                       ?.content?.split(",")
                       ?.map((tag) => tag.trim()) || [],
@@ -66,7 +66,7 @@ export const parsePostMarkdown = async (
 
 export const convertImagesToAbsolutePaths = async (
     content: string,
-    processImage?: (path: string) => Promise<string>
+    processImage?: (path: string) => Promise<string>,
 ) =>
     (await getReplaceAsync())(
         content,
@@ -75,5 +75,5 @@ export const convertImagesToAbsolutePaths = async (
             return `${start}${baseUrl}${
                 (await processImage?.(filepath)) ?? filepath
             })`;
-        }
+        },
     );

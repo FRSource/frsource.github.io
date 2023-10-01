@@ -28,10 +28,10 @@ declare global {
             setTimeout(
                 () =>
                     loadEls.forEach((el, i) =>
-                        setTimeout(() => el.classList.add("in"), 300 * i)
+                        setTimeout(() => el.classList.add("in"), 300 * i),
                     ),
-                3500
-            )
+                3500,
+            ),
         );
 
         const logo = document.querySelector<SVGSVGElement>(".icon-logomark")!;
@@ -57,7 +57,7 @@ declare global {
                     .querySelector(".content")!
                     .insertAdjacentElement(
                         "afterbegin",
-                        contactDialogCtrl.element
+                        contactDialogCtrl.element,
                     );
                 this.disabled = false;
             }
@@ -74,7 +74,7 @@ declare global {
         btn.addEventListener("click", () => {
             localStorage.setItem("FRS:theme", theme);
             themes.forEach((theme) =>
-                document.body.classList.remove("t-" + theme)
+                document.body.classList.remove("t-" + theme),
             );
             document.body.classList.add("t-" + theme);
         });
@@ -86,7 +86,7 @@ declare global {
                 type: "module",
             })
             .catch((err) =>
-                console.log("Service worker registration failed: " + err)
+                console.log("Service worker registration failed: " + err),
             );
     }
 })();

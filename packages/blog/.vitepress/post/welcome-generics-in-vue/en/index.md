@@ -141,7 +141,7 @@ Okay, so how to fix it? The solution, of course, involves the use of generics! I
 <script
     lang="ts"
     setup
-    generic="Tab extends { id: string; heading: string; content: string; }"
+    generic="Tab extends { id: string; heading: string; content: string }"
 >
 import { ref, computed } from "vue";
 
