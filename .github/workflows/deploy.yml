@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # fetch whole history (needed for blog article creation time to work correctly)
+          fetch-depth: 0
       - uses: pnpm/action-setup@v2.4.0
       - name: Use Node.js
         uses: actions/setup-node@v3
