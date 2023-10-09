@@ -24,8 +24,8 @@ importers:
   packages/blog:
     dependencies:
       simple-icons:
-        specifier: 9.16.1
-        version: 9.16.1
+        specifier: 9.17.0
+        version: 9.17.0
     devDependencies:
       '@swc-node/register':
         specifier: 1.6.8
@@ -146,8 +146,8 @@ importers:
         specifier: 5.0.5
         version: 5.0.5
       sass:
-        specifier: 1.68.0
-        version: 1.68.0
+        specifier: 1.69.0
+        version: 1.69.0
       typescript:
         specifier: 5.2.2
         version: 5.2.2
@@ -1399,7 +1399,7 @@ packages:
     dependencies:
       '@parcel/plugin': 2.9.3(@parcel/core@2.9.3)
       '@parcel/source-map': 2.1.1
-      sass: 1.68.0
+      sass: 1.69.0
     transitivePeerDependencies:
       - '@parcel/core'
     dev: true
@@ -4444,8 +4444,8 @@ packages:
     resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
     dev: true
 
-  /sass@1.68.0:
-    resolution: {integrity: sha512-Lmj9lM/fef0nQswm1J2HJcEsBUba4wgNx2fea6yJHODREoMFnwRpZydBnX/RjyXw2REIwdkbqE4hrTo4qfDBUA==}
+  /sass@1.69.0:
+    resolution: {integrity: sha512-l3bbFpfTOGgQZCLU/gvm1lbsQ5mC/WnLz3djL2v4WCJBDrWm58PO+jgngcGRNnKUh6wSsdm50YaovTqskZ0xDQ==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
@@ -4585,8 +4585,8 @@ packages:
       simple-concat: 1.0.1
     dev: true
 
-  /simple-icons@9.16.1:
-    resolution: {integrity: sha512-iWSWO+kPrVDojgJGn9CI8yAdIcuUqIsJeosdV3ejaYA7sw4+F4rAHB1E5I+33Z3jq6jcP5qR8dGm2EqH89Dttw==}
+  /simple-icons@9.17.0:
+    resolution: {integrity: sha512-/jBnXMjyj5VAwSmg+V7ecXTvpe5xQ9KxcEiVAoM4XiDeTGP4cULfgQGM3060KJP0RGmNUdekpb39QaInFsVnQQ==}
     engines: {node: '>=0.12.18'}
     dev: false
 
