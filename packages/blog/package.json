@@ -27,7 +27,7 @@
         "@types/cross-spawn": "6.0.3",
         "@types/fs-extra": "11.0.2",
         "@types/lodash-es": "^4.17.9",
-        "@types/remove-markdown": "0.3.1",
+        "@types/remove-markdown": "0.3.2",
         "@types/sharp": "^0.31.1",
         "chokidar": "3.5.3",
         "command-line-args": "5.2.1",
