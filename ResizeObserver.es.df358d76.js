@@ -315,8 +315,8 @@ if(this.hasActive()){var t=this.callbackCtx_,e=this.activeObservations_.map(func
      *
      * @param {ResizeObserverCallback} callback - Callback that is invoked when
      *      dimensions of the observed elements change.
-     */function t(e){if(!(this instanceof t))throw TypeError("Cannot call a class as a function.");if(!arguments.length)throw TypeError("1 argument required, but only 0 present.");var n=h.getInstance(),r=new g(e,n,this);w.set(this,r)};// Expose public methods of ResizeObserver.
+     */function t(e){if(!(this instanceof t))throw TypeError("Cannot call a class as a function.");if(!arguments.length)throw TypeError("1 argument required, but only 0 present.");var n=new g(e,h.getInstance(),this);w.set(this,n)};// Expose public methods of ResizeObserver.
 ["observe","unobserve","disconnect"].forEach(function(t){O.prototype[t]=function(){var e;return(e=w.get(this))[t].apply(e,arguments)}});var E=// Export existing implementation if available.
-void 0!==s.ResizeObserver?s.ResizeObserver:O;n.default=E},{"@parcel/transformer-js/src/esmodule-helpers.js":"bUjUS"}]},[],null,"parcelRequire6566")//# sourceMappingURL=ResizeObserver.es.e3abc4cb.js.map
+void 0!==s.ResizeObserver?s.ResizeObserver:O;n.default=E},{"@parcel/transformer-js/src/esmodule-helpers.js":"bUjUS"}]},[],null,"parcelRequire6566")//# sourceMappingURL=ResizeObserver.es.df358d76.js.map
 ;
-//# sourceMappingURL=ResizeObserver.es.e3abc4cb.js.map
+//# sourceMappingURL=ResizeObserver.es.df358d76.js.map
