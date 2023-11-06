@@ -242,7 +242,7 @@ var u=Math.round(c+o)-e,h=Math.round(a+s)-n;1!==Math.abs(u)&&(c-=u),1!==Math.abs
      * from the corresponding properties of the last observed content rectangle.
      *
      * @returns {DOMRectInit} Last observed content rectangle.
-     */t.prototype.broadcastRect=function(){var t=this.contentRect_;return this.broadcastWidth=t.width,this.broadcastHeight=t.height,t},t)}(),y=/**
+     */t.prototype.broadcastRect=function(){var t=this.contentRect_;return this.broadcastWidth=t.width,this.broadcastHeight=t.height,t},t)}(),ResizeObserverEntry=/**
      * Creates an instance of ResizeObserverEntry.
      *
      * @param {Element} target - Element that is being observed.
@@ -254,7 +254,7 @@ f(s=Object.create(("undefined"!=typeof DOMRectReadOnly?DOMRectReadOnly:Object).p
 // Property accessors are not being used as they'd require to define a
 // private WeakMap storage which may cause memory leaks in browsers that
 // don't support this type of collections.
-f(this,{target:t,contentRect:c})},g=/** @class */function(){/**
+f(this,{target:t,contentRect:c})},y=/** @class */function(){/**
      * Creates a new instance of ResizeObserver.
      *
      * @param {ResizeObserverCallback} callback - Callback function that is invoked
@@ -302,7 +302,7 @@ e.has(t)&&(e.delete(t),e.size||this.controller_.removeObserver(this))}},/**
      *
      * @returns {void}
      */t.prototype.broadcastActive=function(){// Do nothing if observer doesn't have active observations.
-if(this.hasActive()){var t=this.callbackCtx_,e=this.activeObservations_.map(function(t){return new y(t.target,t.broadcastRect())});this.callback_.call(t,e,t),this.clearActive()}},/**
+if(this.hasActive()){var t=this.callbackCtx_,e=this.activeObservations_.map(function(t){return new ResizeObserverEntry(t.target,t.broadcastRect())});this.callback_.call(t,e,t),this.clearActive()}},/**
      * Clears the collection of active observations.
      *
      * @returns {void}
@@ -310,13 +310,13 @@ if(this.hasActive()){var t=this.callbackCtx_,e=this.activeObservations_.map(func
      * Tells whether observer has active observations.
      *
      * @returns {boolean}
-     */t.prototype.hasActive=function(){return this.activeObservations_.length>0},t)}(),w="undefined"!=typeof WeakMap?new WeakMap:new i,O=/**
+     */t.prototype.hasActive=function(){return this.activeObservations_.length>0},t)}(),g="undefined"!=typeof WeakMap?new WeakMap:new i,ResizeObserver=/**
      * Creates a new instance of ResizeObserver.
      *
      * @param {ResizeObserverCallback} callback - Callback that is invoked when
      *      dimensions of the observed elements change.
-     */function t(e){if(!(this instanceof t))throw TypeError("Cannot call a class as a function.");if(!arguments.length)throw TypeError("1 argument required, but only 0 present.");var n=new g(e,h.getInstance(),this);w.set(this,n)};// Expose public methods of ResizeObserver.
-["observe","unobserve","disconnect"].forEach(function(t){O.prototype[t]=function(){var e;return(e=w.get(this))[t].apply(e,arguments)}});var E=// Export existing implementation if available.
-void 0!==s.ResizeObserver?s.ResizeObserver:O;n.default=E},{"@parcel/transformer-js/src/esmodule-helpers.js":"bUjUS"}]},[],null,"parcelRequire6566")//# sourceMappingURL=ResizeObserver.es.df358d76.js.map
+     */function ResizeObserver(t){if(!(this instanceof ResizeObserver))throw TypeError("Cannot call a class as a function.");if(!arguments.length)throw TypeError("1 argument required, but only 0 present.");var e=new y(t,h.getInstance(),this);g.set(this,e)};// Expose public methods of ResizeObserver.
+["observe","unobserve","disconnect"].forEach(function(t){ResizeObserver.prototype[t]=function(){var e;return(e=g.get(this))[t].apply(e,arguments)}});var w=// Export existing implementation if available.
+void 0!==s.ResizeObserver?s.ResizeObserver:ResizeObserver;n.default=w},{"@parcel/transformer-js/src/esmodule-helpers.js":"bUjUS"}]},[],null,"parcelRequire6566")//# sourceMappingURL=ResizeObserver.es.89d490b5.js.map
 ;
-//# sourceMappingURL=ResizeObserver.es.df358d76.js.map
+//# sourceMappingURL=ResizeObserver.es.89d490b5.js.map
