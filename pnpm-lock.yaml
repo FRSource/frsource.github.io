@@ -37,8 +37,8 @@ importers:
         specifier: 5.2.2
         version: 5.2.2
       '@types/cross-spawn':
-        specifier: 6.0.4
-        version: 6.0.4
+        specifier: 6.0.5
+        version: 6.0.5
       '@types/fs-extra':
         specifier: 11.0.3
         version: 11.0.3
@@ -128,11 +128,11 @@ importers:
         specifier: 2.10.2
         version: 2.10.2(@parcel/core@2.10.2)
       '@types/domready':
-        specifier: 1.0.1
-        version: 1.0.1
+        specifier: 1.0.2
+        version: 1.0.2
       '@types/node':
-        specifier: 18.18.6
-        version: 18.18.6
+        specifier: 18.18.8
+        version: 18.18.8
       cli-real-favicon:
         specifier: 0.0.8
         version: 0.0.8
@@ -1660,14 +1660,14 @@ packages:
     resolution: {integrity: sha512-9aZ7KzLDOBYyqH5J2bvB9edvsMXusX+H/aS8idAJOpWNmscZG5RqO1CVJPFa4Q0/1xKgvxcweXunFVx2l/dYFA==}
     dev: true
 
-  /@types/cross-spawn@6.0.4:
-    resolution: {integrity: sha512-GGLpeThc2Bu8FBGmVn76ZU3lix17qZensEI4/MPty0aZpm2CHfgEMis31pf5X5EiudYKcPAsWciAsCALoPo5dw==}
+  /@types/cross-spawn@6.0.5:
+    resolution: {integrity: sha512-wsIMP68FvGXk+RaWhraz6Xp4v7sl4qwzHAmtPaJEN2NRTXXI9LtFawUpeTsBNL/pd6QoLStdytCaAyiK7AEd/Q==}
     dependencies:
-      '@types/node': 18.18.5
+      '@types/node': 18.18.8
     dev: true
 
-  /@types/domready@1.0.1:
-    resolution: {integrity: sha512-MfksbOwCiNMlrW6d6lurOMMUdHi4OkzikwAt5eZysBs/pL6rmbdlxe8t5QiBA7tioIfR9O/ZoL//iuhk9MaT9g==}
+  /@types/domready@1.0.2:
+    resolution: {integrity: sha512-OC/Cij8ZxiVnxHMiKmVd3a8YTsQOf1FbIic6g7Xbizod8zCaeUYzYDbno7zEcemgqkl7WVoUoXVcJTqTKHeaPA==}
     dev: true
 
   /@types/fs-extra@11.0.3:
@@ -1680,7 +1680,7 @@ packages:
   /@types/jsonfile@6.1.1:
     resolution: {integrity: sha512-GSgiRCVeapDN+3pqA35IkQwasaCh/0YFH5dEF6S88iDvEn901DjOeH3/QPY+XYP1DFzDZPvIvfeEgk+7br5png==}
     dependencies:
-      '@types/node': 18.18.6
+      '@types/node': 18.18.8
     dev: true
 
   /@types/linkify-it@3.0.3:
@@ -1716,12 +1716,14 @@ packages:
     resolution: {integrity: sha512-5EWrvLmglK+imbCJY0+INViFWUHg1AHel1sq4ZVSfdcNqGy9Edv3UB9IIzzg+xPaUcAgZYcfVs2fBcwDeZzU0A==}
     dev: true
 
-  /@types/node@18.18.5:
-    resolution: {integrity: sha512-4slmbtwV59ZxitY4ixUZdy1uRLf9eSIvBWPQxNjhHYWEtn0FryfKpyS2cvADYXTayWdKEIsJengncrVvkI4I6A==}
-    dev: true
-
   /@types/node@18.18.6:
     resolution: {integrity: sha512-wf3Vz+jCmOQ2HV1YUJuCWdL64adYxumkrxtc+H1VUQlnQI04+5HtH+qZCOE21lBE7gIrt+CwX2Wv8Acrw5Ak6w==}
+    dev: true
+
+  /@types/node@18.18.8:
+    resolution: {integrity: sha512-OLGBaaK5V3VRBS1bAkMVP2/W9B+H8meUfl866OrMNQqt7wDgdpWPp5o6gmIc9pB+lIQHSq4ZL8ypeH1vPxcPaQ==}
+    dependencies:
+      undici-types: 5.26.5
     dev: true
 
   /@types/normalize-package-data@2.4.1:
@@ -4904,6 +4906,10 @@ packages:
 
   /underscore@1.13.6:
     resolution: {integrity: sha512-+A5Sja4HP1M08MaXya7p5LvjuM7K6q/2EaC0+iovj/wOcMsTzMvDFbasi/oSapiwOlt252IqsKqPjCl7huKS0A==}
+    dev: true
+
+  /undici-types@5.26.5:
+    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
     dev: true
 
   /universalify@2.0.0:
