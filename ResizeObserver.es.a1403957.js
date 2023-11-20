@@ -317,6 +317,6 @@ if(this.hasActive()){var t=this.callbackCtx_,e=this.activeObservations_.map(func
      *      dimensions of the observed elements change.
      */function ResizeObserver(t){if(!(this instanceof ResizeObserver))throw TypeError("Cannot call a class as a function.");if(!arguments.length)throw TypeError("1 argument required, but only 0 present.");var e=new y(t,h.getInstance(),this);g.set(this,e)};// Expose public methods of ResizeObserver.
 ["observe","unobserve","disconnect"].forEach(function(t){ResizeObserver.prototype[t]=function(){var e;return(e=g.get(this))[t].apply(e,arguments)}});var w=// Export existing implementation if available.
-void 0!==s.ResizeObserver?s.ResizeObserver:ResizeObserver;n.default=w},{"@parcel/transformer-js/src/esmodule-helpers.js":"zIDCf"}]},[],null,"parcelRequire6566")//# sourceMappingURL=ResizeObserver.es.c7d7af79.js.map
+void 0!==s.ResizeObserver?s.ResizeObserver:ResizeObserver;n.default=w},{"@parcel/transformer-js/src/esmodule-helpers.js":"DQw6K"}]},[],null,"parcelRequire6566")//# sourceMappingURL=ResizeObserver.es.a1403957.js.map
 ;
-//# sourceMappingURL=ResizeObserver.es.c7d7af79.js.map
+//# sourceMappingURL=ResizeObserver.es.a1403957.js.map
