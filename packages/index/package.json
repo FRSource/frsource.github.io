@@ -37,7 +37,7 @@
         "@parcel/service-worker": "2.10.3",
         "domready": "1.0.8",
         "powerglitch": "2.3.2",
-        "regenerator-runtime": "0.14.0",
+        "regenerator-runtime": "0.14.1",
         "resize-observer-polyfill": "1.5.1"
     }
 }
