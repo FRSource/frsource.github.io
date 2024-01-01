@@ -30,7 +30,7 @@
         "parcel": "2.10.3",
         "prettier": "3.0.3",
         "rimraf": "5.0.5",
-        "sass": "1.69.5",
+        "sass": "1.69.6",
         "typescript": "5.3.3"
     },
     "dependencies": {
