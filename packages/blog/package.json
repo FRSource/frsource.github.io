@@ -34,7 +34,7 @@
         "concurrently": "8.2.2",
         "cpy-cli": "5.0.0",
         "cross-spawn": "7.0.3",
-        "fs-extra": "11.1.1",
+        "fs-extra": "11.2.0",
         "gray-matter": "4.0.3",
         "is-animated": "^2.0.2",
         "lodash-es": "^4.17.21",
@@ -42,7 +42,7 @@
         "sharp": "^0.32.0",
         "string-replace-async": "^3.0.2",
         "vitepress": "1.0.0-rc.34",
-        "vue": "3.3.13"
+        "vue": "3.4.5"
     },
     "dependencies": {
         "simple-icons": "9.21.0"
