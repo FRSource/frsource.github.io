@@ -41,8 +41,8 @@
         "node-fetch": "^3.3.0",
         "sharp": "^0.32.0",
         "string-replace-async": "^3.0.2",
-        "vitepress": "1.0.0-rc.42",
-        "vue": "3.4.18"
+        "vitepress": "1.0.0-rc.43",
+        "vue": "3.4.19"
     },
     "dependencies": {
         "simple-icons": "9.21.0"
