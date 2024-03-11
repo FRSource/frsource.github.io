@@ -88,8 +88,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       vitepress:
-        specifier: 1.0.0-rc.44
-        version: 1.0.0-rc.44(@algolia/client-search@4.22.1)(search-insights@2.13.0)(typescript@5.3.3)
+        specifier: 1.0.0-rc.45
+        version: 1.0.0-rc.45(@algolia/client-search@4.22.1)(search-insights@2.13.0)(typescript@5.3.3)
       vue:
         specifier: 3.4.21
         version: 3.4.21(typescript@5.3.3)
@@ -3758,7 +3758,7 @@ packages:
       colorette: 2.0.20
       eventemitter3: 5.0.1
       log-update: 5.0.1
-      rfdc: 1.3.0
+      rfdc: 1.3.1
       wrap-ansi: 8.1.0
     dev: true
 
@@ -3807,7 +3807,7 @@ packages:
       ansi-escapes: 5.0.0
       cli-cursor: 4.0.0
       slice-ansi: 5.0.0
-      strip-ansi: 7.0.1
+      strip-ansi: 7.1.0
       wrap-ansi: 8.1.0
     dev: true
 
@@ -4604,10 +4604,6 @@ packages:
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
     dev: true
 
-  /rfdc@1.3.0:
-    resolution: {integrity: sha512-V2hovdzFbOi77/WajaSMXk2OLm+xNIeQdMMuB7icj7bk6zi2F8GGAxigcnDFpJHbNyNcgyJDiP+8nOrY5cZGrA==}
-    dev: true
-
   /rfdc@1.3.1:
     resolution: {integrity: sha512-r5a3l5HzYlIC68TpmYKlxWjmOP6wiPJ1vWv2HeLhNsRZMrCkxeqxiHlQ21oXmQ4F3SiryXBHhAD7JZqvOJjFmg==}
     dev: true
@@ -5257,8 +5253,8 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vitepress@1.0.0-rc.44(@algolia/client-search@4.22.1)(search-insights@2.13.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-tO5taxGI7fSpBK1D8zrZTyJJERlyU9nnt0jHSt3fywfq3VKn977Hg0wUuTkEmwXlFYwuW26+6+3xorf4nD3XvA==}
+  /vitepress@1.0.0-rc.45(@algolia/client-search@4.22.1)(search-insights@2.13.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-/OiYsu5UKpQKA2c0BAZkfyywjfauDjvXyv6Mo4Ra57m5n4Bxg1HgUGoth1CLH2vwUbR/BHvDA9zOM0RDvgeSVQ==}
     hasBin: true
     peerDependencies:
       markdown-it-mathjax3: ^4.3.2
