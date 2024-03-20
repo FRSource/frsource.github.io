@@ -49,8 +49,8 @@ importers:
         specifier: 0.3.4
         version: 0.3.4
       '@types/sharp':
-        specifier: ^0.31.1
-        version: 0.31.1
+        specifier: ^0.32.0
+        version: 0.32.0
       chokidar:
         specifier: 3.5.3
         version: 3.5.3
@@ -131,8 +131,8 @@ importers:
         specifier: 1.0.2
         version: 1.0.2
       '@types/node':
-        specifier: 18.19.18
-        version: 18.19.18
+        specifier: 18.19.26
+        version: 18.19.26
       cli-real-favicon:
         specifier: 0.0.8
         version: 0.0.8
@@ -1822,7 +1822,7 @@ packages:
   /@types/jsonfile@6.1.1:
     resolution: {integrity: sha512-GSgiRCVeapDN+3pqA35IkQwasaCh/0YFH5dEF6S88iDvEn901DjOeH3/QPY+XYP1DFzDZPvIvfeEgk+7br5png==}
     dependencies:
-      '@types/node': 18.18.9
+      '@types/node': 18.19.26
     dev: true
 
   /@types/linkify-it@3.0.3:
@@ -1854,10 +1854,6 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node@18.14.0:
-    resolution: {integrity: sha512-5EWrvLmglK+imbCJY0+INViFWUHg1AHel1sq4ZVSfdcNqGy9Edv3UB9IIzzg+xPaUcAgZYcfVs2fBcwDeZzU0A==}
-    dev: true
-
   /@types/node@18.18.11:
     resolution: {integrity: sha512-c1vku6qnTeujJneYH94/4aq73XrVcsJe35UPyAsSok1ijiKrkRzK+AxQPSpNMUnC03roWBBwJx/9I8V7lQoxmA==}
     dependencies:
@@ -1870,8 +1866,8 @@ packages:
       undici-types: 5.26.5
     dev: true
 
-  /@types/node@18.19.18:
-    resolution: {integrity: sha512-80CP7B8y4PzZF0GWx15/gVWRrB5y/bIjNI84NK3cmQJu0WZwvmj2WMA5LcofQFVfLqqCSp545+U2LsrVzX36Zg==}
+  /@types/node@18.19.26:
+    resolution: {integrity: sha512-+wiMJsIwLOYCvUqSdKTrfkS8mpTp+MPINe6+Np4TAGFWWRWiBQ5kSq9nZGCSPkzx9mvT+uEukzpX4MOSCydcvw==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -1888,10 +1884,11 @@ packages:
     resolution: {integrity: sha512-i753EH/p02bw7bLlpfS/4CV1rdikbGiLabWyVsAvsFid3cA5RNU1frG7JycgY+NSnFwtoGlElvZVceCytecTDA==}
     dev: true
 
-  /@types/sharp@0.31.1:
-    resolution: {integrity: sha512-5nWwamN9ZFHXaYEincMSuza8nNfOof8nmO+mcI+Agx1uMUk4/pQnNIcix+9rLPXzKrm1pS34+6WRDbDV0Jn7ag==}
+  /@types/sharp@0.32.0:
+    resolution: {integrity: sha512-OOi3kL+FZDnPhVzsfD37J88FNeZh6gQsGcLc95NbeURRGvmSjeXiDcyWzF2o3yh/gQAUn2uhh/e+CPCa5nwAxw==}
+    deprecated: This is a stub types definition. sharp provides its own type definitions, so you do not need this installed.
     dependencies:
-      '@types/node': 18.14.0
+      sharp: 0.32.6
     dev: true
 
   /@types/web-bluetooth@0.0.20:
@@ -4236,9 +4233,6 @@ packages:
     resolution: {integrity: sha512-H/RI1/DmuOkL8RuG/EpNPvtzrbF+7jA/R56ydEEm+lqFbYktKB4COR7JXdHkZXRgbSJyimrFB8d0r9+SaRnj0Q==}
     engines: {node: '>= 12.0.0'}
     hasBin: true
-    peerDependenciesMeta:
-      '@parcel/core':
-        optional: true
     dependencies:
       '@parcel/config-default': 2.11.0(@parcel/core@2.11.0)
       '@parcel/core': 2.11.0
