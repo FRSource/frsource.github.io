@@ -24,8 +24,8 @@ importers:
   packages/blog:
     dependencies:
       simple-icons:
-        specifier: 9.21.0
-        version: 9.21.0
+        specifier: 11.10.0
+        version: 11.10.0
     devDependencies:
       '@swc-node/register':
         specifier: 1.6.8
@@ -4233,6 +4233,9 @@ packages:
     resolution: {integrity: sha512-H/RI1/DmuOkL8RuG/EpNPvtzrbF+7jA/R56ydEEm+lqFbYktKB4COR7JXdHkZXRgbSJyimrFB8d0r9+SaRnj0Q==}
     engines: {node: '>= 12.0.0'}
     hasBin: true
+    peerDependenciesMeta:
+      '@parcel/core':
+        optional: true
     dependencies:
       '@parcel/config-default': 2.11.0(@parcel/core@2.11.0)
       '@parcel/core': 2.11.0
@@ -4805,8 +4808,8 @@ packages:
       simple-concat: 1.0.1
     dev: true
 
-  /simple-icons@9.21.0:
-    resolution: {integrity: sha512-yxjs49nKwff5ozRwPCBVcGG4Ehlg5YiR1g4EJ83zmqc0hYhYb6UQJqiy2WOga2OJ1/qVHaej7q762hYZX/mavA==}
+  /simple-icons@11.10.0:
+    resolution: {integrity: sha512-3jhPx5xgbDCx/tuegpnW82VmUc4xe7yVd5r/BwIhfei02hS3IbOfgLKPPczd2OasngeNEd0J31vU19/0jmfxrQ==}
     engines: {node: '>=0.12.18'}
     dev: false
 
