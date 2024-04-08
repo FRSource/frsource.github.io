@@ -136,7 +136,7 @@ export const preparePostForPublish = async ({
                           frontmatterData.content,
                           processImageForMedium,
                       )) +
-                      `\n\n> This article has been originaly published on [FRSPACE blog](${canonicalUrl}).\n> Take a look there to find more of my articles 🎉`,
+                      `\n\n> This article has been originally published on [FRSPACE blog](${canonicalUrl}).\n> Take a look there to find more of my articles 🎉`,
                   tags,
                   publishStatus: "public", // possible values: draft, unlisted, public
                   canonicalUrl,
