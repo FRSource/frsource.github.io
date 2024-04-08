@@ -28,7 +28,7 @@ const locales: LocaleConfig = {
         lang: "en",
         label: "English",
         title: "",
-        titleTemplate: ":titleFRSPACE - Web, IT & robotics",
+        titleTemplate: ":title FRSPACE - Web, IT & robotics",
         description: "Web, IT, robotics & much more!",
     },
     pl: {
