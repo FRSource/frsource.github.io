@@ -41,10 +41,10 @@
         "node-fetch": "^3.3.0",
         "sharp": "^0.33.0",
         "string-replace-async": "^3.0.2",
-        "vitepress": "1.0.2",
+        "vitepress": "1.1.4",
         "vue": "3.4.25"
     },
     "dependencies": {
-        "simple-icons": "11.10.0"
+        "simple-icons": "11.14.0"
     }
 }
