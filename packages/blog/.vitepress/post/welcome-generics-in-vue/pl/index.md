@@ -64,7 +64,7 @@ Wyobraźmy sobie komponent `Tabs`, który:
 ```vue
 // Tabs.vue
 <script lang="ts" setup>
-import { ref, computed } from "vue";
+import { ref, computed } from 'vue';
 
 const props = defineProps<{
     tabs: { id: string; heading: string; content: string }[];
@@ -96,20 +96,20 @@ Tak zdefiniowany komponent może zostać łatwo skonsumowany:
 ```vue
 // App.vue
 <script lang="ts" setup>
-import Tabs from "./Tabs.vue";
+import Tabs from './Tabs.vue';
 
 const productTabs = [
     {
-        id: "bestsellers",
-        heading: "Bestsellers",
-        content: "The best-selling articles in our store!",
-        products: [{ name: "Gray sweater" }],
+        id: 'bestsellers',
+        heading: 'Bestsellers',
+        content: 'The best-selling articles in our store!',
+        products: [{ name: 'Gray sweater' }],
     },
     {
-        id: "offers",
-        heading: "Offers",
-        content: "Here are some best offers tailored just to your liking 🧵",
-        products: [{ name: "Green T-shirt" }],
+        id: 'offers',
+        heading: 'Offers',
+        content: 'Here are some best offers tailored just to your liking 🧵',
+        products: [{ name: 'Green T-shirt' }],
     },
 ];
 </script>
@@ -140,7 +140,7 @@ Jak można było się domyśleć - proponowanym rozwiązaniem będą generyki! Z
     setup
     generic="Tab extends { id: string; heading: string; content: string }"
 >
-import { ref, computed } from "vue";
+import { ref, computed } from 'vue';
 
 const props = defineProps<{
     tabs: Tab[];

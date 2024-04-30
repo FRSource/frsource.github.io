@@ -11,18 +11,18 @@ export type ArticleProps = {
 </script>
 
 <script setup lang="ts">
-import type { DefaultTheme } from "vitepress/theme";
-import VPImage from "vitepress/dist/client/theme-default/components/VPImage.vue";
-import Tile from "./Tile.vue";
-import TileTextContent from "./TileTextContent.vue";
-import AuthorInfo from "../../components/AuthorInfo.vue";
-import { computed, onMounted, ref, watchEffect } from "vue";
+import type { DefaultTheme } from 'vitepress/theme';
+import VPImage from 'vitepress/dist/client/theme-default/components/VPImage.vue';
+import Tile from './Tile.vue';
+import TileTextContent from './TileTextContent.vue';
+import AuthorInfo from '../../components/AuthorInfo.vue';
+import { computed, onMounted, ref, watchEffect } from 'vue';
 
 const props = defineProps<ArticleProps>();
 
 const date = computed(() => new Date(props.creationDate));
 const isoDatetime = computed(() => date.value.toISOString());
-const datetime = ref("");
+const datetime = ref('');
 
 // set time on mounted hook because the locale string might be different
 // based on end user and will lead to potential hydration mismatch if

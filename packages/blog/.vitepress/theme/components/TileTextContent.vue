@@ -2,7 +2,7 @@
 defineProps({
     titleTag: {
         type: String,
-        default: "h2",
+        default: 'h2',
     },
     title: String,
     description: String,

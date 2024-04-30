@@ -1,6 +1,6 @@
-@use "sass:map";
+@use 'sass:map';
 
-@import "./variables";
+@import './variables';
 
 .mt-1 {
     margin-top: map.get($spacings, 1);

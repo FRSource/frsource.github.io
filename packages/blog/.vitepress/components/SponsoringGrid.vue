@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { VPTeamPage, VPTeamPageTitle, VPTeamMembers } from "vitepress/theme";
-import { siPatreon, siBuymeacoffee, siGithubsponsors } from "simple-icons";
-import { toInlineImgSvgString } from "../utils/url.utils";
+import { computed } from 'vue';
+import { VPTeamPage, VPTeamPageTitle, VPTeamMembers } from 'vitepress/theme';
+import { siPatreon, siBuymeacoffee, siGithubsponsors } from 'simple-icons';
+import { toInlineImgSvgString } from '../utils/url.utils';
 
 const props = defineProps({
     patreonDesc: {
@@ -22,27 +22,27 @@ const props = defineProps({
 const members = computed(() => [
     {
         avatar: toInlineImgSvgString(
-            siPatreon.svg.replace("<svg ", '<svg style="fill:#FF424D" '),
+            siPatreon.svg.replace('<svg ', '<svg style="fill:#FF424D" '),
         ),
-        name: "Patreon",
+        name: 'Patreon',
         desc: props.patreonDesc,
-        sponsor: "https://www.patreon.com/frsource",
+        sponsor: 'https://www.patreon.com/frsource',
     },
     {
         avatar: toInlineImgSvgString(
-            siGithubsponsors.svg.replace("<svg ", '<svg style="fill:#EA4AAA" '),
+            siGithubsponsors.svg.replace('<svg ', '<svg style="fill:#EA4AAA" '),
         ),
-        name: "Github Sponsors",
+        name: 'Github Sponsors',
         desc: props.githubDesc,
-        sponsor: "https://github.com/sponsors/FRSOURCE/",
+        sponsor: 'https://github.com/sponsors/FRSOURCE/',
     },
     {
         avatar: toInlineImgSvgString(
-            siBuymeacoffee.svg.replace("<svg ", '<svg style="fill:#FFDD00" '),
+            siBuymeacoffee.svg.replace('<svg ', '<svg style="fill:#FFDD00" '),
         ),
-        name: "Buy me a coffee",
+        name: 'Buy me a coffee',
         desc: props.buyMeACoffeeDesc,
-        sponsor: "https://www.buymeacoffee.com/FRSOURCE",
+        sponsor: 'https://www.buymeacoffee.com/FRSOURCE',
     },
 ]);
 </script>

@@ -1,4 +1,4 @@
-@use "sass:math";
+@use 'sass:math';
 
 $colorPrimary: #071633;
 $colorPrimaryInverted: #fff;
@@ -10,7 +10,7 @@ $darkModeGradPrimary: #02bfb5;
 $darkModeGradSecondary: #021c87;
 $darkModePrimaryInverted: #063eb4;
 
-$fontRegular: "Inconsolata", "Ubuntu Mono", "Trebuchet MS", "Tahoma", monospace;
+$fontRegular: 'Inconsolata', 'Ubuntu Mono', 'Trebuchet MS', 'Tahoma', monospace;
 
 $lineHeight1: 1;
 $lineHeight3: 1.2;

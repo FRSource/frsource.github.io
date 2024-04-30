@@ -4,7 +4,7 @@ layout: home
 frs_hero:
     name: FRSPACE
     text: Web, IT i robotyka
-    tagline: ""
+    tagline: ''
     image:
         alt: logo FRSPACE
 

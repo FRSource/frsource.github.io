@@ -1,38 +1,38 @@
-import path from "path";
-import { promises as fs } from "fs";
-import fsExtra from "fs-extra";
-import chokidar from "chokidar";
-import commandLineArgs from "command-line-args";
-import { memoize } from "lodash-es";
-import { publish as mediumPublish } from "./syncToMedium";
+import path from 'path';
+import { promises as fs } from 'fs';
+import fsExtra from 'fs-extra';
+import chokidar from 'chokidar';
+import commandLineArgs from 'command-line-args';
+import { memoize } from 'lodash-es';
+import { publish as mediumPublish } from './syncToMedium';
 
-const __dirname = new URL(".", import.meta.url).pathname;
-const LOCALES = ["en", "pl"];
+const __dirname = new URL('.', import.meta.url).pathname;
+const LOCALES = ['en', 'pl'];
 const DEFAULT_LOCALE = LOCALES[0];
-const DEFAULT_LOCALE_DIR = "";
-const IGNORED_POST_FILES = [".DS_Store"];
+const DEFAULT_LOCALE_DIR = '';
+const IGNORED_POST_FILES = ['.DS_Store'];
 
 const memoizedPostDestinationPath = memoize(postDestinationPath);
 
 const args = commandLineArgs([
-    { name: "watch", alias: "w", type: Boolean },
-    { name: "sync-with-medium", type: Boolean },
+    { name: 'watch', alias: 'w', type: Boolean },
+    { name: 'sync-with-medium', type: Boolean },
 ]);
-const cwd = path.join(__dirname, "..");
+const cwd = path.join(__dirname, '..');
 
 const watcher = chokidar
-    .watch("./post/**/*", {
+    .watch('./post/**/*', {
         cwd,
         ignoreInitial: true,
     })
-    .on("ready", async () => {
+    .on('ready', async () => {
         await clearPosts();
         const filesToSync = await filterOutDirs(watcher.getWatched());
         const syncedPosts = await copyPosts(filesToSync);
-        if (args["sync-with-medium"]) {
+        if (args['sync-with-medium']) {
             await Promise.all(
                 syncedPosts.map((post) => {
-                    if (post?.locale !== "en") return;
+                    if (post?.locale !== 'en') return;
                     return mediumPublish({
                         srcDirPath: post.src,
                         postname: post.postname,
@@ -42,14 +42,14 @@ const watcher = chokidar
         }
         if (!args.watch) await watcher.close();
     })
-    .on("all", (event, filepath, stats) => {
+    .on('all', (event, filepath, stats) => {
         switch (event) {
-            case "add":
-            case "change":
+            case 'add':
+            case 'change':
                 copyPostFile(filepath);
                 break;
-            case "unlink":
-            case "unlinkDir":
+            case 'unlink':
+            case 'unlinkDir':
                 fsExtra
                     .remove(memoizedPostDestinationPath(filepath))
                     .catch(
@@ -72,9 +72,9 @@ function parsePostPath(srcPostPath: string) {
     const separator = `\\${path.sep}`;
     const regex = new RegExp(
         `post${separator}([^${separator}]+)${separator}([^${separator}]+)${separator}?(.*)?$`,
-        "i",
+        'i',
     );
-    const [, postname, locale, rest = ""] = srcPostPath.match(regex);
+    const [, postname, locale, rest = ''] = srcPostPath.match(regex);
     return { postname, locale, rest };
 }
 
@@ -87,7 +87,7 @@ async function copyPosts(postsToCopy: Record<string, string[]>) {
                 ...parsePostPath(postSrcDir),
                 files: await Promise.all(
                     postsToCopy[postSrcDir].map((filename) =>
-                        filename === "index.md"
+                        filename === 'index.md'
                             ? copyPostFile(path.join(postSrcDir, filename))
                             : copyPostAsset(path.join(postSrcDir, filename)),
                     ),
@@ -107,7 +107,7 @@ async function copyPostFile(srcFilepath: string) {
         srcContent
             .toString()
             .replace(
-                "---",
+                '---',
                 `---\ntype: article\nsrcPath: "${path.dirname(srcFilepath)}"`,
             ),
     );
@@ -128,12 +128,12 @@ function postDestinationPath(srcFilepath: string, isAsset?: boolean) {
     const { locale, postname, rest } = parsePostPath(srcFilepath);
     const pathParts = isAsset
         ? [
-              "public",
-              "post",
+              'public',
+              'post',
               locale === DEFAULT_LOCALE ? DEFAULT_LOCALE_DIR : locale,
           ]
-        : [locale === DEFAULT_LOCALE ? DEFAULT_LOCALE_DIR : locale, "post"];
-    return withCwd("..", ...pathParts, postname, rest);
+        : [locale === DEFAULT_LOCALE ? DEFAULT_LOCALE_DIR : locale, 'post'];
+    return withCwd('..', ...pathParts, postname, rest);
 }
 
 async function clearPosts() {
@@ -141,9 +141,9 @@ async function clearPosts() {
         LOCALES.map((locale) =>
             fsExtra.remove(
                 withCwd(
-                    "..",
+                    '..',
                     locale === DEFAULT_LOCALE ? DEFAULT_LOCALE_DIR : locale,
-                    "post",
+                    'post',
                 ),
             ),
         ),

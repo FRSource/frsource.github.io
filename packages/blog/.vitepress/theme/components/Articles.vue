@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { PropType } from "vue";
-import Article, { ArticleProps } from "./Article.vue";
+import { PropType } from 'vue';
+import Article, { ArticleProps } from './Article.vue';
 
 defineProps({
     articles: Array as PropType<ArticleProps[]>,

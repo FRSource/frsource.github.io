@@ -1,13 +1,13 @@
-import { DefaultTheme } from "vitepress";
+import { DefaultTheme } from 'vitepress';
 
-declare module "vitepress" {
+declare module 'vitepress' {
     type Locales = {
         root: {
-            lang: "en-US";
+            lang: 'en-US';
             label: string;
         };
         pl: {
-            lang: "pl-PL";
+            lang: 'pl-PL';
             label: string;
         };
     };

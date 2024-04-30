@@ -1,9 +1,9 @@
 <script setup lang="ts">
 /// <reference path="../../typings.d.ts" />
-import { useData } from "vitepress";
-import { watch, computed } from "vue";
-import VPLink from "vitepress/dist/client/theme-default/components/VPLink.vue";
-import { members } from "../composables/members";
+import { useData } from 'vitepress';
+import { watch, computed } from 'vue';
+import VPLink from 'vitepress/dist/client/theme-default/components/VPLink.vue';
+import { members } from '../composables/members';
 
 const props = defineProps({
     author: String,

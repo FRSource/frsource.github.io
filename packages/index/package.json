@@ -20,15 +20,16 @@
     },
     "devDependencies": {
         "@frsource/frs-replace": "4.1.1",
+        "@frsource/prettier-config": "1.5.0",
         "@parcel/packager-raw-url": "2.12.0",
         "@parcel/transformer-inline-string": "2.12.0",
         "@parcel/transformer-jsonld": "2.12.0",
         "@parcel/transformer-sass": "2.12.0",
         "@types/domready": "1.0.2",
-        "@types/node": "18.19.26",
+        "@types/node": "20.12.7",
         "cli-real-favicon": "0.0.8",
         "parcel": "2.12.0",
-        "prettier": "3.0.3",
+        "prettier": "3.2.5",
         "rimraf": "5.0.5",
         "sass": "1.75.0",
         "typescript": "5.4.5"

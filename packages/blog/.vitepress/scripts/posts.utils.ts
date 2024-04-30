@@ -1,16 +1,16 @@
-import matter from "gray-matter";
-import path from "path";
-import { members } from "../composables/members";
-import { getGitCreationTimestamp } from "./getGitCreationTimestamp";
-import { getGitTimestamp } from "./getGitTimestamp";
-import type replaceAsync from "string-replace-async";
+import matter from 'gray-matter';
+import path from 'path';
+import { members } from '../composables/members';
+import { getGitCreationTimestamp } from './getGitCreationTimestamp';
+import { getGitTimestamp } from './getGitTimestamp';
+import type replaceAsync from 'string-replace-async';
 
 const getReplaceAsync = new Function(
-    "modulePath",
+    'modulePath',
     "return import('string-replace-async').then(mod => mod.default)",
 ) as () => Promise<typeof replaceAsync>;
 
-export const baseUrl = "https://www.frsource.org/blog";
+export const baseUrl = 'https://www.frsource.org/blog';
 
 export const parsePostMarkdown = async (
     mdData: matter.GrayMatterFile<string>,
@@ -43,23 +43,23 @@ export const parsePostMarkdown = async (
               author: data.author,
               tags:
                   data.head
-                      ?.find(([name]) => name === "meta")
+                      ?.find(([name]) => name === 'meta')
                       ?.find(
                           (items) =>
-                              typeof items === "object" &&
-                              items?.name === "keywords",
+                              typeof items === 'object' &&
+                              items?.name === 'keywords',
                       )
-                      ?.content?.split(",")
+                      ?.content?.split(',')
                       ?.map((tag) => tag.trim()) || [],
               description: data.description as string,
               image: data.image,
               srcPath: data.srcPath,
-              path: filepath.replace(/index\.md$/, ""),
+              path: filepath.replace(/index\.md$/, ''),
               lastUpdated: await getGitTimestamp(data.srcPath, {
-                  cwd: path.resolve(__dirname, ".."),
+                  cwd: path.resolve(__dirname, '..'),
               }),
               creationDate: await getGitCreationTimestamp(data.srcPath, {
-                  cwd: path.resolve(__dirname, ".."),
+                  cwd: path.resolve(__dirname, '..'),
               }),
           };
 };

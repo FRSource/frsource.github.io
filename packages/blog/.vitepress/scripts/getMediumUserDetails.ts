@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+import fetch from 'node-fetch';
 
 const mediumAuthToken = process.argv[2];
 
@@ -9,10 +9,10 @@ if (!mediumAuthToken) {
     throw process.exit(1);
 }
 
-fetch("https://api.medium.com/v1/me", {
-    method: "GET",
+fetch('https://api.medium.com/v1/me', {
+    method: 'GET',
     headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${mediumAuthToken}`,
     },
 })

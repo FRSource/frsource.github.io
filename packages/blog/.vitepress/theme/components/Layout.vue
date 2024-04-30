@@ -1,33 +1,32 @@
 <script lang="ts" setup>
-import { computed } from "vue";
-import { useData, Locales } from "vitepress";
-import Layout from "vitepress/dist/client/theme-default/Layout.vue";
-import Articles from "./Articles.vue";
-import VPDocFooterLastUpdated from "vitepress/dist/client/theme-default/components/VPDocFooterLastUpdated.vue";
-import AuthorInfo from "../../components/AuthorInfo.vue";
+import { computed } from 'vue';
+import { useData, Locales } from 'vitepress';
+import Layout from 'vitepress/dist/client/theme-default/Layout.vue';
+import Articles from './Articles.vue';
+import VPDocFooterLastUpdated from 'vitepress/dist/client/theme-default/components/VPDocFooterLastUpdated.vue';
+import AuthorInfo from '../../components/AuthorInfo.vue';
 // import CreationDate from "../../components/CreationDate.vue";
 
 const { localeIndex, page, frontmatter } = useData();
-const formattedArticles = computed(
-    () =>
-        page.value.articles[localeIndex.value as keyof Locales]?.map(
-            ({ title, author, description, path, image, creationDate }) => ({
-                title,
-                author,
-                description,
-                image,
-                creationDate,
-                link: path,
-                linkText:
-                    localeIndex.value === "root"
-                        ? "Read the full article"
-                        : "Przeczytaj cały artykuł",
-            }),
-        ),
+const formattedArticles = computed(() =>
+    page.value.articles[localeIndex.value as keyof Locales]?.map(
+        ({ title, author, description, path, image, creationDate }) => ({
+            title,
+            author,
+            description,
+            image,
+            creationDate,
+            link: path,
+            linkText:
+                localeIndex.value === 'root'
+                    ? 'Read the full article'
+                    : 'Przeczytaj cały artykuł',
+        }),
+    ),
 );
 
 const headerArray = computed(
-    () => frontmatter.value.frs_hero.text.split(" ") as string[],
+    () => frontmatter.value.frs_hero.text.split(' ') as string[],
 );
 </script>
 
@@ -45,10 +44,10 @@ const headerArray = computed(
                         </h1>
                         <h2 class="hero__text">
                             <span class="c-secondary">{{
-                                headerArray[0] + " "
+                                headerArray[0] + ' '
                             }}</span>
                             <span class="c-tertiary">{{
-                                headerArray[1] + " "
+                                headerArray[1] + ' '
                             }}</span>
                             <span class="c-primary"
                                 >{{ headerArray[2] }} {{ headerArray[3] }}</span

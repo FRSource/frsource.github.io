@@ -1,10 +1,10 @@
 @font-face {
-    font-family: "Avenir Book";
+    font-family: 'Avenir Book';
     src:
-        local("Avenir Book"),
-        local("Avenir-Book"),
-        url("blog/fonts/subset-Avenir-Book.woff2") format("woff2"),
-        url("blog/fonts/subset-Avenir-Book.woff") format("woff");
+        local('Avenir Book'),
+        local('Avenir-Book'),
+        url('blog/fonts/subset-Avenir-Book.woff2') format('woff2'),
+        url('blog/fonts/subset-Avenir-Book.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -33,8 +33,8 @@
 
     --vp-nav-height: 84px;
 
-    --vp-font-family-base: "Avenir Book", Tahoma, Verdana, sans-serif;
-    --font-family-secondary: Inconsolata, "Ubuntu Mono", "Trebuchet MS", Tahoma,
+    --vp-font-family-base: 'Avenir Book', Tahoma, Verdana, sans-serif;
+    --font-family-secondary: Inconsolata, 'Ubuntu Mono', 'Trebuchet MS', Tahoma,
         monospace;
 
     --layout-horizontal-spacing: 24px;

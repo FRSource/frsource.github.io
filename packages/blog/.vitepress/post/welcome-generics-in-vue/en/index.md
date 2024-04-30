@@ -3,14 +3,14 @@ description: "Vue 3.3 has been just released \U0001F49A And alongside other feat
 head:
     - - meta
       - name: keywords
-        content: "tutorial, Vue, generics, typescript, type-safety"
+        content: 'tutorial, Vue, generics, typescript, type-safety'
 image:
     src: /post/welcome-generics-in-vue/splash.webp
     alt: 'Vue logo with "Generics" text on blurry, brownish, rain-style background'
 author: frs
 syncDateMedium: 1684126658000
 syncedIdMedium: 1c01cc3da0fa
-syncedUrlMedium: "https://medium.com/@kubafreisler/welcome-generics-in-vue-1c01cc3da0fa"
+syncedUrlMedium: 'https://medium.com/@kubafreisler/welcome-generics-in-vue-1c01cc3da0fa'
 ---
 
 # Welcome generics in Vue
@@ -67,7 +67,7 @@ Imagine a `Tabs` component that:
 ```vue
 // Tabs.vue
 <script lang="ts" setup>
-import { ref, computed } from "vue";
+import { ref, computed } from 'vue';
 
 const props = defineProps<{
     tabs: { id: string; heading: string; content: string }[];
@@ -99,20 +99,20 @@ This component can be consumed as follows:
 ```vue
 // App.vue
 <script lang="ts" setup>
-import Tabs from "./Tabs.vue";
+import Tabs from './Tabs.vue';
 
 const productTabs = [
     {
-        id: "bestsellers",
-        heading: "Bestsellers",
-        content: "The best-selling articles in our store!",
-        products: [{ name: "Gray sweater" }],
+        id: 'bestsellers',
+        heading: 'Bestsellers',
+        content: 'The best-selling articles in our store!',
+        products: [{ name: 'Gray sweater' }],
     },
     {
-        id: "offers",
-        heading: "Offers",
-        content: "Here are some best offers tailored just to your liking 🧵",
-        products: [{ name: "Green T-shirt" }],
+        id: 'offers',
+        heading: 'Offers',
+        content: 'Here are some best offers tailored just to your liking 🧵',
+        products: [{ name: 'Green T-shirt' }],
     },
 ];
 </script>
@@ -143,7 +143,7 @@ Okay, so how to fix it? The solution, of course, involves the use of generics! I
     setup
     generic="Tab extends { id: string; heading: string; content: string }"
 >
-import { ref, computed } from "vue";
+import { ref, computed } from 'vue';
 
 const props = defineProps<{
     tabs: Tab[];

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import VPLink from "vitepress/dist/client/theme-default/components/VPLink.vue";
+import VPLink from 'vitepress/dist/client/theme-default/components/VPLink.vue';
 
 defineProps({
     title: String,
     description: String,
     tag: {
         type: String,
-        default: "div",
+        default: 'div',
     },
     link: String,
     linkText: String,

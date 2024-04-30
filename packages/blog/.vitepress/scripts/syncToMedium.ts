@@ -1,17 +1,17 @@
-import path from "path";
-import matter from "gray-matter";
-import { outputFile } from "fs-extra";
+import path from 'path';
+import matter from 'gray-matter';
+import { outputFile } from 'fs-extra';
 import {
     parsePostMarkdown,
     baseUrl,
     convertImagesToAbsolutePaths,
-} from "./posts.utils";
-import { members } from "../composables/members";
-import { getGitTimestamp } from "./getGitTimestamp";
-import type fetch from "node-fetch";
-import { existsSync, promises as fs } from "fs";
-import isAnimated from "is-animated";
-import sharp from "sharp";
+} from './posts.utils';
+import { members } from '../composables/members';
+import { getGitTimestamp } from './getGitTimestamp';
+import type fetch from 'node-fetch';
+import { existsSync, promises as fs } from 'fs';
+import isAnimated from 'is-animated';
+import sharp from 'sharp';
 
 type AdditionalPostData = {
     syncDateMedium?: string; // date when post was last updated
@@ -20,17 +20,17 @@ type AdditionalPostData = {
 };
 
 const getFetch = new Function(
-    "modulePath",
+    'modulePath',
     "return import('node-fetch').then(mod => mod.default)",
 ) as () => Promise<typeof fetch>;
 
 const processImageForMedium = async (imgRelativePath: string) => {
     const imgPath = path.resolve(
         __dirname,
-        "..",
-        "..",
-        "public",
-        ...imgRelativePath.split("/"),
+        '..',
+        '..',
+        'public',
+        ...imgRelativePath.split('/'),
     );
     if (!existsSync(imgPath))
         throw new Error(`Error :: Image: "${imgRelativePath}" does not exist!`);
@@ -41,12 +41,12 @@ const processImageForMedium = async (imgRelativePath: string) => {
             .toFile(
                 path.join(
                     path.dirname(imgPath),
-                    path.basename(imgPath, ".webp") + ".gif",
+                    path.basename(imgPath, '.webp') + '.gif',
                 ),
             );
         return path.join(
             path.dirname(imgRelativePath),
-            path.basename(imgRelativePath, ".webp") + ".gif",
+            path.basename(imgRelativePath, '.webp') + '.gif',
         );
     }
 
@@ -55,12 +55,12 @@ const processImageForMedium = async (imgRelativePath: string) => {
         .toFile(
             path.join(
                 path.dirname(imgPath),
-                path.basename(imgPath, ".webp") + ".png",
+                path.basename(imgPath, '.webp') + '.png',
             ),
         );
     return path.join(
         path.dirname(imgRelativePath),
-        path.basename(imgRelativePath, ".webp") + ".png",
+        path.basename(imgRelativePath, '.webp') + '.png',
     );
 };
 
@@ -111,7 +111,7 @@ export const preparePostForPublish = async ({
     const tokenName = `MEDIUM_TOKEN_${author?.toUpperCase()}`;
     const token = process.env[tokenName];
 
-    if (typeof token === "undefined") {
+    if (typeof token === 'undefined') {
         skipPublish = true;
         console.error(
             `Medium integration token missing. Make sure to specify env "${tokenName}".`,
@@ -130,7 +130,7 @@ export const preparePostForPublish = async ({
               body: {
                   authorId,
                   title,
-                  contentFormat: "markdown",
+                  contentFormat: 'markdown',
                   content:
                       (await convertImagesToAbsolutePaths(
                           frontmatterData.content,
@@ -138,9 +138,9 @@ export const preparePostForPublish = async ({
                       )) +
                       `\n\n> This article has been originally published on [FRSPACE blog](${canonicalUrl}).\n> Take a look there to find more of my articles 🎉`,
                   tags,
-                  publishStatus: "public", // possible values: draft, unlisted, public
+                  publishStatus: 'public', // possible values: draft, unlisted, public
                   canonicalUrl,
-                  license: "cc-40-by-nc-sa",
+                  license: 'cc-40-by-nc-sa',
                   notifyFollowers: true,
               },
           };
@@ -154,7 +154,7 @@ export const publish = async ({
     postname: string;
 }) => {
     try {
-        const articleIndexPath = path.join(srcDirPath, "index.md");
+        const articleIndexPath = path.join(srcDirPath, 'index.md');
         const articleLastUpdated = await getGitTimestamp(srcDirPath);
         const frontmatterData = matter.read(articleIndexPath);
         const { syncDateMedium, syncedIdMedium } =
@@ -173,10 +173,10 @@ export const publish = async ({
         const response = await fetch(
             `https://api.medium.com/v1/users/${post.data.authorId}/posts`,
             {
-                method: "POST",
+                method: 'POST',
                 headers: {
-                    Authorization: "Bearer " + post.data.token,
-                    "Content-Type": "application/json",
+                    Authorization: 'Bearer ' + post.data.token,
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(post.body),
             },
@@ -201,30 +201,30 @@ export const publish = async ({
     } catch (error) {
         if (error.status === 400)
             console.error(
-                "Required fields were invalid, not specified.",
+                'Required fields were invalid, not specified.',
                 error.statusText,
                 await error.json?.(),
             );
         else if (error.status === 401)
             console.error(
-                "The access token is invalid or has been revoked.",
+                'The access token is invalid or has been revoked.',
                 error.statusText,
                 await error.json?.(),
             );
         else if (error.status === 403)
             console.error(
-                "The user does not have permission to publish, or the authorId in the request path points to wrongnon-existent user.",
+                'The user does not have permission to publish, or the authorId in the request path points to wrongnon-existent user.',
                 error.statusText,
                 await error.json?.(),
             );
         else if (error.status === 429)
             console.error(
-                "You have reached the rate limit for publishing today.",
+                'You have reached the rate limit for publishing today.',
                 error.statusText,
                 await error.json?.(),
             );
         else {
-            console.error("Unknown error.", error);
+            console.error('Unknown error.', error);
             return process.exit(1);
         }
     }
