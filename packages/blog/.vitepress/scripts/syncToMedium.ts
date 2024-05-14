@@ -10,7 +10,7 @@ import { members } from '../composables/members';
 import { getGitTimestamp } from './getGitTimestamp';
 import type fetch from 'node-fetch';
 import { existsSync, promises as fs } from 'fs';
-import isAnimated from 'is-animated';
+import isAnimated from '@frsource/is-animated';
 import sharp from 'sharp';
 
 type AdditionalPostData = {
@@ -78,10 +78,8 @@ export const preparePostForPublish = async ({
 } & AdditionalPostData) => {
     const parsedPost = await parsePostMarkdown(frontmatterData);
     if (!parsedPost) return;
-    const { title, author, tags } = parsedPost;
-    let skipPublish = false;
+    const { title, author: authorId, tags } = parsedPost;
     if (syncDateMedium && syncDateMedium === lastUpdated) {
-        skipPublish = true;
         console.log(
             `Post "${title}" is already up to date on Medium (${syncedUrlMedium}), skipping...`,
         );
@@ -93,57 +91,64 @@ export const preparePostForPublish = async ({
             `Post "${title}" wasn't published to medium yet, attempting to publish.`,
         );
     else {
-        skipPublish = true;
         console.log(
             `Warn :: Post "${title}" is already published on medium (${syncedUrlMedium}), but it needs to be updated. Medium API does not expose possibility to update existing article, so you need to update this article manually.`,
         );
+        return;
     }
 
-    const { mediumId: authorId } = members.find(({ id }) => id === author);
+    const author = members.find(({ id }) => id === authorId);
 
-    if (!authorId) {
-        skipPublish = true;
+    if (!author) {
         console.error(
-            `Author id: ${author} is missing "mediumId" in its data. Skipping publish of post "${title}"...`,
+            `Author with id: ${authorId} cannot be found. Make sure this id is correct and exists within members object. Skipping publish of post "${title}"...`,
         );
+        return;
     }
 
-    const tokenName = `MEDIUM_TOKEN_${author?.toUpperCase()}`;
+    const { mediumId: mediumAuthorId } = author;
+
+    if (!mediumAuthorId) {
+        console.error(
+            `Author id: ${authorId} is missing "mediumId" in its data. Skipping publish of post "${title}"...`,
+        );
+        return;
+    }
+
+    const tokenName = `MEDIUM_TOKEN_${authorId?.toUpperCase()}`;
     const token = process.env[tokenName];
 
     if (typeof token === 'undefined') {
-        skipPublish = true;
         console.error(
             `Medium integration token missing. Make sure to specify env "${tokenName}".`,
         );
+        return;
     }
 
     const canonicalUrl = `${baseUrl}/post/${slug}`;
 
-    return skipPublish
-        ? (undefined as void)
-        : {
-              data: {
-                  token,
-                  authorId,
-              },
-              body: {
-                  authorId,
-                  title,
-                  contentFormat: 'markdown',
-                  content:
-                      (await convertImagesToAbsolutePaths(
-                          frontmatterData.content,
-                          processImageForMedium,
-                      )) +
-                      `\n\n> This article has been originally published on [FRSPACE blog](${canonicalUrl}).\n> Take a look there to find more of my articles 🎉`,
-                  tags,
-                  publishStatus: 'public', // possible values: draft, unlisted, public
-                  canonicalUrl,
-                  license: 'cc-40-by-nc-sa',
-                  notifyFollowers: true,
-              },
-          };
+    return {
+        data: {
+            token,
+            authorId: mediumAuthorId,
+        },
+        body: {
+            authorId: mediumAuthorId,
+            title,
+            contentFormat: 'markdown',
+            content:
+                (await convertImagesToAbsolutePaths(
+                    frontmatterData.content,
+                    processImageForMedium,
+                )) +
+                `\n\n> This article has been originally published on [FRSPACE blog](${canonicalUrl}).\n> Take a look there to find more of my articles 🎉`,
+            tags,
+            publishStatus: 'public', // possible values: draft, unlisted, public
+            canonicalUrl,
+            license: 'cc-40-by-nc-sa',
+            notifyFollowers: true,
+        },
+    };
 };
 
 export const publish = async ({
