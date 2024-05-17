@@ -1,26 +1,12 @@
 /// <reference lib="dom" />
 
 import 'regenerator-runtime/runtime';
-import type ResizeObserverType from 'resize-observer-polyfill';
 import './index.scss';
 import type { ContactDialogCtrl } from './contactDialog';
 import domready from 'domready';
 import { startLogoAnimation } from './logo.ctrl';
 
-declare global {
-    interface Window {
-        ResizeObserver: typeof ResizeObserverType;
-    }
-}
-
 (async () => {
-    if (!window.ResizeObserver) {
-        const { default: ResizeObserver } = await import(
-            'resize-observer-polyfill'
-        );
-        window.ResizeObserver = ResizeObserver;
-    }
-
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         const loadEls = document.body.querySelectorAll('.load-fadeinup');
 
@@ -30,7 +16,7 @@ declare global {
                     loadEls.forEach((el, i) =>
                         setTimeout(() => el.classList.add('in'), 300 * i),
                     ),
-                3500,
+                500,
             ),
         );
 

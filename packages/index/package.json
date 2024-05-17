@@ -27,18 +27,17 @@
         "@parcel/transformer-sass": "2.12.0",
         "@types/domready": "1.0.2",
         "@types/node": "20.12.7",
-        "cli-real-favicon": "0.0.8",
+        "cli-real-favicon": "0.0.9",
         "parcel": "2.12.0",
         "prettier": "3.2.5",
-        "rimraf": "5.0.5",
-        "sass": "1.77.1",
+        "rimraf": "5.0.7",
+        "sass": "1.77.2",
         "typescript": "5.4.5"
     },
     "dependencies": {
         "@parcel/service-worker": "2.12.0",
         "domready": "1.0.8",
         "powerglitch": "2.3.2",
-        "regenerator-runtime": "0.14.1",
-        "resize-observer-polyfill": "1.5.1"
+        "regenerator-runtime": "0.14.1"
     }
 }

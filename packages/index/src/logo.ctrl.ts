@@ -69,6 +69,6 @@ export const startLogoAnimation = (logo: SVGElement) => {
         glitchWrapper.parentElement!.style.gridTemplate = '50% 50% / 50% 50%';
     };
 
-    setTimeout(progressReveal.bind(this), 2500); // starting timeout
+    setTimeout(progressReveal.bind(this), 500); // starting timeout
     initGlitch();
 };

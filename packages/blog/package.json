@@ -21,15 +21,15 @@
     },
     "keywords": [],
     "devDependencies": {
+        "@frsource/is-animated": "^1.0.1",
         "@frsource/prettier-config": "1.5.0",
-        "@swc-node/register": "1.9.0",
-        "@swc/core": "1.5.6",
+        "@swc-node/register": "1.9.1",
+        "@swc/core": "1.5.7",
         "@types/command-line-args": "5.2.3",
         "@types/cross-spawn": "6.0.6",
         "@types/fs-extra": "11.0.4",
         "@types/lodash-es": "^4.17.9",
         "@types/remove-markdown": "0.3.4",
-        "@types/sharp": "^0.32.0",
         "chokidar": "3.6.0",
         "command-line-args": "5.2.1",
         "concurrently": "8.2.2",
@@ -37,14 +37,13 @@
         "cross-spawn": "7.0.3",
         "fs-extra": "11.2.0",
         "gray-matter": "4.0.3",
-        "is-animated": "^2.0.2",
         "lodash-es": "^4.17.21",
         "node-fetch": "^3.3.0",
         "prettier": "3.2.5",
-        "sharp": "^0.33.0",
-        "string-replace-async": "^3.0.2",
+        "sharp": "0.33.4",
+        "string-replace-async": "3.0.2",
         "vitepress": "1.1.4",
-        "vue": "3.4.25"
+        "vue": "3.4.27"
     },
     "dependencies": {
         "simple-icons": "11.14.0"

@@ -74,7 +74,7 @@ function parsePostPath(srcPostPath: string) {
         `post${separator}([^${separator}]+)${separator}([^${separator}]+)${separator}?(.*)?$`,
         'i',
     );
-    const [, postname, locale, rest = ''] = srcPostPath.match(regex);
+    const [, postname, locale, rest = ''] = srcPostPath.match(regex) ?? [];
     return { postname, locale, rest };
 }
 
