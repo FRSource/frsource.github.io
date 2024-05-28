@@ -31,8 +31,8 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1
       '@frsource/prettier-config':
-        specifier: 1.7.0
-        version: 1.7.0(eslint@9.1.1)
+        specifier: 1.9.0
+        version: 1.9.0(eslint@9.1.1)
       '@swc-node/register':
         specifier: 1.9.1
         version: 1.9.1(@swc/core@1.5.7(@swc/helpers@0.5.1))(@swc/types@0.1.7)(typescript@5.4.5)
@@ -116,8 +116,8 @@ importers:
         specifier: 4.1.1
         version: 4.1.1
       '@frsource/prettier-config':
-        specifier: 1.7.0
-        version: 1.7.0(eslint@9.1.1)
+        specifier: 1.9.0
+        version: 1.9.0(eslint@9.1.1)
       '@parcel/packager-raw-url':
         specifier: 2.12.0
         version: 2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.1))(@swc/helpers@0.5.1)
@@ -455,8 +455,8 @@ packages:
   '@frsource/is-animated@1.0.1':
     resolution: {integrity: sha512-2H260Urk8uGOahEUxLrVXQ1VjcflpXUixaDdSBuocILQGJIDxEct/p+d9ZR/Nd5YpELRg0pNVObPCN0YMW3XfA==}
 
-  '@frsource/prettier-config@1.7.0':
-    resolution: {integrity: sha512-AYPPe+Ms+VHkp72MPE9OnFtyTCSd2Owg/1Gn/N5LZmjZ+J2uBv4DpDR7oAxE/YZ3PS8Xsk1cW1XLj3NnytphLA==}
+  '@frsource/prettier-config@1.9.0':
+    resolution: {integrity: sha512-nD09iTpeTcS3aKXA3+0qPqSnj9/JMKoru/TTBnesjxCY3/wR4umlnkoCjgWg2zM1NR2vb9crjxHmJqNcyqLyEA==}
     peerDependencies:
       eslint: '>= 3'
 
@@ -3331,7 +3331,7 @@ snapshots:
 
   '@frsource/is-animated@1.0.1': {}
 
-  '@frsource/prettier-config@1.7.0(eslint@9.1.1)':
+  '@frsource/prettier-config@1.9.0(eslint@9.1.1)':
     dependencies:
       eslint: 9.1.1
 
