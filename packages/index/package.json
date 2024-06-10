@@ -29,7 +29,7 @@
         "@types/node": "20.12.12",
         "cli-real-favicon": "0.0.9",
         "parcel": "2.12.0",
-        "prettier": "3.3.0",
+        "prettier": "3.3.1",
         "rimraf": "5.0.7",
         "sass": "1.77.4",
         "typescript": "5.4.5"
