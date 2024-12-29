@@ -1,6 +1,6 @@
 @use 'sass:map';
 
-@import './variables';
+@use 'variables';
 
 .svg-sprite {
     position: absolute;

@@ -1,7 +1,7 @@
 @use 'sass:map';
 @use 'sass:math';
 
-@import './variables';
+@use 'variables';
 
 body,
 html {
@@ -21,32 +21,32 @@ html {
     font-smoothing: antialiased;
     -webkit-font-smoothing: antialiased;
     text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
-    color: $colorPrimary;
+    color: variables.$colorPrimary;
 }
 
 body {
     overflow: hidden;
     position: relative;
     box-sizing: border-box;
-    padding: map.get($spacings, 3);
-    font-family: $fontRegular;
-    font-size: map.get($fontSizes, 4);
-    letter-spacing: $letterSpacing1;
-    line-height: $lineHeight3;
+    padding: map.get(variables.$spacings, 3);
+    font-family: variables.$fontRegular;
+    font-size: map.get(variables.$fontSizes, 4);
+    letter-spacing: variables.$letterSpacing1;
+    line-height: variables.$lineHeight3;
 
-    @media (min-height: #{$breakpoint2}) {
+    @media (min-height: #{variables.$breakpoint2}) {
         font-size: 3.7vh;
         padding: 3vh;
     }
 
-    @media (min-height: #{$breakpoint4}) {
+    @media (min-height: #{variables.$breakpoint4}) {
         font-size: 3.3vh;
     }
 
-    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
+    @media (orientation:landscape) and (min-width: #{variables.$breakpoint3}) {
         padding: 5.55vh;
         font-size: 3.4vh;
-        letter-spacing: $letterSpacing3;
+        letter-spacing: variables.$letterSpacing3;
     }
 }
 
@@ -55,12 +55,13 @@ main {
     flex-flow: column;
     overflow: auto;
     box-sizing: border-box;
-    padding: map.get($spacings, 3) map.get($spacings, 4) map.get($spacings, 6);
+    padding: map.get(variables.$spacings, 3) map.get(variables.$spacings, 4)
+        map.get(variables.$spacings, 6);
     height: 100%;
     background-color: #efefef;
 
-    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
-        padding-left: map.get($spacings, 7) * 2;
+    @media (orientation:landscape) and (min-width: #{variables.$breakpoint3}) {
+        padding-left: map.get(variables.$spacings, 7) * 2;
     }
 }
 
@@ -69,12 +70,12 @@ footer {
     display: flex;
     flex-flow: row-reverse;
     justify-content: space-between;
-    font-size: map.get($fontSizes, 1);
-    letter-spacing: $letterSpacing3;
+    font-size: map.get(variables.$fontSizes, 1);
+    letter-spacing: variables.$letterSpacing3;
     line-height: math.div(18, 8) * 1em;
     text-transform: uppercase;
 
-    @media (min-height: #{$breakpoint2}) {
+    @media (min-height: #{variables.$breakpoint2}) {
         font-size: 1.5vh;
     }
 }
@@ -103,27 +104,27 @@ h1,
 h2 {
     margin: 0;
     font-size: math.div(26, 16) * 1rem;
-    letter-spacing: $letterSpacing2;
+    letter-spacing: variables.$letterSpacing2;
     font-weight: 400;
     text-transform: uppercase;
 
-    @media (min-height: #{$breakpoint2}) {
+    @media (min-height: #{variables.$breakpoint2}) {
         font-size: 5vh;
     }
 
-    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
+    @media (orientation:landscape) and (min-width: #{variables.$breakpoint3}) {
         font-size: 6vh;
     }
 }
 
 a {
-    color: $colorPrimary;
+    color: variables.$colorPrimary;
     text-transform: uppercase;
     text-decoration: none;
 
     &:active,
     &:hover {
-        @include gradColor;
+        @include variables.gradColor;
 
         .icon {
             fill: url(#grad);
@@ -133,12 +134,12 @@ a {
 }
 
 label {
-    margin-bottom: $lineHeight3 * -1em;
+    margin-bottom: variables.$lineHeight3 * -1em;
     text-transform: uppercase;
 
     small {
-        @media (orientation:landscape) and (min-width: #{$breakpoint5}) {
-            font-size: map.get($fontSizes, 3);
+        @media (orientation:landscape) and (min-width: #{variables.$breakpoint5}) {
+            font-size: map.get(variables.$fontSizes, 3);
         }
     }
 }
@@ -146,23 +147,23 @@ label {
 input,
 textarea {
     position: relative;
-    margin-bottom: map.get($spacings, 5);
+    margin-bottom: map.get(variables.$spacings, 5);
     border: solid;
     border-width: 0 0 2px;
     padding: 0;
     width: 100%;
     font: inherit;
     color: inherit;
-    caret-color: $colorTertiary;
+    caret-color: variables.$colorTertiary;
     background: transparent;
     transition: background 0.15s ease-in-out;
 
-    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
+    @media (orientation:landscape) and (min-width: #{variables.$breakpoint3}) {
         border-bottom-width: 3px;
     }
 
-    @media (orientation:landscape) and (min-width: #{$breakpoint5}) {
-        margin-bottom: map.get($spacings, 7);
+    @media (orientation:landscape) and (min-width: #{variables.$breakpoint5}) {
+        margin-bottom: map.get(variables.$spacings, 7);
         border-bottom-width: 5px;
     }
 
@@ -170,26 +171,26 @@ textarea {
         outline: none;
         border-image: linear-gradient(
                 to right,
-                #{$colorTertiary} 25%,
-                #{$colorSecondary} 75%
+                #{variables.$colorTertiary} 25%,
+                #{variables.$colorSecondary} 75%
             )
             1;
     }
 
     &:not(:placeholder-shown) {
-        background: $colorPrimaryInverted;
+        background: variables.$colorPrimaryInverted;
     }
 
     &:-webkit-autofill {
-        background: $colorPrimaryInverted;
+        background: variables.$colorPrimaryInverted;
     }
 }
 
 label,
 input,
 textarea {
-    @media (orientation:landscape) and (min-width: #{$breakpoint5}) {
-        font-size: map.get($fontSizes, 6);
+    @media (orientation:landscape) and (min-width: #{variables.$breakpoint5}) {
+        font-size: map.get(variables.$fontSizes, 6);
     }
 }
 
@@ -199,10 +200,10 @@ textarea {
 
 small {
     font-size: 0.5em;
-    letter-spacing: $letterSpacing1;
+    letter-spacing: variables.$letterSpacing1;
 
-    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
-        letter-spacing: $letterSpacing3;
+    @media (orientation:landscape) and (min-width: #{variables.$breakpoint3}) {
+        letter-spacing: variables.$letterSpacing3;
     }
 }
 

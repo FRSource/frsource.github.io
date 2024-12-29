@@ -1,6 +1,6 @@
 @use 'sass:map';
 
-@import './variables';
+@use 'variables';
 
 .btn {
     border: 0;
@@ -15,8 +15,8 @@
     cursor: pointer;
 
     &.fill {
-        background-color: $colorPrimary;
-        color: $colorPrimaryInverted;
+        background-color: variables.$colorPrimary;
+        color: variables.$colorPrimaryInverted;
 
         &.active,
         &:active,
@@ -26,8 +26,8 @@
         body:not(.t-dark):not(.t-light) &[data-theme='auto'] {
             background-image: linear-gradient(
                 140deg,
-                #{$colorTertiary} 25%,
-                #{$colorSecondary} 90%
+                #{variables.$colorTertiary} 25%,
+                #{variables.$colorSecondary} 90%
             );
         }
     }
@@ -41,7 +41,7 @@
         body.t-dark &[data-theme='dark'],
         body.t-light &[data-theme='light'],
         body:not(.t-dark):not(.t-light) &[data-theme='auto'] {
-            @include gradColor;
+            @include variables.gradColor;
 
             .icon {
                 fill: url(#grad);
@@ -67,11 +67,11 @@
     }
 
     &--big {
-        font-size: map.get($fontSizes, 6);
+        font-size: map.get(variables.$fontSizes, 6);
 
         .icon {
-            @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
-                font-size: map.get($fontSizes, 7);
+            @media (orientation:landscape) and (min-width: #{variables.$breakpoint3}) {
+                font-size: map.get(variables.$fontSizes, 7);
             }
         }
     }

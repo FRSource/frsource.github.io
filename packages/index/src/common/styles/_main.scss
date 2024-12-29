@@ -1,6 +1,6 @@
 @use 'sass:map';
 
-@import './variables';
+@use 'variables';
 
 .content {
     position: relative;
@@ -8,7 +8,7 @@
     display: flex;
     flex-flow: column;
 
-    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
+    @media (orientation:landscape) and (min-width: #{variables.$breakpoint3}) {
         z-index: 1;
         display: flex;
         flex-flow: row-reverse;
@@ -31,23 +31,23 @@
     height: 72px;
     max-height: 20vh;
 
-    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
-        margin-top: calc(24.5vh - #{map.get($spacings, 6)});
-        padding: map.get($spacings, 3) 0;
+    @media (orientation:landscape) and (min-width: #{variables.$breakpoint3}) {
+        margin-top: calc(24.5vh - #{map.get(variables.$spacings, 6)});
+        padding: map.get(variables.$spacings, 3) 0;
         width: 60%;
         height: 45vh;
         max-height: none;
     }
 
-    @media (orientation: landscape) and (min-width: #{$breakpoint3}) and (min-height: #{$breakpoint1}) {
-        margin-top: calc(14.5vh - #{map.get($spacings, 3)});
+    @media (orientation: landscape) and (min-width: #{variables.$breakpoint3}) and (min-height: #{variables.$breakpoint1}) {
+        margin-top: calc(14.5vh - #{map.get(variables.$spacings, 3)});
         padding: 10vh 0;
         max-height: none;
     }
 }
 
 .contact-col {
-    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
+    @media (orientation:landscape) and (min-width: #{variables.$breakpoint3}) {
         flex-grow: 1;
         display: flex;
         flex-flow: column;
@@ -57,10 +57,10 @@
     &__cta {
         display: none;
         margin-top: -0.2em;
-        margin-left: map.get($spacings, 4);
+        margin-left: map.get(variables.$spacings, 4);
         max-width: 20ch;
 
-        @media (min-width: #{$breakpoint1}) {
+        @media (min-width: #{variables.$breakpoint1}) {
             display: block;
         }
     }
@@ -96,7 +96,7 @@
     height: 1em;
     font-size: 112.5vw;
     line-height: 0.2;
-    color: $colorPrimaryInverted;
+    color: variables.$colorPrimaryInverted;
     border-radius: 50%;
     transform: translate(-50%, -50%);
 
@@ -128,11 +128,11 @@
 .title-box {
     max-width: 12rem;
 
-    @media (min-height: #{$breakpoint2}) {
+    @media (min-height: #{variables.$breakpoint2}) {
         max-width: 36vh;
     }
 
-    @media (orientation:landscape) and (min-width: #{$breakpoint3}) {
+    @media (orientation:landscape) and (min-width: #{variables.$breakpoint3}) {
         max-width: 45vh;
     }
 }

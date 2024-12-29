@@ -1,29 +1,29 @@
 @use 'sass:map';
 
-@import './variables';
+@use 'variables';
 
 .mt-1 {
-    margin-top: map.get($spacings, 1);
+    margin-top: map.get(variables.$spacings, 1);
 }
 
 .mb-2 {
-    margin-bottom: map.get($spacings, 2);
+    margin-bottom: map.get(variables.$spacings, 2);
 }
 
 .mb-3 {
-    margin-bottom: map.get($spacings, 3);
+    margin-bottom: map.get(variables.$spacings, 3);
 }
 
 .mb-4 {
-    margin-bottom: map.get($spacings, 4);
+    margin-bottom: map.get(variables.$spacings, 4);
 }
 
 .mb-5 {
-    margin-bottom: map.get($spacings, 5);
+    margin-bottom: map.get(variables.$spacings, 5);
 }
 
 .mb-7 {
-    margin-bottom: map.get($spacings, 7);
+    margin-bottom: map.get(variables.$spacings, 7);
 }
 
 .d-f {
@@ -42,7 +42,7 @@
     display: none;
 }
 
-@media (min-width: #{$breakpoint3}) {
+@media (min-width: #{variables.$breakpoint3}) {
     .d-md-b {
         display: block;
     }
@@ -64,14 +64,14 @@
     height: 100%;
 }
 
-@media (min-width: #{$breakpoint3}) {
+@media (min-width: #{variables.$breakpoint3}) {
     .w-md-60p {
         width: 60%;
     }
 }
 
 .lh-1 {
-    line-height: $lineHeight1;
+    line-height: variables.$lineHeight1;
 }
 
 .f-col {
@@ -86,7 +86,7 @@
     justify-content: space-between;
 }
 
-@media (min-width: #{$breakpoint3}) {
+@media (min-width: #{variables.$breakpoint3}) {
     .f-md-grow-0 {
         flex-grow: 0;
     }
@@ -97,7 +97,7 @@
 }
 
 .c-grad {
-    @include gradColor;
+    @include variables.gradColor;
 }
 
 .us-none {
@@ -129,11 +129,11 @@
 }
 
 .topline {
-    transform: translateY(#{($lineHeight3 - 1%) * 100});
+    transform: translateY(#{(variables.$lineHeight3 - 1%) * 100});
 
     &__item {
         position: relative;
-        top: (1em - $lineHeight3);
+        top: (1em - variables.$lineHeight3);
         vertical-align: top;
     }
 }
