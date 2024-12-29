@@ -34,7 +34,7 @@
         "command-line-args": "6.0.0",
         "concurrently": "9.0.1",
         "cpy-cli": "5.0.0",
-        "cross-spawn": "7.0.3",
+        "cross-spawn": "7.0.5",
         "fs-extra": "11.2.0",
         "gray-matter": "4.0.3",
         "lodash-es": "^4.17.21",
