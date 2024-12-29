@@ -16,9 +16,8 @@ urlsToCache.unshift(
     'https://fonts.googleapis.com/css2?family=Inconsolata&display=swap',
     'https://fonts.gstatic.com/s/inconsolata/v20/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmAwLYxYWI2qfdm7Lpp4U8WR32kXWdycuJDA.woff',
     '/site.webmanifest',
-    '/browserconfig.xml',
     '/favicon.ico',
-    '/favicon-32x32.png',
+    '/favicon-96x96.png',
     '/robots.txt',
     '/humans.txt',
 );
