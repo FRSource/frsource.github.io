@@ -8,14 +8,12 @@
     "license": "Apache 2.0",
     "scripts": {
         "build": "parcel build src/index.html --dist-dir ../../public --no-scope-hoist && pnpm postbuild",
-        "postbuild": "pnpm injectBodyScript && pnpm generateFavicons && pnpm injectFavicons && pnpm removeFaviconHtmlCodeTmp",
+        "postbuild": "pnpm injectBodyScript && pnpm generateFavicons",
         "prestart": "rimraf '?(dist|?(../../public))/*.?(css|js|map|html|svg|png|ico|xml|webmanifest)'",
         "start": "pnpm prestart && parcel watch src/index.html --dist-dir ../../public",
         "start:single": "pnpm prestart && parcel serve --https src/index.html",
         "injectBodyScript": "frs-replace '<main>' './build/bodyScriptInjector.js' -r -i ../../public/index.html -o ../../public/index.html --no-stdin",
-        "generateFavicons": "real-favicon generate ./build/faviconCfg.json faviconData.json.tmp ../../public",
-        "injectFavicons": "frs-replace '</head>' './build/faviconsInjector.js' -r -i ../../public/index.html -o ../../public/index.html --no-stdin",
-        "removeFaviconHtmlCodeTmp": "rimraf '../../public/html_code.html'",
+        "generateFavicons": "node ./build/favicons.js",
         "format": "prettier --write ."
     },
     "devDependencies": {
@@ -25,9 +23,10 @@
         "@parcel/transformer-inline-string": "2.12.0",
         "@parcel/transformer-jsonld": "2.12.0",
         "@parcel/transformer-sass": "2.12.0",
+        "@realfavicongenerator/generate-favicon": "^0.4.12",
+        "@realfavicongenerator/image-adapter-node": "^0.4.12",
         "@types/domready": "1.0.2",
         "@types/node": "20.12.12",
-        "cli-real-favicon": "0.0.9",
         "parcel": "2.12.0",
         "prettier": "3.3.3",
         "rimraf": "5.0.7",

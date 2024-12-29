@@ -8,10 +8,10 @@
   "license": "Apache 2.0",
   "packageManager": "pnpm@9.11.0",
   "scripts": {
-    "preview": "serve public",
-    "build": "pnpm run -r build",
     "start": "concurrently 'pnpm run -r --parallel start' 'pnpm preview'",
+    "build": "pnpm run -r build",
     "format": "pnpm run -r format",
+    "preview": "serve public",
     "prepare": "husky install"
   },
   "devDependencies": {
