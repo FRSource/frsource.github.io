@@ -21,7 +21,7 @@ const args = commandLineArgs([
 const cwd = path.join(__dirname, '..');
 
 const watcher = chokidar
-    .watch('./post/**/*', {
+    .watch('./post', {
         cwd,
         ignoreInitial: true,
     })
