@@ -24,15 +24,15 @@ importers:
   packages/blog:
     dependencies:
       simple-icons:
-        specifier: 14.0.1
-        version: 14.0.1
+        specifier: 14.1.0
+        version: 14.1.0
     devDependencies:
       '@frsource/is-animated':
         specifier: ^1.0.1
         version: 1.0.1
       '@frsource/prettier-config':
-        specifier: 1.19.0
-        version: 1.19.0(eslint@9.1.1)
+        specifier: 1.21.0
+        version: 1.21.0(eslint@9.1.1)
       '@swc-node/register':
         specifier: 1.10.9
         version: 1.10.9(@swc/core@1.10.4(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2)
@@ -116,8 +116,8 @@ importers:
         specifier: 4.1.1
         version: 4.1.1
       '@frsource/prettier-config':
-        specifier: 1.19.0
-        version: 1.19.0(eslint@9.1.1)
+        specifier: 1.21.0
+        version: 1.21.0(eslint@9.1.1)
       '@parcel/packager-raw-url':
         specifier: 2.13.3
         version: 2.13.3(@parcel/core@2.13.3(@swc/helpers@0.5.15))
@@ -455,8 +455,8 @@ packages:
   '@frsource/is-animated@1.0.1':
     resolution: {integrity: sha512-2H260Urk8uGOahEUxLrVXQ1VjcflpXUixaDdSBuocILQGJIDxEct/p+d9ZR/Nd5YpELRg0pNVObPCN0YMW3XfA==}
 
-  '@frsource/prettier-config@1.19.0':
-    resolution: {integrity: sha512-V/CCjTm733pEeqxQ7RrlP+RWDoC4Yxzq0cqydXd9FAB9hmMwaCc0DNo3miWo4suUMRXNTsFs0000yPrsjMfnsw==}
+  '@frsource/prettier-config@1.21.0':
+    resolution: {integrity: sha512-ib4szMAn3CmJkmnEwQi5flIz4cRykP9Is85s9JoN/bsbO4BLBrXhV4VFlJkPSSMmeMMDRkg4l+EDbn9iIgXJHg==}
     peerDependencies:
       eslint: '>= 3'
 
@@ -3015,8 +3015,8 @@ packages:
   simple-get@4.0.1:
     resolution: {integrity: sha512-brv7p5WgH0jmQJr1ZDDfKDOSeWWg+OVypG99A/5vYGPqJ6pxiaHLy8nxtFjBA7oMa01ebA9gfh1uMCFqOuXxvA==}
 
-  simple-icons@14.0.1:
-    resolution: {integrity: sha512-Pyd2vedjjYTGZCi8Y4a+BeG6ks2qoEwhtJL7t4l6C5DKFxQXRjpLzg7JLBCC44tsk96bXU1XDVEEp+sz58nYlw==}
+  simple-icons@14.1.0:
+    resolution: {integrity: sha512-4/jkVUqhNpsyx0nqYe4QvBkg6NSxdnOnfs6AfFC5IiFsIqrE7YQveLPrbdEh40PZjEQZ20RG8HKbRjEcigJbPg==}
     engines: {node: '>=0.12.18'}
 
   simple-swizzle@0.2.2:
@@ -3686,7 +3686,7 @@ snapshots:
 
   '@frsource/is-animated@1.0.1': {}
 
-  '@frsource/prettier-config@1.19.0(eslint@9.1.1)':
+  '@frsource/prettier-config@1.21.0(eslint@9.1.1)':
     dependencies:
       eslint: 9.1.1
 
@@ -6523,7 +6523,7 @@ snapshots:
       once: 1.4.0
       simple-concat: 1.0.1
 
-  simple-icons@14.0.1: {}
+  simple-icons@14.1.0: {}
 
   simple-swizzle@0.2.2:
     dependencies:
