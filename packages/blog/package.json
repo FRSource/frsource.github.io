@@ -22,7 +22,7 @@
     "keywords": [],
     "devDependencies": {
         "@frsource/is-animated": "^1.0.1",
-        "@frsource/prettier-config": "1.19.0",
+        "@frsource/prettier-config": "1.21.0",
         "@swc-node/register": "1.10.9",
         "@swc/core": "1.10.4",
         "@types/command-line-args": "5.2.3",
@@ -46,6 +46,6 @@
         "vue": "3.5.13"
     },
     "dependencies": {
-        "simple-icons": "14.0.1"
+        "simple-icons": "14.1.0"
     }
 }
