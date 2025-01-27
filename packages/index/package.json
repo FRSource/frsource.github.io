@@ -18,7 +18,7 @@
     },
     "devDependencies": {
         "@frsource/frs-replace": "5.1.8",
-        "@frsource/prettier-config": "1.21.0",
+        "@frsource/prettier-config": "1.22.0",
         "@parcel/packager-raw-url": "2.13.3",
         "@parcel/transformer-inline-string": "2.13.3",
         "@parcel/transformer-jsonld": "2.13.3",
@@ -37,7 +37,7 @@
     "dependencies": {
         "@parcel/service-worker": "2.13.3",
         "domready": "1.0.8",
-        "powerglitch": "2.3.4",
+        "powerglitch": "2.4.0",
         "regenerator-runtime": "0.14.1"
     }
 }
